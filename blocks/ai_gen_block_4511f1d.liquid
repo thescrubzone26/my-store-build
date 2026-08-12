@@ -1,0 +1,316 @@
+{% doc %}
+  @prompt
+    Make a collage for 5 images with window width, and that collages should be costomizable in size, Make it for 4 images, 1st is vertical, 2nd after 1st image landscape, and rest 2 small. Also add option to resize images
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-collage-container-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .ai-collage-wrapper-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: {{ block.settings.gap }}px;
+    aspect-ratio: 3 / 2;
+  }
+
+  .ai-collage-item-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-collage-item-{{ ai_gen_id }}:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
+  .ai-collage-item-{{ ai_gen_id }}:nth-child(2) {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+  }
+
+  .ai-collage-item-{{ ai_gen_id }}:nth-child(3) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .ai-collage-item-{{ ai_gen_id }}:nth-child(4) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+
+  .ai-collage-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .ai-collage-image-{{ ai_gen_id }}[data-fit="cover"] {
+    object-fit: cover;
+  }
+
+  .ai-collage-image-{{ ai_gen_id }}[data-fit="contain"] {
+    object-fit: contain;
+  }
+
+  .ai-collage-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-collage-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-collage-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-collage-wrapper-{{ ai_gen_id }} {
+      width: 100%;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      aspect-ratio: 2 / 3;
+    }
+
+    .ai-collage-item-{{ ai_gen_id }}:nth-child(1) {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+
+    .ai-collage-item-{{ ai_gen_id }}:nth-child(2) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    .ai-collage-item-{{ ai_gen_id }}:nth-child(3) {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
+    .ai-collage-item-{{ ai_gen_id }}:nth-child(4) {
+      grid-column: 1 / 3;
+      grid-row: 3 / 4;
+    }
+  }
+{% endstyle %}
+
+<image-collage-{{ ai_gen_id }} class="ai-collage-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-collage-wrapper-{{ ai_gen_id }}">
+    {% for i in (1..4) %}
+      {% liquid
+        assign image_key = 'image_' | append: i
+        assign fit_key = 'image_' | append: i | append: '_fit'
+        assign image = block.settings[image_key]
+        assign fit = block.settings[fit_key]
+      %}
+      <div class="ai-collage-item-{{ ai_gen_id }}">
+        {% if image %}
+          <img
+            src="{{ image | image_url: width: 1000 }}"
+            alt="{{ image.alt | escape }}"
+            loading="lazy"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            class="ai-collage-image-{{ ai_gen_id }}"
+            data-fit="{{ fit }}"
+          >
+        {% else %}
+          <div class="ai-collage-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+            <div class="ai-collage-empty-state-{{ ai_gen_id }}">
+              Add image {{ i }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</image-collage-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ImageCollage{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('image-collage-{{ ai_gen_id }}', ImageCollage{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Image collage",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_1_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_2_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_3_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_4_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between images",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image collage"
+    }
+  ]
+}
+{% endschema %}

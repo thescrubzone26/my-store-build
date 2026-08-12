@@ -1,0 +1,1312 @@
+<link href="{{ 'smi-email-signup-1.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="screen" onload="this.onload=null;this.media='all'">
+{% comment %}#component#["settings/display-settings-2","settings/container-full_width-2","settings/content-settings","settings/color-scheme","settings/section-padding","settings/section-margin","settings/heading","blocks/email-signup","settings/social-media","blocks/background","settings/design-mode","settings/animation-settings"]#endcomponent#{% endcomment %}
+{% assign colorblock = section.blocks | where: 'type', 'color' | first %}
+<style>
+    {% if block_color %}
+    {% endif %}
+  	{% assign colorblock = section.blocks | where: 'type', 'color' | first %}
+{% if colorblock %}
+	.smi-quick-view-1-modal-{{ section.id }}, #shopify-section-{{ section.id }},
+      #shopify-section-{{ section.id }} .smi-color-{{ section.settings.color_scheme }},
+      .smi-block-custom-color {
+		--color-background: {{ colorblock.settings.background_color.red }}, {{ colorblock.settings.background_color.green }},{{ colorblock.settings.background_color.blue }};
+		--color-background-alpha: {{ colorblock.settings.background_color.alpha | default: 1 }};
+        {% if colorblock.settings.background_gradient_color == blank %}
+            --gradient-background: {{ colorblock.settings.background_color }};
+        {% else %}
+            --gradient-background: {{ colorblock.settings.background_gradient_color }};
+        {% endif %}
+		{% if colorblock.settings.heading_color != blank and colorblock.settings.heading_color != 'rgba(0,0,0,0)' %}
+			--color-heading: {{ colorblock.settings.heading_color.red }}, {{ colorblock.settings.heading_color.green }},{{ colorblock.settings.heading_color.blue }};
+		{% endif %}	
+		--color-foreground-hex: {{ colorblock.settings.text_color }};
+        --color-foreground: {{ colorblock.settings.text_color.red }}, {{ colorblock.settings.text_color.green }},{{ colorblock.settings.text_color.blue }};
+		--color-subtext: {{ colorblock.settings.subtext_color.red }},{{ colorblock.settings.subtext_color.green }},{{ colorblock.settings.subtext_color.blue }};
+        --color-shadow: {{ colorblock.settings.shadow_color.red }}, {{ colorblock.settings.shadow_color.green }},{{ colorblock.settings.shadow_color.blue }};
+		--color-text-link: {{ colorblock.settings.link_color.red }}, {{ colorblock.settings.link_color.green }},{{ colorblock.settings.link_color.blue }};
+		{% if colorblock.settings.hover_link_color != blank and colorblock.settings.hover_link_color != 'rgba(0,0,0,0)' %}
+			--color-hover-link: {{ colorblock.settings.hover_link_color.red }}, {{ colorblock.settings.hover_link_color.green }},{{ colorblock.settings.hover_link_color.blue }};
+		{% else %}
+			--color-hover-link: {{ colorblock.settings.link_color.red }}, {{ colorblock.settings.link_color.green }},{{ colorblock.settings.link_color.blue }};
+		{% endif %}		
+		--color-button: {{ colorblock.settings.solid_background_button_color.red }}, {{ colorblock.settings.solid_background_button_color.green }},{{ colorblock.settings.solid_background_button_color.blue }};
+		--color-button-text: {{ colorblock.settings.solid_button_label_color.red }}, {{ colorblock.settings.solid_button_label_color.green }},{{ colorblock.settings.solid_button_label_color.blue }};
+		{% if colorblock.settings.solid_background_button_hover_color != blank and colorblock.settings.solid_background_button_hover_color != 'rgba(0,0,0,0)' %}
+			--color-button-hover: {{ colorblock.settings.solid_background_button_hover_color.red }}, {{ colorblock.settings.solid_background_button_hover_color.green }},{{ colorblock.settings.solid_background_button_hover_color.blue }};
+		{% else %}
+			--color-button-hover: {{ colorblock.settings.solid_background_button_color.red }}, {{ colorblock.settings.solid_background_button_color.green }},{{ colorblock.settings.solid_background_button_color.blue }};
+		{% endif %}		
+		{% if colorblock.settings.solid_button_label_hover_color != blank and colorblock.settings.solid_button_label_hover_color != 'rgba(0,0,0,0)' %}
+			--color-button-hover-text: {{ colorblock.settings.solid_button_label_hover_color.red }}, {{ colorblock.settings.solid_button_label_hover_color.green }},{{ colorblock.settings.solid_button_label_hover_color.blue }};
+		{% else %}
+			--color-button-hover-text: {{ colorblock.settings.solid_button_label_color.red }}, {{ colorblock.settings.solid_button_label_color.green }},{{ colorblock.settings.solid_button_label_color.blue }};
+		{% endif %}		
+		--color-secondary-button-text: {{ colorblock.settings.outline_button_color.red }}, {{ colorblock.settings.outline_button_color.green }},{{ colorblock.settings.outline_button_color.blue }};
+		{% if colorblock.settings.outline_button_hover_color != blank and colorblock.settings.outline_button_hover_color != 'rgba(0,0,0,0)' %}
+			--color-button-hover-border: {{ colorblock.settings.outline_button_hover_color.red }}, {{ colorblock.settings.outline_button_hover_color.green }},{{ colorblock.settings.outline_button_hover_color.blue }};
+		{% else %}
+			--color-button-hover-border: {{ colorblock.settings.outline_button_color.red }}, {{ colorblock.settings.outline_button_color.green }},{{ colorblock.settings.outline_button_color.blue }};
+		{% endif %}		
+		{% comment %} Inputs ────────── {% endcomment %}
+		{% comment %} {% if colorblock.settings.input_background_color != blank and colorblock.settings.input_background_color != 'rgba(0,0,0,0)' %}
+			--color-input-background: {{ colorblock.settings.input_background_color.red }}, {{ colorblock.settings.input_background_color.green }},{{ colorblock.settings.input_background_color.blue }};
+		{% endif %}
+		{% if colorblock.settings.input_color != blank and colorblock.settings.input_color != 'rgba(0,0,0,0)' %}
+			--color-input-color: {{ colorblock.settings.input_color.red }}, {{ colorblock.settings.input_color.green }},{{ colorblock.settings.input_color.blue }};
+		{% endif %}
+		{% if colorblock.settings.input_border_color != blank and colorblock.settings.input_border_color != 'rgba(0,0,0,0)' %}
+			--color-input-border: {{ colorblock.settings.input_border_color.red }}, {{ colorblock.settings.input_border_color.green }},{{ colorblock.settings.input_border_color.blue }};
+		{% endif %}
+		{% if colorblock.settings.input_border_hover_color != blank and colorblock.settings.input_border_hover_color != 'rgba(0,0,0,0)' %}
+			--color-input-border-hover: {{ colorblock.settings.input_border_hover_color.red }},{{ colorblock.settings.input_border_hover_color.green }},{{ colorblock.settings.input_border_hover_color.blue }};
+		{% else %}
+			--color-input-border-hover: {{ colorblock.settings.input_border_color.red }},{{ colorblock.settings.input_border_color.green }},{{ colorblock.settings.input_border_color.blue }};
+		{% endif %}	
+		 {% endcomment %}
+    }
+{% endif %}
+	{% if colorblock %}
+		#shopify-section-{{ section.id }},
+		#shopify-section-{{ section.id }} .smi-color-{{ section.settings.color_scheme }},
+		.smi-block-custom-color {
+			{% if colorblock.settings.input_background_color != blank and colorblock.settings.input_background_color != 'rgba(0,0,0,0)' %}
+				--color-input-background: {{ colorblock.settings.input_background_color.red }}, {{ colorblock.settings.input_background_color.green }},{{ colorblock.settings.input_background_color.blue }};
+			{% endif %}
+			{% if colorblock.settings.input_color != blank and colorblock.settings.input_color != 'rgba(0,0,0,0)' %}
+				--color-input-color: {{ colorblock.settings.input_color.red }}, {{ colorblock.settings.input_color.green }},{{ colorblock.settings.input_color.blue }};
+			{% endif %}
+			{% if colorblock.settings.input_border_color != blank and colorblock.settings.input_border_color != 'rgba(0,0,0,0)' %}
+				--color-input-border: {{ colorblock.settings.input_border_color.red }}, {{ colorblock.settings.input_border_color.green }},{{ colorblock.settings.input_border_color.blue }};
+			{% else %}	
+				--color-input-border: {{ colorblock.settings.text_color.red }}, {{ colorblock.settings.text_color.green }},{{ colorblock.settings.text_color.blue }};
+			{% endif %}
+			{% if colorblock.settings.input_border_hover_color != blank and colorblock.settings.input_border_hover_color != 'rgba(0,0,0,0)' %}
+				--color-input-border-hover: {{ colorblock.settings.input_border_hover_color.red }},{{ colorblock.settings.input_border_hover_color.green }},{{ colorblock.settings.input_border_hover_color.blue }};
+			{% else %}
+				--color-input-border-hover: {{ colorblock.settings.text_color.red }}, {{ colorblock.settings.text_color.green }},{{ colorblock.settings.text_color.blue }};
+			{% endif %}	
+		}
+	{% endif %}
+  #shopify-section-{{ section.id }}{ 
+    --section-padding-top: {{ section.settings.padding_top }}px;
+--section-padding-bottom: {{ section.settings.padding_bottom }}px;
+--section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+--section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+	--heading-alignment: {%- liquid
+    case  section.settings.heading_alignment
+        when 'left'
+         echo 'start'
+        when 'right'
+         echo 'end'
+        else
+         echo 'center'
+    endcase
+-%}; 
+	--section-margin-sides: {{ section.settings.margin_sides }}px;
+--section-margin-sides-mobile: {{ section.settings.margin_sides_mobile }}px;
+	  {% if  section.settings.custom_width == true and section.settings.container_full_width == false %}
+--page-width: {{ section.settings.section_width }}px;
+{% endif %}
+    --content-postion: {{ section.settings.content_position }};
+    --content-alignment: {{ section.settings.content_alignment }};
+    --color-background: {{ backgroundblock.settings.background_simple.red }}, {{ backgroundblock.settings.background_simple.green }},{{ backgroundblock.settings.background_simple.blue }};
+    --background-overlay: {{ backgroundblock.settings.background_simple.red }}, {{ backgroundblock.settings.background_simple.green }},{{ backgroundblock.settings.background_simple.blue }};
+  }
+  #smi-{{ section.id }}{
+    --content-max-width: {{ section.settings.content_max_width }}px;
+    {%- for block in section.blocks -%} 
+      {% if block.type == 'email_form' %}
+        --content-space-form: {{ block.settings.space_form }}px;
+      {% endif %}
+    {% endfor %}
+  }
+</style>
+<link rel="stylesheet" type="text/css" href="{{ 'smi-email-signup.min.css' | asset_url }}" media="screen" onload="this.onload=null;this.media='all'">
+<div
+  id="smi-{{ section.id }}"
+  class="smi-{{ section.id }} smi-display-settings smi-display-{{ section.settings.display_on }} smi-section__inner smi-gradient smi-section-email-signup smi-section-email-signup-1 smi-color-{{ section.settings.color_scheme }}"
+  data-section="email-signup-1" data-name="✧Email signup 1">
+  
+  {% liquid
+    assign background_block = section.blocks | where: 'type', 'background' | first
+    if background_block
+      render 'smi-background'
+    endif
+  %}
+  <div class="{%- if section.settings.container_full_width %} smi-container-fluid{%- else %} smi-container{%- endif %}">
+    <div class="smi-content-postion smi-d-flex">
+        {%-liquid
+    if settings.smi_animations_reveal_on_scroll != nil
+        assign animation_scroll = settings.smi_animations_reveal_on_scroll
+    else
+        assign global_settings = shop.metafields.smind.settings.value
+        assign animation_scroll = global_settings.revealOnScroll
+    endif
+-%}
+      <div class="smi-container-content {%- if animation_scroll %} smi-scroll-trigger smi-animate--slide-in{% endif -%}">
+        {%- for block in section.blocks -%}
+          {% if block.type == 'heading' %}
+            {%-liquid
+    if settings.smi_animations_reveal_on_scroll != nil
+        assign animation_scroll = settings.smi_animations_reveal_on_scroll
+    else
+        assign global_settings = shop.metafields.smind.settings.value
+        assign animation_scroll = global_settings.revealOnScroll
+    endif
+-%}
+<div
+	class="smi-heading-component smi-heading-component--align-{{ block.settings.heading_alignment }} smi-link-wrapper" {{- block.shopify_attributes -}}
+	style="--heading-alignment: {{ block.settings.heading_alignment }}">
+	{% liquid
+		assign heading = block.settings.heading | strip
+		assign sub_heading = block.settings.sub_heading | strip
+		assign description = block.settings.description | strip
+		assign heading_tags = block.settings.heading_tags | default:'h2'
+		assign heading_size = block.settings.heading_size
+	%}
+	<div class="smi-heading-inner
+    {%- if animation_scroll %} smi-scroll-trigger smi-animate--slide-in{% endif -%}
+    {%- if heading != blank or sub_heading != blank or description != blank %} smi-mb-xxl{% endif -%}
+    ">
+		{%- assign sub_heading = block.settings.sub_heading | strip -%}
+{%- assign sub_heading_size = blank -%}
+{% if block.settings.sub_heading_size != blank %}
+	{%- assign sub_heading_size = '-mb ' | append:block.settings.sub_heading_size  | prepend: block.settings.sub_heading_size -%}
+{% endif %}
+{% if sub_heading != blank %}
+    <p class="{% if sub_heading_size != blank %}{{sub_heading_size}}{% else %}smi-text-sub{% endif %} smi-mb-xs smi-heading-component__subheading" smind-key="sub_heading" smind-attributes smind-attr-text>{{- sub_heading -}}</p>
+{% endif %}
+		{%- assign description = block.settings.description | strip -%}
+{%- assign heading = block.settings.heading | strip -%}
+{% if heading != blank %}
+    <{{heading_tags}} class="{{ heading_size }} {% if description != blank %}smi-mb-sm{% endif %} smi-heading-component__heading" smind-key="heading" smind-attributes smind-attr-text>{{- heading -}}</{{heading_tags}}>
+{% endif %}
+		{%- assign description = block.settings.description | strip -%}
+{%- assign description_size = blank -%}
+{% if block.settings.description_size != blank %}
+	{%- assign description_size = '-mb ' | append:block.settings.description_size  | prepend: block.settings.description_size -%}
+{% endif %}
+{% if description != blank %}
+    <div class="{% if description_size != blank %}{{description_size}}{% else %}smi-text-md{% endif %} smi-heading-component__description smi-format-content" smind-key="description" smind-attributes smind-attr-text>{{ description }}</div>
+{% endif %}
+	</div>
+</div>
+          {% endif %}
+          {% if block.type == 'email_form' %}
+            <div class="smi-mb-lg">{% liquid
+  for block in section.blocks
+    if block.type == 'email_form'
+      assign style_email_signup = block.settings.style_email_signup | times: 1
+    endif
+  endfor
+  capture icon_success
+    render 'smi-icons', icon: 'success'
+  endcapture
+  capture icon_error
+    render 'smi-icons', icon: 'error'
+  endcapture
+  assign form_success = 'smind.form.form_email_success' | t
+  assign form_error = 'smind.form.form_error' | t
+  assign field_invalid = 'smind.form.field_invalid' | t : field : "Email"
+  assign field_required = 'smind.form.field_required' | t : field : "Email"
+  if idFormSignUp == blank
+    assign idFormSignUp = "smi-subscribe-Form"
+  endif
+%}
+<div class="email-container style-{{style_email_signup}} smi-d-block smi-d-sm-flex smi-align-items-center smi-column-gap-xs" {{- block.shopify_attributes -}}>
+  {%- form 'customer', id: idFormSignUp, class: 'smi-form' -%}
+    <div class="subcribe-container {% if style_email_signup == 2  %}smi-column-gap-md{% endif %} {% if style_email_signup == 3 or style_email_signup == 4 %}smi-row-gap-md{% endif %} smi-d-block smi-d-md-flex smi-justify-content-center smi-align-item-center">
+      {% if style_email_signup == 1  %}
+        <div class="smi-p-relative smi-flex-1">
+          <div class="smi-inputs-wrapper smi-input smi-border smi-shadow smi-d-flex smi-align-items-center smi-column-gap-md smi-px-md">
+            <div class="smi-input-outline">
+              {% assign placeholder_email = 'smind.form.placeholder_email' | t %}
+{% assign placeholder_email_password = 'smind.form.placeholder_email_password' | t %}
+<input
+  id="subscribe-From"
+  type="email"
+  name="contact[email]"
+  class="email-input smi-email-input smi-text-sm smi-color-text-55 smi-content-with-input-{{ block.settings.sizes }}"
+  value="{{ form.email }}"
+  aria-required="true"
+  autocorrect="off"
+  autocapitalize="off"
+  autocomplete="off"
+  placeholder="{% if isPasswordSub and isPasswordSub == true %}{{placeholder_email_password}}{%else%}{{placeholder_email}}{% endif %}"
+  {% if form.errors %}
+    autofocusaria-invalid="true"aria-describedby="ContactFooter-error"
+  {% elsif form.posted_successfully? %}
+    aria-describedby="ContactFooter-success"
+  {% endif -%}
+  pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+  required
+>
+            </div>
+            <style>
+  #smi-{{ section.id }}{
+    --content-max-width: {{ section.settings.content_max_width }}px;
+    {%- for block in section.blocks -%}
+      {% if block.type == 'email_form' %}
+        --content-space-form: {{ block.settings.space_form }}px;
+      {% endif %}
+    {% endfor %}
+  }
+</style>
+<div class="smi-button-wrapper{% if style_email_signup == 2 %}
+ smi-align-self-stretch smi-email-signup-vertical-2
+{% endif %}{% if style_email_signup == 1 %}
+smi-button-wrapper-over
+{% endif %}">
+  <button type="submit" aria-label="submit" class="button-sub smi-button smi-text-button smi-button--solid smi-hover-{{- settings.smi_animations_hover_elements | default: shop.metafields.smind.settings.value.buttonHoverEffect | default: 'none' }}">
+    {% if isPasswordSub and isPasswordSub == true %}{{'smind.account.password.text_button_subscribe' | t}}{% else %}{{'smind.form.text_button_subscribe' | t}}{% endif %}
+  </button>
+</div>
+          </div>
+        </div>
+      {% elsif style_email_signup == 2 %}
+        <div class="smi-p-relative smi-d-flex ">
+          <div class="smi-group-input smi-inputs-wrapper smi-input smi-border smi-shadow smi-d-flex smi-align-items-center smi-column-gap-md smi-px-md">{% assign placeholder_email = 'smind.form.placeholder_email' | t %}
+{% assign placeholder_email_password = 'smind.form.placeholder_email_password' | t %}
+<input
+  id="subscribe-From"
+  type="email"
+  name="contact[email]"
+  class="email-input smi-email-input smi-text-sm smi-color-text-55 smi-content-with-input-{{ block.settings.sizes }}"
+  value="{{ form.email }}"
+  aria-required="true"
+  autocorrect="off"
+  autocapitalize="off"
+  autocomplete="off"
+  placeholder="{% if isPasswordSub and isPasswordSub == true %}{{placeholder_email_password}}{%else%}{{placeholder_email}}{% endif %}"
+  {% if form.errors %}
+    autofocusaria-invalid="true"aria-describedby="ContactFooter-error"
+  {% elsif form.posted_successfully? %}
+    aria-describedby="ContactFooter-success"
+  {% endif -%}
+  pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+  required
+>
+</div>
+          <style>
+  #smi-{{ section.id }}{
+    --content-max-width: {{ section.settings.content_max_width }}px;
+    {%- for block in section.blocks -%}
+      {% if block.type == 'email_form' %}
+        --content-space-form: {{ block.settings.space_form }}px;
+      {% endif %}
+    {% endfor %}
+  }
+</style>
+<div class="smi-button-wrapper{% if style_email_signup == 2 %}
+ smi-align-self-stretch smi-email-signup-vertical-2
+{% endif %}{% if style_email_signup == 1 %}
+smi-button-wrapper-over
+{% endif %}">
+  <button type="submit" aria-label="submit" class="button-sub smi-button smi-text-button smi-button--solid smi-hover-{{- settings.smi_animations_hover_elements | default: shop.metafields.smind.settings.value.buttonHoverEffect | default: 'none' }}">
+    {% if isPasswordSub and isPasswordSub == true %}{{'smind.account.password.text_button_subscribe' | t}}{% else %}{{'smind.form.text_button_subscribe' | t}}{% endif %}
+  </button>
+</div>
+        </div>
+      {% elsif style_email_signup == 3 or style_email_signup == 4 %}
+        <div class="smi-p-relative smi-d-flex ">
+          <div class="smi-group-input smi-inputs-wrapper smi-input smi-border smi-shadow smi-d-flex smi-align-items-center smi-column-gap-md smi-px-md">{% assign placeholder_email = 'smind.form.placeholder_email' | t %}
+{% assign placeholder_email_password = 'smind.form.placeholder_email_password' | t %}
+<input
+  id="subscribe-From"
+  type="email"
+  name="contact[email]"
+  class="email-input smi-email-input smi-text-sm smi-color-text-55 smi-content-with-input-{{ block.settings.sizes }}"
+  value="{{ form.email }}"
+  aria-required="true"
+  autocorrect="off"
+  autocapitalize="off"
+  autocomplete="off"
+  placeholder="{% if isPasswordSub and isPasswordSub == true %}{{placeholder_email_password}}{%else%}{{placeholder_email}}{% endif %}"
+  {% if form.errors %}
+    autofocusaria-invalid="true"aria-describedby="ContactFooter-error"
+  {% elsif form.posted_successfully? %}
+    aria-describedby="ContactFooter-success"
+  {% endif -%}
+  pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+  required
+>
+</div>
+          <div class="smi-button-wrapper smi-email-signup-vertical-2">
+  <button type="submit" aria-label="submit" class="button-sub smi-button smi-text-button smi-button--solid smi-hover-{{- settings.smi_animations_hover_elements | default: shop.metafields.smind.settings.value.buttonHoverEffect | default: 'none' }}">
+    <span class="button-sub-content smi-d-flex smi-align-items-center">
+      {% if isPasswordSub and isPasswordSub == true %}{{'smind.account.password.text_button_subscribe' | t}}{% else %}{{'smind.form.text_button_subscribe' | t}}{% endif %}
+      {% render 'smi-icons', icon: 'arrow-right-2' %}
+    </span>
+  </button>
+</div>
+        </div>
+      {% elsif style_email_signup == 5 %}
+        <div class="smi-p-relative smi-flex-1">
+          <div class="smi-inputs-wrapper smi-input smi-border smi-shadow smi-d-flex smi-align-items-center smi-column-gap-md smi-px-md">
+            {% assign placeholder_email = 'smind.form.placeholder_email' | t %}
+{% assign placeholder_email_password = 'smind.form.placeholder_email_password' | t %}
+<input
+  id="subscribe-From"
+  type="email"
+  name="contact[email]"
+  class="email-input smi-email-input smi-text-sm smi-color-text-55 smi-content-with-input-{{ block.settings.sizes }}"
+  value="{{ form.email }}"
+  aria-required="true"
+  autocorrect="off"
+  autocapitalize="off"
+  autocomplete="off"
+  placeholder="{% if isPasswordSub and isPasswordSub == true %}{{placeholder_email_password}}{%else%}{{placeholder_email}}{% endif %}"
+  {% if form.errors %}
+    autofocusaria-invalid="true"aria-describedby="ContactFooter-error"
+  {% elsif form.posted_successfully? %}
+    aria-describedby="ContactFooter-success"
+  {% endif -%}
+  pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+  required
+>
+            <button type="submit" aria-label="submit" class="smi-button-wrapper smi-button-email-signup-icon smi-hover-{{- settings.smi_animations_hover_elements | default: shop.metafields.smind.settings.value.buttonHoverEffect | default: 'none' }}">
+  {% render 'smi-icons', icon: 'arrow-right-2' %}
+</button>
+          </div>
+        </div>
+      {% elsif style_email_signup == 6 %}
+        <div class="smi-p-relative smi-flex-1">
+          <div class="smi-inputs-wrapper smi-input smi-border smi-shadow smi-d-flex smi-align-items-center smi-column-gap-md smi-px-md">
+            {% assign placeholder_email = 'smind.form.placeholder_email' | t %}
+{% assign placeholder_email_password = 'smind.form.placeholder_email_password' | t %}
+<div class="smi-email-input  smi-color-text-55 smi-content-with-input-{{ block.settings.sizes }}">
+  {% render 'smi-icons', icon: 'mail' %}
+  <input
+    id="subscribe-From"
+    type="email"
+    name="contact[email]"
+    class="email-input smi-text-sm smi-color-text-55 smi-content-with-input-{{ block.settings.sizes }}"
+    value="{{ form.email }}"
+    aria-required="true"
+    autocorrect="off"
+    autocapitalize="off"
+    autocomplete="off"
+    placeholder="{% if isPasswordSub and isPasswordSub == true %}{{placeholder_email_password}}{%else%}{{placeholder_email}}{% endif %}"
+    {% if form.errors %}
+      autofocusaria-invalid="true"aria-describedby="ContactFooter-error"
+    {% elsif form.posted_successfully? %}
+      aria-describedby="ContactFooter-success"
+    {% endif -%}
+    pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+    required
+  >
+</div>
+            <button type="submit" aria-label="submit" class="smi-button-wrapper smi-button-email-signup-icon smi-hover-{{- settings.smi_animations_hover_elements | default: shop.metafields.smind.settings.value.buttonHoverEffect | default: 'none' }}">
+  {% render 'smi-icons', icon: 'arrow-right-2' %}
+</button>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    {%- if form.posted_successfully? -%}
+      {% if isNewsleter != blank %}
+        <script>
+          setTimeout(() => {
+            localStorage.setItem('{{isNewsleter}}-{{ section.id }}', true);
+          }, 10000);
+        </script>
+      {% endif %}
+      <div class="smi-form-message smi-form-success">
+        <p class="smi-field-validate smi-mt-xs smi-text-sm smi-color-text-75">
+          <span class="smi-icon-sucess">{{icon_success}}</span>
+          <span>{{form_success}}</span>
+        </p>
+      </div>
+    {%- elsif form.errors -%}
+      <div class="smi-form-message smi-form-error">
+        <p class="smi-field-validate smi-mt-xs smi-text-sm smi-color-text-75">
+        </p>
+      </div>
+    {%- else -%}
+      {% for block in section.blocks %}
+        {% if block.type == 'email_form' %}
+          {% assign email_notice_text = block.settings.email_notice_text | strip %}
+          {% if email_notice_text != blank %}
+            <p class="smi-field-validate smi-mt-xs smi-text-sm smi-color-text-75">
+              {{ block.settings.email_notice_text }}
+            </p>
+          {%- else -%}
+            <p class="smi-field-validate smi-mt-xs smi-text-sm smi-color-text-75"></p>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {%- endform -%}
+</div>
+<span class="smi-icon-sucess smi-icon-clone smi-d-none">{{icon_success}}</span>
+<span class="smi-icon-error smi-icon-clone smi-d-none">{{icon_error}}</span>
+<script type="application/json" id="smi-{{ section.id }}-smi-email_form-data-json">
+{
+  "field_invalid" : "{{field_invalid}}",
+  "field_required" : "{{field_required}}"
+}
+</script>
+<script>
+  window.addEventListener("DOMContentLoaded", (event) => {
+    var pattern_email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    function validateEmail (email) {
+      return email.match(pattern_email);    
+    }
+    var currentEl = document.getElementById('smi-{{ section.id }}');
+    var buttonForm = currentEl.querySelector('.email-container .smi-button-wrapper');
+    var subscribeForm = currentEl.querySelector('.smi-subscribe-Form');
+    let data_notice_json = JSON.parse(document.getElementById('smi-{{ section.id }}-smi-email_form-data-json').textContent);
+    var icon_error = currentEl.querySelector(".smi-icon-error.smi-icon-clone");
+    if(buttonForm){
+      buttonForm.addEventListener('click', function(event) {
+      var notificationForm = currentEl.querySelector('.smi-field-validate');
+      var emailInputEl = currentEl.querySelector('.smi-email-input').value;
+      var message = "";
+      if(emailInputEl.trim().length <= 0){
+        if(emailInputEl.trim().length <= 0){
+          event.preventDefault();
+          notificationForm.innerHTML = '';
+          //Lay html
+          message = icon_error?.innerHTML + data_notice_json['field_required'];
+          var divError = document.createElement('div');
+          divError.classList.add('smi-form-error', 'smi-d-flex', 'smi-align-items-center');
+          divError.innerHTML = message;
+          notificationForm.appendChild(divError);
+        }
+      } else {
+        if(!validateEmail(emailInputEl)){
+          event.preventDefault();
+          notificationForm.innerHTML = '';
+          message = icon_error?.innerHTML + data_notice_json['field_invalid'];
+          var divError = document.createElement('div');
+          divError.classList.add('smi-form-error', 'smi-d-flex', 'smi-align-items-center');
+          divError.innerHTML = message;
+          notificationForm.appendChild(divError);
+        }else {
+        }
+      }
+    });
+    }
+});
+</script></div>
+          {% endif %}
+          {% if block.type == 'social_media' %}
+            <div class="smi-social-media smi-mb-lg">{% liquid
+  assign show_icon_on_desktop = block.settings.show_icon_on_desktop
+%}
+{% liquid
+  if settings.smi_social_facebook_link and settings.smi_social_instagram_link
+    assign hasFB = settings.smi_social_facebook_link
+    assign hasIS = settings.smi_social_instagram_link
+    assign hasYTube = settings.smi_social_youtube_link
+    assign hasTikTok = settings.smi_social_tiktok_link
+    assign hasTW = settings.smi_social_twitter_link
+    assign hasSChat = settings.smi_social_snapchat_link
+    assign hasPT = settings.smi_social_pinterest_link
+    assign hasTumblr = settings.smi_social_tumblr_link
+    assign hasVM = settings.smi_social_vimeo_link
+  else
+  assign hasFB = settings.smi_social_facebook_link | default: shop.metafields.smind.settings.value.socialMedia.facebook | default: "" | strip
+  assign hasIS = settings.smi_social_instagram_link | default: shop.metafields.smind.settings.value.socialMedia.instagram | default: "" | strip
+  assign hasYTube = settings.smi_social_youtube_link | default: shop.metafields.smind.settings.value.socialMedia.youtube | default: "" | strip
+  assign hasTikTok = settings.smi_social_tiktok_link | default: shop.metafields.smind.settings.value.socialMedia.tiktok | default: "" | strip
+  assign hasTW = settings.smi_social_twitter_link | default: shop.metafields.smind.settings.value.socialMedia.twitter | default: "" | strip
+  assign hasSChat = settings.smi_social_snapchat_link | default: shop.metafields.smind.settings.value.socialMedia.snapchat | default: "" | strip
+  assign hasPT = settings.smi_social_pinterest_link | default: shop.metafields.smind.settings.value.socialMedia.pinterest | default: "" | strip
+  assign hasTumblr = settings.smi_social_tumblr_link | default: shop.metafields.smind.settings.value.socialMedia.tumblr | default: "" | strip
+  assign hasVM = settings.smi_social_vimeo_link | default: shop.metafields.smind.settings.value.socialMedia.vimeo | default: "" | strip
+  endif
+%}
+{% if 
+  hasFB != blank
+  or hasFB != ''
+  or hasIS != blank
+  or hasIS != ''
+  or hasYTube != blank
+  or hasYTube != ''
+  or hasTikTok != blank
+  or hasTikTok != ''
+  or hasTW != blank
+  or hasTW != ''
+  or hasSChat != blank
+  or hasSChat != ''
+  or hasPT != blank
+  or hasPT != ''
+  or hasTumblr != blank
+  or hasTumblr != ''
+  or hasVM != blank
+  or hasVM != ''
+%}
+  <div
+    class="smi-component-blocks-social-media {% if show_icon_on_desktop == false or show_icon_on_desktop == true %}smi-hide-social-icon-on-sm {%if show_icon_on_desktop == true %} smi-show-social-icon-on-desktop{% endif %}{% endif %}"
+    {{- block.shopify_attributes -}}
+  >
+    <div class="smi-social-media-icon social-icon-size-{{ section.id }}-{{ block.id }}">
+      <style>
+        .smi-social-media-icon.social-icon-size-{{ section.id }}-{{ block.id }} .{% if block.settings.icon_style != "1" %} a-href-icon {% endif %}{
+          width: calc({{ block.settings.icon_size }}px + 16px);
+          height: calc({{ block.settings.icon_size }}px + 16px);
+        }
+        .smi-social-media-icon.social-icon-size-{{ section.id }}-{{ block.id }} svg{
+            width: {{ block.settings.icon_size }}px;
+            height: {{ block.settings.icon_size }}px;
+        }
+      </style>
+      {% if hasFB != blank and hasFB != '' %}
+        <a
+          target="_blank" aria-label="social-media"
+          href="{{ hasFB }}"
+          aria-label="Facebook"
+          class=" share-facebook {% if block.settings.icon_style != "1" %} a-href-icon {% endif %} product-share-icon-{{ block.settings.icon_style }}"
+        >
+          {% render 'smi-icons', icon: 'facebook' %}
+        </a>
+      {% endif %}
+      {% if hasIS != blank and hasIS != '' %}
+        <a
+          target="_blank"
+          aria-label="Instagram"
+          href="{{ hasIS }}"
+          class=" share-instagram {% if block.settings.icon_style != "1" %} a-href-icon {% endif %} product-share-icon-{{ block.settings.icon_style }}"
+        >
+          {% render 'smi-icons', icon: 'instagram' %}
+        </a>
+      {% endif %}
+      {% if hasYTube != blank and hasYTube != '' %}
+        <a
+          target="_blank"
+          aria-label="Youtube"
+          href="{{ hasYTube }}"
+          class=" share-youtube {% if block.settings.icon_style != "1" %} a-href-icon {% endif %} product-share-icon-{{ block.settings.icon_style }}"
+        >
+          {% render 'smi-icons', icon: 'youtube' %}
+        </a>
+      {% endif %}
+      {% if hasTikTok != blank and hasTikTok != '' %}
+        <a
+          target="_blank"
+          aria-label="Tiktok"
+          href="{{ hasTikTok }}"
+          class=" share-tiktok {% if block.settings.icon_style != "1" %} a-href-icon {% endif %} product-share-icon-{{ block.settings.icon_style }}"
+        >
+          {% render 'smi-icons', icon: 'tiktok' %}
+        </a>
+      {% endif %}
+      {% if hasTW != blank and hasTW != '' %}
+        <a
+          target="_blank"
+          aria-label="Twitter"
+          href="{{ hasTW }}"
+          class=" share-twitter {% if block.settings.icon_style != "1" %} a-href-icon {% endif %} product-share-icon-{{ block.settings.icon_style }}"
+        >
+          {% render 'smi-icons', icon: 'twitter' %}
+        </a>
+      {% endif %}
+      {% if hasSChat != blank and hasSChat != '' %}
+        <a
+          target="_blank"
+          aria-label="Snapchat"
+          href="{{ hasSChat }}"
+          class=" share-snapchat {% if block.settings.icon_style != "1" %} a-href-icon {% endif %} product-share-icon-{{ block.settings.icon_style }}"
+        >
+          {% render 'smi-icons', icon: 'snapchat' %}
+        </a>
+      {% endif %}
+      {% if hasPT != blank and hasPT != '' %}
+        <a
+          target="_blank"
+          aria-label="Pinterest"
+          href="{{ hasPT }}"
+          class=" share-pinterest {% if block.settings.icon_style != "1" %} a-href-icon {% endif %} product-share-icon-{{ block.settings.icon_style }}"
+        >
+          {% render 'smi-icons', icon: 'pinterest' %}
+        </a>
+      {% endif %}
+      {% if hasTumblr != blank and hasTumblr != '' %}
+        <a
+          target="_blank"
+          aria-label="Tumblr"
+          href="{{ hasTumblr }}"
+          class=" share-tumblr {% if block.settings.icon_style != "1" %} a-href-icon {% endif %} product-share-icon-{{ block.settings.icon_style }}"
+        >
+          {% render 'smi-icons', icon: 'tumblr' %}
+        </a>
+      {% endif %}
+      {% if hasVM != blank and hasVM != '' %}
+        <a
+          target="_blank"
+          aria-label="vimeo"
+          href="{{ hasVM }}"
+          class=" share-vimeo {% if block.settings.icon_style != "1" %} a-href-icon {% endif %} product-share-icon-{{ block.settings.icon_style }}"
+        >
+          {% render 'smi-icons', icon: 'vimeo' %}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+</div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>{%comment%}#includeFile#assets/smi-email-signup.min.css#endIncludeFile#{%endcomment%}
+<div class="smi-d-none smi-pofds-itegm">&nbsp; </div>
+{% schema %}
+{
+	"name": "✧Email signup 1-6",
+	"tag": "section",
+	"class": "smi-section smi-basdico-iftem smi-email-signup-1",
+	"disabled_on": {
+		"groups": [
+			"header",
+			"aside"
+		]
+	},
+	"settings": [
+		{
+			"type": "select",
+			"id": "display_on",
+			"label": "Display on",
+			"options": [
+				{
+					"value": "desktop",
+					"label": "Desktop only"
+				},
+				{
+					"value": "mobile",
+					"label": "Mobile only"
+				},
+				{
+					"value": "all",
+					"label": "All device"
+				}
+			],
+			"default": "all"
+		},
+		{
+			"type": "checkbox",
+			"id": "container_full_width",
+			"label": "Container full-width",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "custom_width",
+			"label": "Custom width",
+			"default": false,
+			"visible_if": "{{ section.settings.container_full_width == false }}"
+		},
+		{
+			"type": "range",
+			"id": "section_width",
+			"label": "Section width",
+			"min": 800,
+			"max": 2000,
+			"step": 20,
+			"unit": "px",
+			"default": 1200,
+			"visible_if": "{{ section.settings.container_full_width == false and section.settings.custom_width == true }}"
+		},
+		{
+			"type": "header",
+			"content": "Content settings"
+		},
+		{
+			"type": "select",
+			"id": "content_position",
+			"label": "Content position",
+			"options": [
+				{
+					"value": "left",
+					"label": "Left"
+				},
+				{
+					"value": "center",
+					"label": "Center"
+				},
+				{
+					"value": "right",
+					"label": "Right"
+				}
+			],
+			"default": "left"
+		},
+		{
+			"type": "text_alignment",
+			"id": "content_alignment",
+			"label": "Content alignment",
+			"default": "left"
+		},
+		{
+			"type": "range",
+			"id": "content_max_width",
+			"min": 300,
+			"max": 1200,
+			"step": 10,
+			"unit": "px",
+			"label": "Content max-width",
+			"default": 700
+		},
+		{
+			"type": "header",
+			"content": "Color"
+		},
+		{
+			"type": "select",
+            "options": [
+                {
+                    "value": "scheme_1",
+                    "label": "Scheme 1"
+                },
+                {
+                    "value": "scheme_2",
+                    "label": "Scheme 2"
+                },
+                {
+                    "value": "scheme_3",
+                    "label": "Scheme 3"
+                },
+                {
+                    "value": "scheme_4",
+                    "label": "Scheme 4"
+                },
+                {
+                    "value": "scheme_5",
+                    "label": "Scheme 5"
+                },
+                {
+                    "value": "scheme_6",
+                    "label": "Scheme 6"
+                },
+                {
+                    "value": "scheme_7",
+                    "label": "Scheme 7"
+                },
+                {
+                    "value": "scheme_8",
+                    "label": "Scheme 8"
+                },
+                {
+                    "value": "scheme_9",
+                    "label": "Scheme 9"
+                },
+                {
+                    "value": "scheme_10",
+                    "label": "Scheme 10"
+                }
+            ],
+			"id": "color_scheme",
+			"label": "Color Scheme",
+			"info": "To use color scheme: Step 1: Hide color block in section. Step 2: Customize colors in color block of “✧Styles” section in global area. [Learn more](https://docs.smind.io/guides/color-block-and-color-scheme)"
+		},
+		{
+			"type": "header",
+			"content": "Section padding"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 200,
+			"step": 2,
+			"unit": "px",
+			"label": "Top padding - desktop",
+			"default": 50
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 2,
+			"unit": "px",
+			"label": "Bottom padding - desktop",
+			"default": 50
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 200,
+			"step": 2,
+			"unit": "px",
+			"label": "Top padding - mobile",
+			"default": 50
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 200,
+			"step": 2,
+			"unit": "px",
+			"label": "Bottom padding - mobile",
+			"default": 50
+		},
+		{
+			"type": "header",
+			"content": "Section margin"
+		},
+		{
+			"type": "range",
+			"id": "margin_sides",
+			"min": 0,
+			"max": 200,
+			"step": 2,
+			"unit": "px",
+			"label": "Margin sides - desktop",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "margin_sides_mobile",
+			"min": 0,
+			"max": 50,
+			"step": 1,
+			"unit": "px",
+			"label": "Margin sides - mobile",
+			"default": 0
+		}
+	],
+	"blocks": [
+		{
+			"name": "Color",
+			"limit": 1,
+			"type": "color",
+			"settings": [
+				{
+					"type": "paragraph",
+					"content": "How to use “Custom color block” and “Color scheme”. [Learn more](https://docs.smind.io/guides/color-block-and-color-scheme)"
+				},
+				{
+					"type": "color",
+					"id": "background_color",
+					"default": "#F3F3F3",
+					"label": "Background"
+				},
+				{
+					"type": "color_background",
+					"id": "background_gradient_color",
+					"label": "Background gradient",
+					"info": "Background gradient replaces background where possible."
+				},
+				{
+					"type": "color",
+					"id": "heading_color",
+					"label": "Heading"
+				},
+				{
+					"type": "color",
+					"id": "text_color",
+					"default": "#121212",
+					"label": "Text"
+				},
+				{
+					"type": "color",
+					"id": "subtext_color",
+					"default": "#121212",
+					"label": "Subtext"
+				},
+				{
+					"type": "color",
+					"id": "shadow_color",
+					"default": "#121212",
+					"label": "Shadow"
+				},
+				{
+					"type": "color",
+					"id": "link_color",
+					"label": "Links",
+					"default": "#413BFF"
+				},
+				{
+					"type": "color",
+					"id": "hover_link_color",
+					"label": "Hover links",
+					"default": "#615CFF"
+				},
+				{
+					"type": "paragraph",
+					"content": "Button ──────────"
+				},
+				{
+					"type": "color",
+					"id": "solid_background_button_color",
+					"default": "#1F1F21",
+					"label": "Solid button background"
+				},
+				{
+					"type": "color",
+					"id": "solid_button_label_color",
+					"default": "#ffffff",
+					"label": "Solid button label"
+				},
+				{
+					"type": "color",
+					"id": "solid_background_button_hover_color",
+					"label": "Solid hover background"
+				},
+				{
+					"type": "color",
+					"id": "solid_button_label_hover_color",
+					"label": "Hover label"
+				},
+				{
+					"type": "paragraph",
+					"content": "Inputs ──────────"
+				},
+				{
+					"type": "color",
+					"id": "input_background_color",
+					"label": "Background"
+				},
+				{
+					"type": "color",
+					"id": "input_color",
+					"label": "Text"
+				},
+				{
+					"type": "color",
+					"id": "input_border_color",
+					"label": "Borders"
+				},
+				{
+					"type": "color",
+					"id": "input_border_hover_color",
+					"label": "Hover borders"
+				}
+			]
+		},
+		{
+			"type": "heading",
+			"limit": 1,
+			"name": "Heading",
+			"settings": [
+				{
+					"type": "paragraph",
+					"content": "Advanced font controls are available in Smind Style. [Learn more](https://docs.smind.io/guides/configuring-typography)"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "sub_heading",
+					"label": "Subheading",
+					"default": "URNA CRAS MAURIS"
+				},
+				{
+					"type": "select",
+					"id": "sub_heading_size",
+					"label": "Subheading size",
+					"options": [
+						{
+							"value": "smi-text-sub",
+							"label": "XS"
+						},
+						{
+							"value": "smi-text-sub-sm",
+							"label": "S"
+						}
+					],
+					"default": "smi-text-sub"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "heading",
+					"label": "Heading",
+					"default": "Happy Customers Say"
+				},
+				{
+					"type": "select",
+					"id": "heading_tags",
+					"label": "Heading tags",
+					"options": [
+						{
+							"value": "h1",
+							"label": "H1"
+						},
+						{
+							"value": "h2",
+							"label": "H2"
+						},
+						{
+							"value": "h3",
+							"label": "H3"
+						},
+						{
+							"value": "h4",
+							"label": "H4"
+						},
+						{
+							"value": "h5",
+							"label": "H5"
+						},
+						{
+							"value": "h6",
+							"label": "H6"
+						}
+					],
+					"default": "h2"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"label": "Heading size",
+					"options": [
+						{
+							"value": "smi-h4",
+							"label": "S"
+						},
+						{
+							"value": "smi-h3",
+							"label": "M"
+						},
+						{
+							"value": "smi-h2",
+							"label": "L"
+						},
+						{
+							"value": "smi-h1",
+							"label": "XL"
+						}
+					],
+					"default": "smi-h2"
+				},
+				{
+					"type": "richtext",
+					"id": "description",
+					"label": "Description",
+					"default": "<p>Commodo lorem morbi aliquam dui turpis. Iaculis pretium posuere nulla tincidunt blandit. A at elementum faucibus integer.</p>"
+				},
+				{
+					"type": "select",
+					"id": "description_size",
+					"label": "Description size",
+					"options": [
+						{
+							"value": "smi-text-xs",
+							"label": "XS"
+						},
+						{
+							"value": "smi-text-sm",
+							"label": "S"
+						},
+						{
+							"value": "smi-text-md",
+							"label": "M"
+						},
+						{
+							"value": "smi-text-lg",
+							"label": "L"
+						}
+					],
+					"default": "smi-text-md"
+				}
+			]
+		},
+		{
+			"type": "email_form",
+			"name": "Email form",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "select",
+					"id": "style_email_signup",
+					"label": "Form style",
+					"options": [
+						{
+							"value": "1",
+							"label": "Vertical 1"
+						},
+						{
+							"value": "2",
+							"label": "Vertical 2"
+						},
+						{
+							"value": "3",
+							"label": "Horizontal"
+						},
+						{
+							"value": "4",
+							"label": "Horizontal (full-width)"
+						},
+						{
+							"value": "5",
+							"label": "Classic"
+						},
+						{
+							"value": "6",
+							"label": "Classic(Icon)"
+						}
+					],
+					"default": "1"
+				},
+				{
+					"type": "text",
+					"id": "email_notice_text",
+					"label": "Subtext",
+					"default": "No spam, unsubscribe anytime!"
+				}
+			]
+		},
+		{
+			"type": "social_media",
+			"name": "Social media",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "paragraph",
+					"content": "How to add social media icons. [Learn more](https://docs.smind.io/guides/showing-social-media-icons)"
+				},
+				{
+					"type": "select",
+					"id": "icon_style",
+					"label": "Icon style",
+					"options": [
+						{
+							"value": "1",
+							"label": "1"
+						},
+						{
+							"value": "2",
+							"label": "2"
+						},
+						{
+							"value": "3",
+							"label": "3"
+						}
+					],
+					"default": "1"
+				},
+				{
+					"type": "range",
+					"id": "icon_size",
+					"min": 16,
+					"max": 150,
+					"step": 2,
+					"label": "Icon size",
+					"default": 24
+				}
+			]
+		},
+		{
+			"name": "Background",
+			"limit": 1,
+			"type": "background",
+			"settings": [
+				{
+					"type": "color",
+					"id": "background_simple",
+					"label": "Background section"
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+				{
+					"type": "image_picker",
+					"id": "image_mobile",
+					"label": "Mobile image (optional)"
+				},
+				{
+					"type": "select",
+					"id": "animation",
+					"label": "Image animation",
+					"options": [
+						{
+							"label": "None",
+							"value": "none"
+						},
+						{
+							"label": "Ambient movement",
+							"value": "ambient_movement"
+						},
+						{
+							"label": "Parallax",
+							"value": "parallax"
+						}
+					],
+					"default": "none"
+				},
+				{
+					"type": "header",
+					"content": "Video background"
+				},
+				{
+					"type": "video",
+					"id": "video",
+					"label": "Upload video"
+				},
+				{
+					"type": "video_url",
+					"id": "video_url",
+					"label": "Video URL",
+					"accept": [
+						"youtube",
+						"vimeo"
+					]
+				},
+				{
+					"type": "color_background",
+					"id": "background_overlay",
+					"label": "Overlay background"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "✧Email signup 1-6",
+			"settings": {
+				"container_full_width": false,
+				"content_position": "center",
+				"content_alignment": "center",
+				"content_max_width": 600,
+				"color_scheme": "scheme_4",
+				"padding_top": 80,
+				"padding_bottom": 80
+			},
+			"blocks": [
+				{
+					"type": "heading",
+					"settings": {
+						"sub_heading": "",
+						"heading": "Subscribe our newsletter",
+						"heading_size": "smi-h2",
+						"description": "<p>Sign up with your email address to receive news and updates every week.</p>"
+					}
+				},
+				{
+					"type": "email_form",
+					"settings": {
+						"style_email_signup": "1",
+						"email_notice_text": "No spam, unsubscribe anytime!"
+					}
+				},
+				{
+					"type": "social_media",
+					"settings": {
+						"icon_style": "3",
+						"icon_size": 20
+					}
+				},
+				{
+					"type": "color",
+					"settings": {
+						"background_color": "#222222",
+						"background_gradient_color": "",
+						"text_color": "#ffffff",
+						"subtext_color": "#ffffff",
+						"shadow_color": "#ffffff",
+						"solid_background_button_color": "#ffffff",
+						"solid_button_label_color": "#222222",
+						"input_background_color": "#222222"
+					}
+				}
+			]
+		}
+	]
+}
+{% endschema %}
+<script src="{{ 'smi-email-signup-1.min.js' | asset_url }}" defer data-id="smi-email-signup-1" data-section-id="smi-{{ section.id }}"></script>

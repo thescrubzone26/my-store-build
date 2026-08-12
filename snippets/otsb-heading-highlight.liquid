@@ -1,0 +1,41 @@
+{% capture icon_highlight %}
+    {% if highlight_type == "underline" %}
+      <svg class="svg-highlight svg-underline absolute left-0 top-auto w-full -bottom-[10%]" width="216" height="9" viewBox="0 0 216 9" fill="none" xmlns="http://www.w3.org/2000/svg" style="fill: none;" preserveAspectRatio="none">
+        <path d="M1.04342 7.65772C40.5413 4.02679 138.633 -1.71967 215.018 4.3419" vector-effect="non-scaling-stroke" {% if color_heading_highlight_light != blank and color_heading_highlight_light.alpha != 0.0 or color_text.alpha != 0.0 %} stroke="var(--color-highlight);"{% else %}stroke="rgba(var(--color-foreground), 0.75); {% endif %}" stroke-width="2.5"
+          style="{% if color_heading_highlight_light != blank and color_heading_highlight_light.alpha != 0.0 or color_text.alpha != 0.0 %}stroke: var(--color-highlight);{% else %} stroke: rgba(var(--color-foreground), 0.75);{% endif %}" />
+      </svg>
+    {% endif %}
+  {% endcapture %}
+  
+  {% style %}
+    .heading-{{ headingId }} {
+      {% if color_heading_highlight_light != blank and color_heading_highlight_light.alpha != 0.0 %}
+        --color-highlight: {{ color_heading_highlight_light }};
+      {% elsif color_text.alpha != 0.0 and color_text != blank  %}
+        --color-highlight: {{ color_text }};
+      {% else %}
+      --color-highlight: rgba(var(--color-foreground));
+      {% endif %}
+    }
+  {% endstyle %}
+  
+  {% liquid 
+    assign intersect_leave = ''
+    case highlight_type
+      when 'underline'
+        if intersectLeaveSlide
+          assign heading_highlight = '<span class="highlight relative inline-block hl-underline mb-2.5" x-data="{ isIntersecting: false }" x-intersect:enter.margin.0%.0px.0%.0px="isIntersecting = true" :class="isIntersecting && effect && `highlight-anm-start`" ' | append: intersect_leave | append: '>'
+        else
+          assign heading_highlight = '<span class="highlight relative inline-block hl-underline mb-2.5" x-data="{ isIntersecting: false }" x-intersect:enter.margin.0%.0px.0%.0px="isIntersecting = true" :class="isIntersecting && `highlight-anm-start`" ' | append: intersect_leave | append: '>'
+        endif
+      when 'font_highlight'
+        assign heading_highlight = '<span class="highlight relative inline-block hl-font">'
+    endcase
+  
+    assign icon_highlight = icon_highlight | append: "</span>"
+  %}
+  {% if heading contains '[' and heading contains ']' %}
+    {{ heading | replace: '[', heading_highlight | replace: ']', icon_highlight }}
+  {% else %}
+    {{ heading  }}
+  {% endif %}

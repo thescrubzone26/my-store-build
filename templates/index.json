@@ -1,0 +1,485 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_XrELEF": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_p4RArT": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/The_Scrub_Zone_home_banner_1_3.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "Premium Scrubs",
+            "heading_size": "h1",
+            "subheading": "Designed for healthcare professionals who demand exceptional comfort",
+            "button_label": "Shop Premium Scrubs",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        },
+        "slide_K8C9Ua": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/The_Scrub_Zone_home_banner_2.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "Women's Collection",
+            "heading_size": "h1",
+            "subheading": "Comfort, flexibility, and a flattering fit—perfect for every shift.",
+            "button_label": "Shop Women",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-286cc9dc-d6cc-402a-bc9f-5fba0790ed98"
+          }
+        },
+        "slide_CPaiqk": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/The_Scrub_Zone_home_banner_3.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "Men's Collection",
+            "heading_size": "h1",
+            "subheading": "Modern, durable, and comfortable scrubs",
+            "button_label": "Shop Men",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-286cc9dc-d6cc-402a-bc9f-5fba0790ed98"
+          }
+        }
+      },
+      "block_order": [
+        "slide_p4RArT",
+        "slide_K8C9Ua",
+        "slide_CPaiqk"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "smi_collection_list_1_7_8PAryE": {
+      "type": "smi-collection-list-1-7",
+      "blocks": {
+        "collection_G9wcQX": {
+          "type": "collection",
+          "settings": {
+            "collection": "men",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "link": "",
+            "button_label": "",
+            "button_style": "text"
+          }
+        },
+        "collection_6Yj7BF": {
+          "type": "collection",
+          "settings": {
+            "collection": "women",
+            "subheading": "",
+            "heading": "Women",
+            "description": "",
+            "link": "",
+            "button_label": "",
+            "button_style": "text"
+          }
+        },
+        "collection_zYgmb9": {
+          "type": "collection",
+          "settings": {
+            "collection": "atheleisure",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "link": "",
+            "button_label": "",
+            "button_style": "solid"
+          }
+        },
+        "collection_nMrtxJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "essential",
+            "subheading": "",
+            "heading": "Essential",
+            "description": "",
+            "link": "",
+            "button_label": "",
+            "button_style": "text"
+          }
+        },
+        "collection_8GRQ8G": {
+          "type": "collection",
+          "settings": {
+            "collection": "flex",
+            "subheading": "",
+            "heading": "Flex",
+            "description": "",
+            "link": "",
+            "button_label": "",
+            "button_style": "text"
+          }
+        }
+      },
+      "block_order": [
+        "collection_G9wcQX",
+        "collection_6Yj7BF",
+        "collection_zYgmb9",
+        "collection_nMrtxJ",
+        "collection_8GRQ8G"
+      ],
+      "name": "✧Collection list 1-7",
+      "settings": {
+        "display_on": "all",
+        "container_full_width": false,
+        "custom_width": true,
+        "section_width": 880,
+        "sub_heading": "THE ESSENTIALS",
+        "sub_heading_size": "smi-text-sub",
+        "heading": "Shop by categories",
+        "heading_tags": "h2",
+        "heading_size": "smi-h3",
+        "description": "",
+        "description_size": "smi-text-sm",
+        "heading_alignment": "center",
+        "content_alignment": "center",
+        "content_heading_size": "smi-h5",
+        "media_ratio": "auto",
+        "media_shape": "round",
+        "arrow_style": "arr-square-style-4",
+        "sticky_page_dot_style": "line-dot",
+        "auto_rotate_slides": true,
+        "change_slides_every": 5,
+        "number_of_columns_on_desktop": "5",
+        "number_of_columns_on_mobile": "2",
+        "slider_overflow": false,
+        "color_scheme": "scheme_1",
+        "padding_top": 34,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50,
+        "margin_sides": 0,
+        "margin_sides_mobile": 0
+      }
+    },
+    "smi_divider_1_1_3qUq4K": {
+      "type": "smi-divider-1-1",
+      "name": "✧Divider 1-1",
+      "settings": {
+        "display_on": "all",
+        "full_width": "container",
+        "custom_width": false,
+        "section_width": 1200,
+        "divider_height": 1,
+        "divider_color": "#000000",
+        "margin_sides": 0,
+        "margin_sides_mobile": 0
+      }
+    },
+    "featured_collection_yJTDCP": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "men",
+        "products_to_show": 25,
+        "title": "Men'Collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 6,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-4",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_iEjEnR": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "women",
+        "products_to_show": 25,
+        "title": "Women's Collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 6,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-c436a992-c52f-4dac-b84f-354d1cc3b6d9",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 10,
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "1785932032d04d1c5c": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_4511f1d_jzqqdg": {
+          "type": "ai_gen_block_4511f1d",
+          "settings": {
+            "image_1": "shopify://shop_images/Collage_11.jpg",
+            "image_1_fit": "cover",
+            "image_2": "shopify://shop_images/Collage_2.jpg",
+            "image_2_fit": "cover",
+            "image_3": "shopify://shop_images/Collage_3_600_x_600_px.jpg",
+            "image_3_fit": "cover",
+            "image_4": "shopify://shop_images/Collage_3_600_x_600_px_1.jpg",
+            "image_4_fit": "cover",
+            "desktop_width_percent": 70,
+            "gap": 8,
+            "border_radius": 10
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_4511f1d_jzqqdg"
+      ],
+      "settings": {}
+    },
+    "17859341091118b1a1": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_8574405_4AgVYh": {
+          "type": "ai_gen_block_8574405",
+          "settings": {
+            "desktop_layout": "desktop-left",
+            "mobile_layout": "collage",
+            "spacing": 8,
+            "image_radius": 0,
+            "button_text": "Shop now",
+            "button_link": "",
+            "button_font_size": 16,
+            "button_padding_vertical": 12,
+            "button_padding_horizontal": 24,
+            "button_radius": 0,
+            "button_border_thickness": 1,
+            "button_bg_color": "#121212",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#121212",
+            "button_hover_bg_color": "#000000",
+            "button_hover_text_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_8574405_4AgVYh"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "otsb_trust_badges_1_pYDEQh": {
+      "type": "otsb-trust-badges-1",
+      "blocks": {
+        "column_QwDX7t": {
+          "type": "column",
+          "settings": {
+            "icon": "plane",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "Shipping & Return",
+            "title_link": "",
+            "open_new_window": false,
+            "heading_size": 100,
+            "text": "<p>If your aren't perfect, return them within 30 days for a full refund.</p>"
+          }
+        },
+        "column_7VNeVf": {
+          "type": "column",
+          "settings": {
+            "icon": "box",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "Safe Payment",
+            "title_link": "",
+            "open_new_window": false,
+            "heading_size": 100,
+            "text": "<p>Pay with the world's most popular and secure payment methods</p>"
+          }
+        },
+        "column_hmhw7W": {
+          "type": "column",
+          "settings": {
+            "icon": "megaphone",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "Shop with Confidence",
+            "title_link": "",
+            "open_new_window": false,
+            "heading_size": 100,
+            "text": "<p>Our Buyer Protection covers your purchase from click to delivery.</p>"
+          }
+        },
+        "column_96cPNq": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "Shipping & Return",
+            "title_link": "",
+            "open_new_window": false,
+            "heading_size": 100,
+            "text": "<p>If your plant aren't perfect, return them within 30 days</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_QwDX7t",
+        "column_7VNeVf",
+        "column_hmhw7W",
+        "column_96cPNq"
+      ],
+      "name": "OT: Text with icon #1",
+      "settings": {
+        "title": "",
+        "highlight_type": "underline",
+        "heading_size": 40,
+        "heading_size_mobile": 48,
+        "heading_tag": "h2",
+        "description": "",
+        "description_size": 16,
+        "description_size_mobile": 21,
+        "column_heading_size": 23,
+        "column_heading_size_mobile": 21,
+        "column_text_size": 16,
+        "column_text_size_mobile": 12,
+        "corner_image": 16,
+        "border_column": "line_vertical",
+        "border_style": "solid",
+        "column_content_alignment": "center",
+        "icon_position": "above",
+        "icon_size": 45,
+        "icon_thickness": 2,
+        "show_icon_background": false,
+        "background_corner_radius": 4,
+        "enable_desktop_slider": true,
+        "swiper_on_mobile": false,
+        "show_navigation": true,
+        "show_navigation_mobile": false,
+        "auto_play": true,
+        "change_bar_every": 5,
+        "background_color": "#e3e3e3",
+        "background_column_color": "rgba(0,0,0,0)",
+        "heading_color": "rgba(0,0,0,0)",
+        "marker_color": "rgba(0,0,0,0)",
+        "description_color": "rgba(0,0,0,0)",
+        "heading_column_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "color_text_link": "rgba(0,0,0,0)",
+        "line_border_color": "#eeeeee",
+        "color_icon": "#fd8e16",
+        "color_icon_background": "#dedede",
+        "slider_button_color": "#242424",
+        "slider_button_hover_color": "#000000",
+        "slider_button_hover_text_color": "#ffffff",
+        "column_layout_desktop": "lg:w-1/4",
+        "section_height_desktop": "md:py-7",
+        "spacing_desktop": 28,
+        "full_width": false,
+        "padding_full_width": false,
+        "show_section_divider": false,
+        "padding_left_right": 20,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "column_layout_mobile": "w-full",
+        "section_height_mobile": "py-5",
+        "spacing_mobile": 16,
+        "full_width_mobile": false,
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    }
+  },
+  "order": [
+    "slideshow_XrELEF",
+    "smi_collection_list_1_7_8PAryE",
+    "smi_divider_1_1_3qUq4K",
+    "featured_collection_yJTDCP",
+    "featured_collection_iEjEnR",
+    "featured_collection",
+    "1785932032d04d1c5c",
+    "17859341091118b1a1",
+    "otsb_trust_badges_1_pYDEQh"
+  ]
+}

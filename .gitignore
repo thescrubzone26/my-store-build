@@ -1,0 +1,47 @@
+# --- Claude Code / AI assistant local files ---
+.claude/settings.local.json
+.claude/local/
+.mcp.local.json
+
+# --- Secrets & environment files ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+secrets.json
+
+# --- Shopify CLI local state ---
+# CLI auth/session cache, theme dev preview state - machine-specific, never shared.
+.shopify/
+shopify.theme.local.toml
+*.shopifycli-session
+
+# --- Node (defensive, in case build tooling is added later) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- OS junk files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+
+# --- Editor / IDE files ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Logs & temp files ---
+*.log
+*.tmp
+.tmp/

@@ -1,0 +1,966 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "使用密码进入商店：",
+      "login_password_button": "使用密码进入",
+      "login_form_password_label": "密码",
+      "login_form_password_placeholder": "您的密码",
+      "login_form_error": "密码错误！",
+      "login_form_submit": "输入",
+      "admin_link_html": "您是否为店主？<a href=\"/admin\" class=\"link underlined-link\">在此处登录</a>",
+      "powered_by_shopify_html": "此商店由 {{ shopify }} 提供支持"
+    },
+    "social": {
+      "alt_text": {
+        "share_on_facebook": "在 Facebook 上共享",
+        "share_on_twitter": "在 X 上分享",
+        "share_on_pinterest": "固定在 Pinterest 上"
+      },
+      "links": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "pinterest": "Pinterest",
+        "instagram": "Instagram",
+        "tumblr": "Tumblr",
+        "snapchat": "Snapchat",
+        "youtube": "YouTube",
+        "vimeo": "Vimeo",
+        "tiktok": "TikTok"
+      }
+    },
+    "continue_shopping": "继续购物",
+    "pagination": {
+      "label": "分页",
+      "page": "第 {{ number }} 页",
+      "next": "下一页",
+      "previous": "上一页"
+    },
+    "search": {
+      "search": "搜索",
+      "reset": "清除搜索词"
+    },
+    "cart": {
+      "view": "查看购物车 ({{ count }})",
+      "item_added": "商品已加入购物车",
+      "view_empty_cart": "查看购物车"
+    },
+    "share": {
+      "copy_to_clipboard": "复制链接",
+      "share_url": "链接",
+      "success_message": "链接已复制到剪贴板",
+      "close": "关闭分享"
+    },
+    "slider": {
+      "of": "/",
+      "next_slide": "向右滑动",
+      "previous_slide": "向左滑动",
+      "name": "滑块"
+    }
+  },
+  "newsletter": {
+    "label": "电子邮件",
+    "success": "感谢您订阅",
+    "button_label": "订阅"
+  },
+  "accessibility": {
+    "skip_to_text": "跳到内容",
+    "close": "关闭",
+    "unit_price_separator": "单价",
+    "vendor": "厂商：",
+    "error": "错误",
+    "refresh_page": "选择某一选项会使整个页面刷新。",
+    "link_messages": {
+      "new_window": "在新窗口中打开。",
+      "external": "打开外部网站。"
+    },
+    "loading": "正在加载…",
+    "skip_to_product_info": "跳至产品信息",
+    "total_reviews": "总评论数",
+    "star_reviews_info": "{{ rating_value }}/{{ rating_max }} 星",
+    "collapsible_content_title": "可折叠内容",
+    "complementary_products": "互补产品"
+  },
+  "blogs": {
+    "article": {
+      "blog": "博客",
+      "read_more_title": "阅读详细内容：{{ title }}",
+      "comments": {
+        "one": "{{ count }} 条评论",
+        "other": "{{ count }} 条评论"
+      },
+      "moderated": "请注意，评论必须在发布之前获得批准。",
+      "comment_form_title": "发表评论",
+      "name": "名称",
+      "email": "电子邮件",
+      "message": "评论",
+      "post": "发布评论",
+      "back_to_blog": "返回博客",
+      "share": "分享此文章",
+      "success": "您的评论已成功发布！谢谢！",
+      "success_moderated": "您的评论已成功发布。由于我们的博客要经过审核，我们会在稍后将其发布。"
+    }
+  },
+  "onboarding": {
+    "product_title": "产品标题示例",
+    "collection_title": "您的产品系列的名称"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "添加到购物车",
+      "description": "描述",
+      "on_sale": "促销",
+      "product_variants": "产品多属性",
+      "quantity": {
+        "label": "数量",
+        "input_label": "{{ product }} 的数量",
+        "increase": "增加 {{ product }} 的数量",
+        "decrease": "减少 {{ product }} 的数量",
+        "minimum_of": "最小值为 {{ quantity }}",
+        "maximum_of": "最大值为 {{ quantity }}",
+        "multiples_of": "增量为 {{ quantity }}",
+        "in_cart_html": "购物车中 <span class=\"quantity-cart\">{{ quantity }}</span> 件",
+        "note": "查看数量规则",
+        "min_of": "最小值 {{ quantity }}",
+        "max_of": "最大值 {{ quantity }}",
+        "in_cart_aria_label": "数量（购物车中有 {{ quantity }} 件）"
+      },
+      "price": {
+        "from_price_html": "来自 {{ price }}",
+        "regular_price": "常规价格",
+        "sale_price": "促销价",
+        "unit_price": "单价"
+      },
+      "share": "分享此产品",
+      "sold_out": "售罄",
+      "unavailable": "不可用",
+      "vendor": "厂商",
+      "video_exit_message": "{{ title }} 在同一窗口中打开全屏视频。",
+      "xr_button": "在您的空间中查看",
+      "xr_button_label": "在您的空间中查看，在增强现实窗口中加载商品",
+      "pickup_availability": {
+        "view_store_info": "查看商店信息",
+        "check_other_stores": "查看在其他商店的可用情况",
+        "pick_up_available": "提供取货服务",
+        "pick_up_available_at_html": "<span class=\"color-foreground\">{{ location_name }}</span> 提供取货服务",
+        "pick_up_unavailable_at_html": "<span class=\"color-foreground\">{{ location_name }}</span> 目前不提供取货服务",
+        "unavailable": "无法加载取货服务可用情况",
+        "refresh": "刷新"
+      },
+      "media": {
+        "open_media": "在模态窗口中打开媒体文件 {{ index }}",
+        "play_model": "播放 3D 查看器",
+        "play_video": "播放视频",
+        "gallery_viewer": "图库查看器",
+        "load_image": "在图库视图中加载图片 {{ index }}",
+        "load_model": "在图库视图中加载 3D 模型 {{ index }}",
+        "load_video": "在图库视图中播放视频 {{ index }}",
+        "image_available": "图片 {{ index }} 现已在图库视图中可用"
+      },
+      "nested_label": "{{ title }}，适用于 {{ parent_title }}",
+      "view_full_details": "查看完整详细信息",
+      "shipping_policy_html": "结账时计算的<a href=\"{{ link }}\">运费</a>。",
+      "choose_options": "选择选项",
+      "choose_product_options": "选择用于 {{ product_name }} 的选项",
+      "value_unavailable": "{{ option_value }} - 不可用",
+      "variant_sold_out_or_unavailable": "多属性已售罄或不可用",
+      "inventory_in_stock": "现货",
+      "inventory_in_stock_show_count": "{{ quantity }} 件存货",
+      "inventory_low_stock": "低库存",
+      "inventory_low_stock_show_count": "低库存：剩余 {{ quantity }}",
+      "inventory_out_of_stock": "缺货",
+      "inventory_out_of_stock_continue_selling": "现货",
+      "sku": "SKU",
+      "volume_pricing": {
+        "title": "批量定价",
+        "note": "提供批量定价",
+        "minimum": "{{ quantity }}+",
+        "price_range": "{{ minimum }} - {{ maximum }}",
+        "price_at_each_html": "{{ price }}/件"
+      },
+      "taxes_included": "已含税费。",
+      "duties_included": "已含关税。",
+      "duties_and_taxes_included": "已含关税和税费。"
+    },
+    "modal": {
+      "label": "媒体图库"
+    },
+    "facets": {
+      "apply": "应用",
+      "clear": "清除",
+      "clear_all": "全部删除",
+      "from": "从",
+      "filter_and_sort": "筛选和排序",
+      "filter_by_label": "筛选条件：",
+      "filter_button": "筛选",
+      "filters_selected": {
+        "one": "已选择 {{ count }} 个",
+        "other": "已选择 {{ count }} 个"
+      },
+      "max_price": "最高价格为 {{ price }}",
+      "product_count": {
+        "one": "{{ product_count }}/{{ count }} 件产品",
+        "other": "{{ product_count }}/{{ count }} 件产品"
+      },
+      "product_count_simple": {
+        "one": "{{ count }} 件产品",
+        "other": "{{ count }} 件产品"
+      },
+      "reset": "重置",
+      "sort_button": "排序",
+      "sort_by_label": "排序依据：",
+      "to": "到",
+      "clear_filter": "删除筛选条件",
+      "filter_selected_accessibility": "{{ type }}（已选择 {{ count }} 个筛选条件）",
+      "show_more": "显示更多内容",
+      "show_less": "隐藏部分内容",
+      "filter_and_operator_subtitle": "匹配全部"
+    }
+  },
+  "templates": {
+    "404": {
+      "title": "找不到页面",
+      "subtext": "404"
+    },
+    "search": {
+      "no_results": "未找到“{{ terms }}”的结果。请检查拼写或使用其他词或短语。",
+      "results_with_count": {
+        "one": "{{ count }} 条结果",
+        "other": "{{ count }} 条结果"
+      },
+      "title": "搜索结果",
+      "page": "页面",
+      "products": "产品",
+      "search_for": "搜索“{{ terms }}”",
+      "results_with_count_and_term": {
+        "one": "找到“{{ terms }}”的 {{ count }} 条结果",
+        "other": "找到“{{ terms }}”的 {{ count }} 条结果"
+      },
+      "results_pages_with_count": {
+        "one": "{{ count }} 个页面",
+        "other": "{{ count }} 个页面"
+      },
+      "results_products_with_count": {
+        "one": "{{ count }} 件产品",
+        "other": "{{ count }} 件产品"
+      },
+      "suggestions": "建议",
+      "pages": "页面",
+      "results_suggestions_with_count": {
+        "one": "{{ count }} 个建议",
+        "other": "{{ count }} 个建议"
+      }
+    },
+    "cart": {
+      "cart": "购物车"
+    },
+    "contact": {
+      "form": {
+        "name": "名称",
+        "email": "电子邮件",
+        "phone": "电话号码",
+        "comment": "评论",
+        "send": "发送",
+        "post_success": "感谢您联系我们。我们会尽快回复您。",
+        "error_heading": "请调整以下内容：",
+        "title": "联系表"
+      }
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "公告",
+      "menu": "菜单",
+      "cart_count": {
+        "one": "{{ count }} 件产品",
+        "other": "{{ count }} 件产品"
+      }
+    },
+    "cart": {
+      "title": "您的购物车",
+      "caption": "购物车商品",
+      "remove_title": "删除 {{ title }}",
+      "note": "订单特殊说明",
+      "checkout": "结账",
+      "empty": "您的购物车为空",
+      "product_disclosure": "产品披露信息",
+      "product_disclosures": "产品披露信息",
+      "cart_error": "更新购物车时出错。请重试。",
+      "cart_quantity_error_html": "您只能向购物车添加 {{ quantity }} 件此商品。",
+      "headings": {
+        "product": "产品",
+        "price": "价格",
+        "total": "总计",
+        "quantity": "数量",
+        "image": "产品图片"
+      },
+      "update": "更新",
+      "login": {
+        "title": "已有账户？",
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">登录</a>以快速结账。"
+      },
+      "estimated_total": "预计总额",
+      "new_estimated_total": "没有预计总额",
+      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "已含关税和税费。结账时计算折扣和<a href=\"{{ link }}\">运费</a>。",
+      "duties_and_taxes_included_shipping_at_checkout_without_policy": "已含关税和税费。结账时计算折扣和运费。",
+      "taxes_included_shipping_at_checkout_with_policy_html": "已含税费。结账时计算折扣和<a href=\"{{ link }}\">运费</a>。",
+      "taxes_included_shipping_at_checkout_without_policy": "已含税费。结账时计算折扣和运费。",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "已含关税。结账时计算税费、折扣和<a href=\"{{ link }}\">运费</a>。",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "已含关税。结账时计算税费、折扣和运费。",
+      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "结账时计算税费、折扣和<a href=\"{{ link }}\">运费</a>。",
+      "taxes_at_checkout_shipping_at_checkout_without_policy": "结账时计算税费、折扣和运费。"
+    },
+    "footer": {
+      "payment": "付款方式"
+    },
+    "featured_blog": {
+      "view_all": "查看全部",
+      "onboarding_title": "博客文章",
+      "onboarding_content": "向您的客户提供一份博客文章的摘要"
+    },
+    "featured_collection": {
+      "view_all": "查看全部",
+      "view_all_label": "查看 {{ collection_name }} 产品系列中的所有产品"
+    },
+    "collection_list": {
+      "view_all": "查看全部"
+    },
+    "collection_template": {
+      "title": "收藏",
+      "empty": "未找到产品",
+      "use_fewer_filters_html": "减少使用的筛选条件数量或<a class=\"{{ class }}\" href=\"{{ link }}\">删除所有筛选条件</a>"
+    },
+    "video": {
+      "load_video": "加载视频：{{ description }}"
+    },
+    "slideshow": {
+      "load_slide": "加载幻灯片",
+      "previous_slideshow": "上一张幻灯片",
+      "next_slideshow": "下一张幻灯片",
+      "pause_slideshow": "暂停幻灯片",
+      "play_slideshow": "播放幻灯片",
+      "carousel": "轮播",
+      "slide": "幻灯片"
+    },
+    "page": {
+      "title": "页面标题"
+    },
+    "announcements": {
+      "previous_announcement": "上一个公告",
+      "next_announcement": "下一个公告",
+      "carousel": "轮播",
+      "announcement": "公告",
+      "announcement_bar": "公告栏"
+    },
+    "quick_order_list": {
+      "product_total": "产品小计",
+      "view_cart": "查看购物车",
+      "each": "{{ money }}/件",
+      "product": "产品",
+      "variant": "多属性",
+      "variant_total": "多属性总计",
+      "items_added": {
+        "one": "已添加 {{ quantity }} 件商品",
+        "other": "已添加 {{ quantity }} 件商品"
+      },
+      "items_removed": {
+        "one": "已删除 {{ quantity }} 件商品",
+        "other": "已删除 {{ quantity }} 件商品"
+      },
+      "product_variants": "产品多属性",
+      "total_items": "商品总数",
+      "remove_all_items_confirmation": "删除您购物车中的全部 {{ quantity }} 件商品？",
+      "remove_all": "全部删除",
+      "cancel": "取消",
+      "remove_all_single_item_confirmation": "从购物车中删除 1 件商品？",
+      "min_error": "此商品的最小值为 {{ min }}",
+      "max_error": "此商品的最大值为 {{ max }}",
+      "step_error": "您只能以 {{ step }} 为增量来添加此商品"
+    }
+  },
+  "localization": {
+    "country_label": "国家/地区",
+    "language_label": "语言",
+    "update_language": "更新语言",
+    "update_country": "更新国家/地区",
+    "search": "搜索",
+    "popular_countries_regions": "热门国家/地区",
+    "country_results_count": "找到 {{ count }} 个国家/地区"
+  },
+  "customer": {
+    "account": {
+      "title": "账户",
+      "details": "账户详细信息",
+      "view_addresses": "查看地址",
+      "return": "返回账户详细信息"
+    },
+    "account_fallback": "账户",
+    "activate_account": {
+      "title": "激活账户",
+      "subtext": "创建密码以激活您的账户。",
+      "password": "密码",
+      "password_confirm": "确认密码",
+      "submit": "激活账户",
+      "cancel": "拒绝邀请"
+    },
+    "addresses": {
+      "title": "地址",
+      "default": "默认",
+      "add_new": "添加新地址",
+      "edit_address": "编辑地址",
+      "first_name": "名字",
+      "last_name": "姓氏",
+      "company": "公司",
+      "address1": "地址 1",
+      "address2": "地址 2",
+      "city": "城市",
+      "country": "国家/地区",
+      "province": "省",
+      "zip": "邮政编码",
+      "phone": "电话",
+      "set_default": "设为默认地址",
+      "add": "添加地址",
+      "update": "更新地址",
+      "cancel": "取消",
+      "edit": "“编辑”。",
+      "delete": "删除",
+      "delete_confirm": "确定要删除此地址吗？"
+    },
+    "log_in": "登录",
+    "log_out": "登出",
+    "login_page": {
+      "cancel": "取消",
+      "create_account": "创建账户",
+      "email": "电子邮件",
+      "forgot_password": "忘记了密码？",
+      "guest_continue": "继续",
+      "guest_title": "以访客身份继续",
+      "password": "密码",
+      "title": "登录",
+      "sign_in": "登录",
+      "submit": "提交",
+      "alternate_provider_separator": "或"
+    },
+    "orders": {
+      "title": "订单历史记录",
+      "order_number": "订单",
+      "order_number_link": "订单号 {{ number }}",
+      "date": "日期",
+      "payment_status": "付款状态",
+      "fulfillment_status": "发货状态",
+      "total": "总计",
+      "none": "您尚未创建任何订单。"
+    },
+    "recover_password": {
+      "title": "重置密码",
+      "subtext": "我们将向您发送用于重置密码的电子邮件",
+      "success": "我们已向您发送电子邮件，其中包含更新密码的链接。"
+    },
+    "register": {
+      "title": "创建账户",
+      "first_name": "名字",
+      "last_name": "姓氏",
+      "email": "电子邮件",
+      "password": "密码",
+      "submit": "创建"
+    },
+    "reset_password": {
+      "title": "重置账户密码",
+      "subtext": "输入新密码",
+      "password": "密码",
+      "password_confirm": "确认密码",
+      "submit": "重置密码"
+    },
+    "order": {
+      "title": "订单 {{ name }}",
+      "date_html": "下单日期：{{ date }}",
+      "cancelled_html": "订单取消日期：{{ date }}",
+      "cancelled_reason": "原因：{{ reason }}",
+      "billing_address": "账单地址",
+      "payment_status": "付款状态",
+      "shipping_address": "收货地址",
+      "fulfillment_status": "发货状态",
+      "discount": "折扣",
+      "shipping": "运输",
+      "tax": "税费",
+      "product": "产品",
+      "sku": "SKU",
+      "price": "价格",
+      "quantity": "数量",
+      "total": "总计",
+      "fulfilled_at_html": "发货日期：{{ date }}",
+      "track_shipment": "跟踪货件",
+      "tracking_url": "跟踪链接",
+      "tracking_company": "承运商",
+      "tracking_number": "跟踪编号",
+      "subtotal": "小计",
+      "total_duties": "关税",
+      "total_refunded": "已退款"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "您的 {{ shop }} 的礼品卡余额为 {{ value }}！",
+      "subtext": "您的礼品卡",
+      "gift_card_code": "礼品卡代码",
+      "shop_link": "访问在线商店",
+      "add_to_apple_wallet": "添加到 Apple Wallet",
+      "qr_image_alt": "二维码 — 扫描兑换礼品卡",
+      "copy_code": "复制礼品卡代码",
+      "expired": "已过期",
+      "copy_code_success": "已成功复制代码",
+      "how_to_use_gift_card": "在线使用礼品卡代码或在店内使用二维码",
+      "expiration_date": "过期日期：{{ expires_on }}"
+    }
+  },
+  "recipient": {
+    "form": {
+      "checkbox": "我想将此礼品卡发送为礼品",
+      "email_label": "收件人邮箱",
+      "email": "邮箱",
+      "name_label": "收件人姓名（可选）",
+      "name": "姓名",
+      "message_label": "消息（可选）",
+      "message": "消息",
+      "max_characters": "不超过 {{ max_chars }} 个字符",
+      "email_label_optional_for_no_js_behavior": "收件人邮箱（可选）",
+      "send_on": "YYYY-MM-DD",
+      "send_on_label": "发送日期（可选）",
+      "expanded": "礼品卡收件人表单已展开",
+      "collapsed": "礼品卡收件人表单已折叠"
+    }
+  },
+  "smind": {
+    "general": {
+      "view_all": "View all",
+      "load_more": "Load more",
+      "verified_buyer": "Verified buyer",
+      "show_more": "Show more",
+      "all_reviews": "All reviews",
+      "search": "Search",
+      "recent_searches": "Recent searches",
+      "popular_searches": "Popular searches",
+      "popular_items": "Popular items",
+      "suggestions": "Suggestions",
+      "products": "Products",
+      "product": "Product",
+      "pages": "Pages",
+      "search_for": "Search for “{{ terms }}”",
+      "cart_is_empty": "Your cart is empty",
+      "continue_shopping": "Continue shopping",
+      "cart": "Cart",
+      "estimated_total": "Estimated total",
+      "checkout": "Check out",
+      "view_cart": "View cart",
+      "view_product": "View product",
+      "on": "On",
+      "by": "By",
+      "view_more": "View more",
+      "read_more": "Read more",
+      "list_collections": "List collections",
+      "home": "Home",
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "days_short": "D",
+      "hours_short": "Hr",
+      "minutes_short": "Min",
+      "seconds_short": "Sec",
+      "login": "Login",
+      "language": "Language",
+      "country": "Country",
+      "view_detail": "View detail",
+      "invalid_date_format": "Invalid date format",
+      "pick_up_available_at_html": "<span class=\"smi-color-text-75\">Pickup available at</span>&#160;<span class=\"smi-location-name\">{{ location_name }}</span>",
+      "pick_up_unavailable_at_html": "<span class=\"smi-color-text-75\">Pickup currently unavailable at</span>&#160;<span class=\"smi-location-name\">{{ location_name }}</span>",
+      "view_store_info": "View store information",
+      "check_other_stores": "Check availability at other stores",
+      "see_on_google_map": "See on google map",
+      "copied_coupon_code": "Copied coupon code",
+      "copied_code": "Copy code",
+      "err_condition_countdown_daily": "Error condition. Please check all the input settings date and time.",
+      "view": "View"
+    },
+    "collection": {
+      "clear_all": "Clear all",
+      "to": "To",
+      "sort_by": "Sort by:",
+      "filter": "Filter",
+      "product_count": {
+        "one": "{{ product_count }} product found",
+        "other": "{{ product_count }} products found"
+      },
+      "product": {
+        "one": "{{ product_count }} product",
+        "other": "{{ product_count }} products"
+      },
+      "load_more": "Load more"
+    },
+    "search": {
+      "title": "Search results",
+      "search": "Search",
+      "products": "Products",
+      "suggestions": "Suggestions",
+      "pages": "Pages",
+      "results_count": {
+        "one": "Found {{ count }} result for \"{{ terms }}\"",
+        "other": "Found {{ count }} results for \"{{ terms }}\""
+      },
+      "sort_by": "Sort by:",
+      "no_results": "No results could be found. Please try again with a different query.",
+      "blog": "Blog",
+      "page": "Page"
+    },
+    "article": {
+      "next_post": "Next",
+      "previous_post": "Previous",
+      "comments": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      },
+      "comment_form_title": "Leave a comment",
+      "comment_form_description": "Your email address will not be published",
+      "moderated": "Please note, comments need to be approved before they are published.",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "error": "Error: An issue has occurred!",
+      "success": "Your comment was posted successfully! Thank you!",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated."
+    },
+    "form": {
+      "text_button_subscribe": "Subscribe",
+      "text_button_copy": "Copy",
+      "text_button_copied": "Copied:",
+      "text_copy_discount": "Copy Discount",
+      "text_copied_discount": "Copied Discount",
+      "text_button_send_message": "Send message",
+      "label_name": "Name",
+      "label_message": "Message",
+      "placeholder_email": "Enter your email",
+      "placeholder_email_password": "Your email",
+      "field_required": "{{ field }} is required",
+      "field_invalid": "{{ field }} is invalid",
+      "form_error": "An error occurred, please check the information and resubmit.",
+      "form_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
+      "form_email_success": "Thanks for subscribing",
+      "label_email": "Email",
+      "label_password": "Password",
+      "log_in": "Login",
+      "forgot_password": "Forgot your password?",
+      "sign_in": "Sign in",
+      "dont_have_account": "Don't have account?",
+      "sign_up": "Sign up",
+      "reset_your_password": "Reset your password",
+      "reset_your_password_msg": "We will send you an email to reset your password",
+      "submit": "Submit",
+      "recover_password_success": "We've sent you an email with a link to update your password.",
+      "recover_password_err": "No account found with that email.",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "create_account": "Create account",
+      "has_account": "Already has an account? "
+    },
+    "product": {
+      "add_to_cart": "Add to cart",
+      "edit_cart": "Edit item",
+      "buy_now": "Buy it now",
+      "shop_now": "Shop now",
+      "quantity": "Quantity",
+      "product_type": "Product type",
+      "vendor": "Vendor",
+      "collections": "Collections",
+      "tags": "Tags",
+      "send_as_gift": "I want to send this as a gift",
+      "max_textarea": "200 characters max",
+      "send_on": "Send on(optional)",
+      "in_cart": "in cart",
+      "item_in_cart": "{{ cart_qty }} in cart",
+      "all": "All",
+      "one_item_al_added_cart": "item is already added to cart!",
+      "many_items_al_added_cart": "items are already added to cart!",
+      "one_item_in_cart": "item is in cart!",
+      "many_items_in_cart": "items are in cart!",
+      "cant_add_more": "You can't add more",
+      "to_the_cart": "to the cart",
+      "cart_added": "Cart added",
+      "cart_failed": "Add cart failed",
+      "sold_out": "Sold out",
+      "sale": "Sale {{ sale_percent }}",
+      "saleText": "Sale",
+      "no_products": "No products",
+      "from_price_html": "From {{ price }}",
+      "unit_price": "Unit price",
+      "unit_price_separator": "per",
+      "select_options": "Select options",
+      "total_price_product_bundle": "Total price",
+      "add_item_to_cart_product_bundle_html": "Add (<span class='item-bunble-selected'></span>) items to cart",
+      "add_all_item_to_cart_product_bundle_html": "Add all items to cart",
+      "this_item": "This item",
+      "in_stock": "In stock",
+      "low_stock": "Low stock",
+      "item_left": "left",
+      "low_stock_item": "Low stock {{ quantity }} left",
+      "out_of_stock": "Out of stock",
+      "ask_a_question": {
+        "product_link": "Product link",
+        "name": "Name",
+        "email": "Email",
+        "phone_number": "Phone number",
+        "question": "Question",
+        "submit_success": "Submit question successfully",
+        "submit_failed": "Submit question failed",
+        "submit": "Submit"
+      },
+      "quick_add": "Quick add",
+      "shipping": "Shipping",
+      "calculated_at_checkout": "calculated at checkout",
+      "size_chart": "Size chart",
+      "customer_reviews": "Customer review",
+      "copy_product_link": "Copy product link",
+      "copied_product_link": "Copied product link",
+      "product_lable": "Product",
+      "example_product_title": "Example product title",
+      "compare_color_empty_text": "Click on colors or thumbnails to compare, drag and drop images to reorder."
+    },
+    "cart": {
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes, discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
+      "taxes_included_but_shipping_at_checkout": "Tax included and shipping and discounts calculated at checkout",
+      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">shipping</a> and discounts calculated at checkout.",
+      "terms_of_service_html": "I agree to the <a href=\"{{ link }}\" target=\"_blank\">Terms of service.</a>",
+      "terms_of_service_required_text": "This field is required.",
+      "taxes_and_shipping_at_checkout": "Taxes, discounts and shipping calculated at checkout",
+      "save": "Save",
+      "cancel": "Cancel",
+      "close": "Close",
+      "add_note": "Add note",
+      "note_empty": "Note field is required",
+      "note_error": "An error occurred, please check the information and resubmit",
+      "product_lable": "Product",
+      "quantity_label": "Quantity",
+      "total_label": "Total",
+      "title_cart_is_empty": "Your cart is empty",
+      "subtitle_cart_is_empty": "Your cart is currently empty. Discover exciting products on our Shop page",
+      "back_to_shopping": "Back to shopping",
+      "empty": "Your cart is empty",
+      "title_page": "Your cart",
+      "continue_shopping": "Continue shopping",
+      "empty_text": "Your cart is currently empty. Discover exciting products on our Shop page",
+      "cart_notification_text": "Item added to your cart",
+      "login": {
+        "title": "Have an account?",
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in</a> to check out faster."
+      },
+      "quantity": {
+        "decrease": "Decrease quantity for",
+        "increase": "Increase quantity for",
+        "input": "Quantity for"
+      },
+      "product": {
+        "price": {
+          "regular_price": "Regular price",
+          "sale_price": "Sale price",
+          "unit_price": "Sale price"
+        }
+      },
+      "add_order_note": "Add order note",
+      "estimated_total": "Estimated total",
+      "sub_total": "Subtotal",
+      "estimated_shipping": "Estimate shipping",
+      "tax_discount_shipping": "Taxes, discounts and shipping calculated at checkout",
+      "remove_title": "Remove {{ title }}",
+      "shipping_estimator": {
+        "title": "Estimate Shipping",
+        "country": "Country",
+        "choose_country": "Choose Country",
+        "province": "Province",
+        "choose_province": "Choose Province",
+        "zip_code": "Enter a ZIP code",
+        "estimate": "Estimate",
+        "multiple_rates": "We found several shipping rates available for your address:",
+        "one_rate": "There are several shipping rates for your address:",
+        "no_rates": "There are no shipping rates for your address.",
+        "errors": "There are some errors:",
+        "free": "FREE"
+      },
+      "share_your_cart": "Share your cart",
+      "share_your_cart_caption": "Use this link to send your cart to yourself or others.",
+      "share_your_cart_copy": "COPY URL",
+      "share_your_cart_copied": "COPIED",
+      "gift_wrapping": "Gift wrapping",
+      "add_a_gift_wrap": "ADD A GIFT WRAP",
+      "discount": "Discount",
+      "discount_code": "Discount code",
+      "add_a_discount_code": "Add a discount code",
+      "apply": "APPLY",
+      "enter_a_valid_discount_code": "Enter a valid discount code",
+      "recently_viewed": "Recently viewed",
+      "popup_related_product": {
+        "you_just_added": "You just added",
+        "selected_price": "Selected price:",
+        "add_x_items_to_cart": "Add ({{ count }}) items to cart",
+        "add_items_to_cart": "Add items to cart"
+      }
+    },
+    "account": {
+      "dashboard": "Dashboard",
+      "address": "Address",
+      "view_addresses": "View addresses",
+      "wishlist": "Wishlist",
+      "compare": "Compare",
+      "log_out": "Log out",
+      "order_history": "Order history",
+      "order_title": "Order",
+      "order_date": "Date",
+      "order_payment_status": "Payment status",
+      "order_fulfil": "Fulfillment status",
+      "order_total": "Total",
+      "account_address": "Account details",
+      "default_address": "default address",
+      "login_page": {
+        "cancel": "Cancel",
+        "create_account": "Sign up",
+        "email": "Email",
+        "forgot_password": "Forgot your password?",
+        "guest_continue": "Continue",
+        "guest_title": "Continue as a guest",
+        "password": "Password",
+        "title": "Login",
+        "sign_in": "Sign in",
+        "submit": "Submit",
+        "alternate_provider_separator": "or"
+      },
+      "order_page": {
+        "title": "Order {{ name }}",
+        "date_html": "Placed on {{ date }}",
+        "cancelled_html": "Order Cancelled on {{ date }}",
+        "cancelled_reason": "Reason: {{ reason }}",
+        "billing_address": "Billing Address",
+        "payment_status": "Payment Status",
+        "shipping_address": "Shipping Address",
+        "fulfillment_status": "Fulfillment Status",
+        "discount": "Discount",
+        "shipping": "Shipping",
+        "tax": "Tax",
+        "product": "Product",
+        "sku": "SKU",
+        "price": "Price",
+        "quantity": "Quantity",
+        "total": "Total",
+        "total_refunded": "Refunded",
+        "fulfilled_at_html": "Fulfilled {{ date }}",
+        "track_shipment": "Track shipment",
+        "tracking_url": "Tracking link",
+        "tracking_company": "Carrier",
+        "tracking_number": "Tracking number",
+        "subtotal": "Subtotal",
+        "total_duties": "Duties"
+      },
+      "orders": {
+        "title": "Order history",
+        "order_number": "Order",
+        "order_number_link": "Order number {{ number }}",
+        "date": "Date",
+        "payment_status": "Payment status",
+        "fulfillment_status": "Fulfillment status",
+        "total": "Total",
+        "none": "You haven't placed any orders yet."
+      },
+      "addresses": {
+        "title1": "Your address",
+        "title2": "Your addresses",
+        "default": "default adderss",
+        "add_new": "Add a new address",
+        "edit_address": "Edit address",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "company": "Company",
+        "address1": "Address 1",
+        "address2": "Address 2",
+        "city": "City",
+        "country": "Country/region",
+        "province": "Province",
+        "zip": "Postal/ZIP code",
+        "phone": "Phone",
+        "set_default": "Set as default address",
+        "add": "Add address",
+        "update": "Update address",
+        "cancel": "Cancel",
+        "edit": "Edit",
+        "delete": "Delete",
+        "delete_confirm": "Are you sure you wish to delete this address?"
+      },
+      "password": {
+        "error": "Error",
+        "login_form_error": "Wrong password!",
+        "login_password_button": "Enter using password",
+        "close": "Close",
+        "login_form_heading": "Enter store using password:",
+        "login_form_password_placeholder": "Your password",
+        "login_form_submit": "Enter",
+        "admin_link_html": "<span>Are you the store owner?</span> <a href=\"/admin\" class=\"link underlined-link\">Log in here</a>",
+        "text_button_subscribe": "Notify me",
+        "reset_account_password": "Reset account password",
+        "password": "Password",
+        "confirm_password": "Confirm password",
+        "reset_password": "Reset password",
+        "active_account_title": "Activate account",
+        "create_password_msg": "Create your password to activate your account.",
+        "decline_account_title": "Decline invitation"
+      }
+    },
+    "extend_item": {
+      "quick_view": "Quick view",
+      "quick_add": "Quick add",
+      "wishlist": {
+        "add": "Add wishlist",
+        "delete": "Remove from wishlist",
+        "visit": "Visit wishlist page"
+      },
+      "compare": {
+        "add": "Add compare",
+        "delete": "Remove from compare",
+        "visit": "Visit compare page"
+      }
+    },
+    "page_breadcrumb": {
+      "not_found": "Page not found",
+      "captcha": "Captcha",
+      "cart": "Cart",
+      "list_collections": "List collections",
+      "c_account": "Account",
+      "c_activate_account": "Active accout",
+      "c_address": "Address",
+      "c_login": "Login",
+      "c_order": "Order",
+      "c_register": "Register",
+      "c_reset_password": "Reset password",
+      "gift_card": "Gift card",
+      "metaobject": "Metaobject",
+      "password": "Password",
+      "policy": "Policy",
+      "search": "Search"
+    },
+    "wishlist": {
+      "wishlist_empty_title_text": "Wishlist is empty",
+      "wishlist_empty_content_text": "No items in your wishlist yet. Discover exciting products on our Shop page"
+    },
+    "compare": {
+      "compare_empty_title_text": "Compare is empty",
+      "quick_add": "Quick add",
+      "color_label": "Color",
+      "size_label": "Size",
+      "compare_empty_content_text": "No items in your compare yet. Discover exciting products on our Shop page"
+    }
+  }
+}

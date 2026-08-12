@@ -1,0 +1,14 @@
+{% liquid
+  assign list_of_new_label_bags_icons = "||flower||leaf||shopping-bag||shopping-cart||star||sun||arrow-left||arrow-right||chevron-left||chevron-right||shopping-bag-1||" 
+  assign item = '||' | append: icon | append: '||'
+
+  if section.settings.icon_options == "modern"
+    if list_of_new_label_bags_icons contains item
+      render 'otsb-icon-labels-bags-new-1', icon: icon
+    else
+      render 'otsb-icon-labels-bags', icon: icon
+    endif
+  else
+    render 'otsb-icon-labels-bags', icon: icon
+  endif
+%}

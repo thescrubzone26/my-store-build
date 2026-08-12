@@ -1,0 +1,195 @@
+{% render 'otsb-navigation-bar-base' %}
+{% schema %}
+  {
+    "name": "OT: Navigation Bar #1",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Title",
+        "default": "#525151",
+      },
+      {
+        "type": "color",
+        "id": "color_active_nav",
+        "label": "Active navigation title",
+        "default": "#2CB29B",
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background section",
+        "default": "rgba(0,0,0,0)",
+      },
+      {
+        "type": "color",
+        "id": "color_button_arrow",
+        "label": "Button arrow",
+        "default": "rgba(0,0,0,0)",
+      },
+      {
+        "type": "color",
+        "id": "color_button_arrow_hover",
+        "label": "Hover button arrow",
+        "default": "rgba(0,0,0,0)",
+      },
+      {
+        "type": "header",
+        "content": "Navigation Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_custom_font",
+        "label": "Use a custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "type_title_font",
+        "default": "harmonia_sans_n7",
+        "label": "Title Font"
+      },
+      {
+      "type": "range",
+      "id": "title_size",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "unit": "%",
+      "default": 100,
+      "label": "Title size"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center",
+        "label": "Content alignment"
+      },
+      {
+      "type": "range",
+      "id": "content_max_width",
+      "min": 500,
+      "max": 1500,
+      "unit": "px",
+      "step": 10,
+      "default": 1000,
+      "label": "Content max width"
+    },
+    {
+      "type": "number",
+      "id": "section_width",
+      "default": 1280,
+      "label": "Section width (px)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 5,
+      "label": "Top/Bottom Padding on Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 5,
+      "label": "Top/Bottom Padding on Mobile"
+    },
+    ],
+    "blocks": [
+      {
+        "type": "link",
+        "name": "Navigation Link",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          },
+          {
+            "type": "checkbox",
+            "id": "open_new_window",
+            "default": false,
+            "label": "Open this link in a new window"
+          }
+        ]
+      }
+    ],
+      "presets": [
+    {
+      "name": "OT: Navigation Bar #1",
+      "blocks": [
+        {
+          "type": "link",
+          "settings": {
+            "title": "T - Shirt",
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "title": "Women Bags",
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "title": "Shoes",
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "title": "Accessories",
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "title": "Sunglasses",
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "title": "Wall",
+          }
+        },
+      ]
+    }
+  ]
+  }
+  {% endschema %}

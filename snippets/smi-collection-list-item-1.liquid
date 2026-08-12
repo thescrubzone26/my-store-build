@@ -1,0 +1,174 @@
+{% comment %}#component#["settings/media-settings-3","settings/image","settings/button-without-url"]#endcomponent#{% endcomment %}
+{% liquid
+  assign placeholder_image = 'collection-1'
+  assign collection = block.settings.collection
+  if is_reference 
+  	assign collection = collections[block.settings.collection]
+  endif
+  if block.settings.link != blank
+    assign link = block.settings.link
+  elsif collection != blank
+    assign link = collection.url
+  else
+    assign link = ''
+  endif
+  if block.settings.heading != blank
+    assign heading = block.settings.heading
+  elsif collection != blank
+    assign heading = collection.title
+  else
+    assign heading = ''
+  endif
+%}
+{%-liquid
+    assign media_ratio = section.settings.media_ratio
+    assign media_shape = section.settings.media_shape
+    assign media_classes = 'smi-w-100 smi-object-fit-cover '
+    if media_shape != 'default' and media_shape != 'round'
+        if shape_index > 6
+            assign shape_index = 1
+        endif
+        if shape_index < 6 
+            assign forloop_next = shape_index | plus: 1
+        else
+            assign forloop_next = 1
+        endif
+        assign media_classes = media_classes | append: ' smi-shape-blob-' | append: shape_index
+        assign shape_index = shape_index | plus: 1
+        assign shape_hover = '--shape-blob-' | append: forloop_next
+    endif
+    if media_ratio == 'auto' 
+        assign media_classes = media_classes | append: ' smi-h-auto'
+    else
+        assign media_classes = media_classes | append: ' smi-h-100 smi-p-absolute'
+    endif
+    assign media_wrapper_classes = 'smi-media-wrapper smi-border smi-shadow smi-lh-0 smi-overflow-hidden smi-p-relative smi-' | append: media_shape
+    if media_shape contains 'blob'
+        assign media_wrapper_classes = media_wrapper_classes | append: ' smi-blob-wrapper smi-has-blob'
+    endif
+-%}
+<div
+  class="
+    {{- 'smi-collection-item-1' -}}
+    {%- if is_card == true %} smi-collection-item-1--card{% else %} smi-collection-item-1--standard{% endif -%}
+    {{- content_color | default: '' -}}
+  "
+>
+  <div class="smi-collection-item-1__media">
+    <a
+      href="{{ link | default: '#' }}"
+      class="
+        {%- liquid
+            echo media_wrapper_classes
+            echo ' smi-d-block'
+          if section.settings.media_shape != 'shape-blob'
+              echo settings.smi_animations_hover_image | default: shop.metafields.smind.settings.value.imageHoverEffect | default: 'none' | prepend: ' smi-hover-image-'
+          endif
+        -%}
+      "
+      style="--media-ratio: {{ media_ratio }}; --shape-hover: var({{ shape_hover }})"
+      data-type="item-image"
+      aria-label="{{ block.id }}"
+    >
+      {% assign image_classes = media_classes | append: ' __smi-collection-image' %}
+      {% assign svg_classes = media_classes | append: ' smi-placeholder-svg smi-placeholder-light' %}
+      {% if block.settings.image != blank %}
+        {% assign image_object = block.settings.image %}
+		{% if is_reference %}
+			{% assign image_object = images[block.settings.image] %}
+		{% endif %}
+{{
+  image_object
+  | image_url: width: image_width
+  | image_tag: class: image_classes, widths: '400,500,600,700,800,1000,1200,1400,1600,1900,2500', sizes: sizes
+}}
+      {% elsif collection.image != blank %}
+        {% assign image_object = collection.image %}
+{{
+  image_object
+  | image_url: width: image_width
+  | image_tag: class: image_classes, widths: '400,500,600,700,800,1000,1200,1400,1600,1900,2500', sizes: sizes
+}}
+      {% else %}
+        {{ placeholder_image | placeholder_svg_tag: svg_classes }}
+      {% endif %}
+    </a>
+  </div>
+  <div
+    class="
+      {%- liquid
+        echo ' smi-collection-item-1__content'
+          if is_card == true
+              echo ' smi-px-lg smi-py-lg'
+          else
+              echo ' smi-pt-md'
+              case section.settings.content_alignment
+                  when 'left'
+                      echo ' smi-pr-md'
+                  when 'right'
+                    echo ' smi-pl-md'
+                  else
+                    echo ' smi-px-md'
+              endcase
+          endif
+      -%}
+    "
+  >
+    {% if block.settings.subheading != blank %}
+      <div class="__smi-subheading smi-text-sub smi-color-subtext smi-link-wrapper" data-type="item-subheading">
+        {{ block.settings.subheading }}
+      </div>
+    {% endif %}
+    {% if heading != blank %}
+      <a href="{{ link | default: '#' }}">
+        <div
+          class="__smi-heading {{ section.settings.content_heading_size | default: 'smi-h4' }} smi-link-wrapper"
+          data-type="item-heading"
+        >
+          {{- heading -}}
+        </div>
+      </a>
+    {% endif %}
+    {% if block.settings.description != blank %}
+      <div class="__smi-description smi-mt-xxs smi-text-md smi-color-text-75 smi-link-wrapper" data-type="item-description">
+        {{ block.settings.description }}
+      </div>
+    {% endif %}
+    {% if block.settings.button_label != blank %}
+      <div class="smi-mt-sm smi-d-flex {{ classes_position_button }}">
+        {% assign button_link = link %}
+{% liquid
+  assign button_label = block.settings.button_label
+  assign button_style = block.settings.button_style
+%}
+<div class="smi-component-button-without-link smi-button-wrapper">
+  {% if button_label != blank %}
+    <a
+      href="{{ button_link | default: '#' }}"
+      class="
+        {%- liquid
+          echo 'smi-button smi-text-button smi-border smi-shadow'
+          echo button_style | split: '_' | first | prepend: ' smi-button--'
+          if button_style contains 'arrow'
+            echo ' smi-has-icon'
+          endif
+          echo settings.smi_animations_hover_elements | default: shop.metafields.smind.settings.value.buttonHoverEffect | default: 'none' | prepend: ' smi-hover-'
+        -%}
+      "
+    >
+      <span>
+        {{- button_label | escape -}}
+      </span>
+      {% if button_style contains 'arrow' %}
+        <div class="smi-d-flex smi-align-content-center">
+          {% render 'smi-icons', icon: 'arrow-right-2' %}
+        </div>
+      {% endif %}
+    </a>
+  {% endif %}
+</div>
+        {% assign button_link = '' %}
+      </div>
+    {% endif %}
+  </div>
+</div>{%comment%}#includeFile#snippets/smi-icons#endIncludeFile#{%endcomment%}

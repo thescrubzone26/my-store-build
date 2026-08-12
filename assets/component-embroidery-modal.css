@@ -1,0 +1,424 @@
+.embroidery-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1.3rem 1.5rem;
+  background: rgba(var(--color-foreground), 0.04);
+  border: 0.1rem solid transparent;
+  border-radius: var(--buttons-radius, 0.4rem);
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.embroidery-trigger:hover {
+  background: rgba(var(--color-foreground), 0.08);
+}
+
+.embroidery-trigger__icon {
+  display: flex;
+  width: 2.2rem;
+  height: 2.2rem;
+  flex-shrink: 0;
+}
+
+.embroidery-trigger__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.embroidery-trigger__label {
+  font-weight: 500;
+}
+
+.embroidery-modal .embroidery-modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 52rem;
+  max-height: 90vh;
+  margin: auto;
+  padding: 3rem;
+  overflow-y: auto;
+  border-radius: var(--text-boxes-radius, 0.8rem);
+  background: rgb(var(--color-background));
+}
+
+.embroidery-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.embroidery-modal__heading {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.embroidery-modal__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+}
+
+.embroidery-modal__close svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.embroidery-modal__tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.embroidery-modal__tab {
+  flex: 1 1 0;
+  padding: 1.3rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-right: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.embroidery-modal__tab:last-child {
+  border-right: none;
+}
+
+.embroidery-modal__tab--active {
+  background: rgba(var(--color-foreground), 0.12);
+}
+
+.embroidery-modal__price {
+  margin: 0 0 1.5rem;
+  text-align: right;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.embroidery-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.embroidery-field-group__placement,
+.embroidery-field-group__label {
+  margin: 0 0 0.8rem;
+  font-weight: 600;
+}
+
+.embroidery-field-group__placement strong,
+.embroidery-field-group__label strong {
+  font-weight: 400;
+}
+
+.embroidery-input,
+.embroidery-textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 1.2rem 1.4rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-radius: var(--inputs-radius, 0.4rem);
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  font-size: 1.5rem;
+}
+
+.embroidery-textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.embroidery-swatches {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.embroidery-swatch {
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+  border-radius: 0.4rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  background-color: var(--embroidery-swatch-color);
+  cursor: pointer;
+}
+
+.embroidery-swatch[aria-pressed='true'] {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+.embroidery-font-options {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.embroidery-font-option {
+  flex: 1 1 0;
+  padding: 1.4rem;
+  background: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-radius: var(--inputs-radius, 0.4rem);
+  color: rgb(var(--color-foreground));
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.embroidery-font-option--script {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.embroidery-font-option[aria-pressed='true'] {
+  border-color: rgb(var(--color-foreground));
+  border-width: 0.2rem;
+}
+
+.embroidery-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.4rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.embroidery-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border: 0.1rem solid transparent;
+  border-radius: 0.4rem;
+  background: rgba(var(--color-foreground), 0.85);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.embroidery-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.embroidery-icon__placeholder {
+  color: rgb(var(--color-background));
+  font-weight: 600;
+}
+
+.embroidery-icon[aria-pressed='true'] {
+  border-color: rgb(var(--color-foreground));
+  box-shadow: 0 0 0 0.2rem rgb(var(--color-background)), 0 0 0 0.4rem rgb(var(--color-foreground));
+}
+
+.embroidery-upload {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.embroidery-upload__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 1.6rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-radius: var(--inputs-radius, 0.4rem);
+  background: rgba(var(--color-foreground), 0.04);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.embroidery-upload__button svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.embroidery-upload__hint {
+  margin: 0.6rem 0 0;
+  width: 100%;
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.embroidery-upload__filename {
+  margin: 0.6rem 0 0;
+  font-size: 1.3rem;
+}
+
+.embroidery-modal__disclaimer {
+  margin: 0.5rem 0 2rem;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.embroidery-modal__error {
+  margin: 0 0 1.5rem;
+  color: rgb(180, 40, 40);
+  font-size: 1.3rem;
+}
+
+.embroidery-modal__actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.embroidery-modal__actions .button {
+  flex: 1 1 0;
+}
+
+@media screen and (max-width: 749px) {
+  .embroidery-modal .embroidery-modal__dialog {
+    max-width: 100%;
+    padding: 2rem;
+  }
+
+  .embroidery-modal__tabs {
+    flex-wrap: wrap;
+  }
+}
+
+.embroidery-summary {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.15);
+}
+
+.embroidery-summary__header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.embroidery-summary__label {
+  font-weight: 600;
+}
+
+.embroidery-summary__price {
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.embroidery-summary__edit {
+  margin-left: auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  font: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.embroidery-summary__delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  margin-left: 1rem;
+  padding-left: 1.2rem;
+  border: none;
+  border-left: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+}
+
+.embroidery-summary__delete svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.embroidery-summary__body {
+  display: flex;
+  gap: 1.6rem;
+  align-items: flex-start;
+}
+
+.embroidery-summary__preview {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 9rem;
+  height: 9rem;
+  padding: 1rem;
+  border-radius: var(--inputs-radius, 0.4rem);
+  background: var(--embroidery-preview-bg, #1c2b4a);
+  text-align: center;
+  overflow: hidden;
+}
+
+.embroidery-summary__preview span {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  word-break: break-word;
+}
+
+.embroidery-summary__preview-text--script {
+  font-style: italic;
+  font-weight: 400;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.embroidery-summary__details {
+  flex: 1 1 0;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.embroidery-summary__detail {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+}
+
+.embroidery-summary__detail dt {
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.embroidery-summary__detail dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.embroidery-wrap__error {
+  margin: 1rem 0 0;
+  color: rgb(180, 40, 40);
+  font-size: 1.3rem;
+}

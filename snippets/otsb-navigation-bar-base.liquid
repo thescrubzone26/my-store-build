@@ -1,0 +1,201 @@
+{% style %}
+{{ section.settings.title_font | font_face: font_display: 'swap' }}
+#shopify-section-{{ section.id }}{ 
+  {% if section.settings.use_custom_font %}
+  font-family: {{ section.settings.type_title_font.family }}, {{ section.settings.type_title_font.fallback_families }};
+  font-weight: {{ section.settings.type_title_font.weight }};
+  font-style: {{ section.settings.type_title_font.style }};
+  {% endif %}
+}
+
+#shopify-section-{{ section.id }} .ot-navigation-bar {
+  display: flex;
+  gap: 5px;
+  white-space: nowrap;
+}
+#shopify-section-{{ section.id }} .container-nav-bar {
+  max-width: calc({{ section.settings.content_max_width }}px + 60px);
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+#shopify-section-{{ section.id }} .otsb-navigation-bar-container {
+  padding-top: {{ section.settings.padding_top_bottom_mobile }}px;
+  padding-bottom: {{ section.settings.padding_top_bottom_mobile }}px;
+  background-color: {{ section.settings.color_background }};
+  max-width: {{ section.settings.section_width }}px;
+  margin: 0 auto;
+}
+#shopify-section-{{ section.id }} .front {
+  transform: translateZ(0);
+  transition-behavior: normal, normal;
+  transition-duration: 0.6s, 0.6s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-delay: 0s, 0s;
+  transition-property: transform, opacity;
+  border-bottom: 1px solid transparent;
+}
+#shopify-section-{{ section.id }} .back {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(100%) translateZ(0);
+  transition-behavior: normal, normal;
+  transition-duration: 0.6s, 0.6s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1), cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-delay: 0s, 0s;
+  transition-property: transform, opacity;
+}
+#shopify-section-{{ section.id }} .item-navigation:hover a {
+  {% if section.settings.color_active_nav.alpha != 0.0  %}
+  color: {{ section.settings.color_active_nav }};
+  {% else %}
+  color: rgba(var(--color-link));
+  {% endif %}
+}
+#shopify-section-{{ section.id }} .item-navigation:hover .front {
+  opacity: 0;
+  transform: translateY(-100%) translateZ(0);
+}
+#shopify-section-{{ section.id }} .item-navigation:hover .back {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0%) translateZ(0);  
+  {% if section.settings.color_active_nav.alpha != 0.0  %}
+    border-bottom: 1px solid {{ section.settings.color_active_nav }};
+  {% elsif section.settings.color_title.alpha != 0.0 %}
+   border-bottom: 1px solid {{ section.settings.color_title }};
+  {% else %}
+  border-bottom: 1px solid rgba(var(--color-link));
+  {% endif %}
+}
+#shopify-section-{{ section.id }} .item-navigation.active:hover .back {
+  {% if section.settings.color_active_nav.alpha != 0.0 %}
+   border-bottom: 1px solid {{ section.settings.color_active_nav }};
+  {% else %}
+  border-bottom: 1px solid rgba(var(--color-link));
+  {% endif %}
+}
+{% if section.settings.color_active_nav.alpha != 0.0 %} 
+#shopify-section-{{ section.id }} .active a {
+  color: {{ section.settings.color_active_nav }};
+}
+{% endif %}
+{% if section.settings.color_title.alpha != 0.0 %}
+#shopify-section-{{ section.id }} a {
+  color: {{ section.settings.color_title }};
+}
+#shopify-section-{{ section.id }} .splide__arrows .otsb-arrow {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  display: flex;
+}
+#shopify-section-{{ section.id }} .splide__arrows svg {
+  width: 12px;
+  height: 12px;
+  {% if section.settings.color_button_arrow.alpha != 0.0 %}
+  color: {{ section.settings.color_button_arrow }};
+  {% else %}
+  color: rgba(var(--color-foreground));
+  {% endif %}
+}
+
+#shopify-section-{{ section.id }} button[aria-label="Previous slide"]:hover svg,
+#shopify-section-{{ section.id }} button[aria-label="Next slide"]:hover svg {
+  {% if section.settings.color_button_arrow_hover.alpha != 0.0 %}
+    color: {{ section.settings.color_button_arrow_hover }};
+  {% else %}
+    color: rgba(var(--color-foreground));
+  {% endif %}
+}
+#shopify-section-{{ section.id }} .splide__arrows button[aria-label="Previous slide"] {
+  left: 0;
+  user-select: auto;
+}
+#shopify-section-{{ section.id }} .splide__arrows button[disabled] {
+  opacity: 0.5;
+}
+{% endif %}
+{% if section.settings.alignment == 'center' %} 
+  #shopify-section-{{ section.id }} .hide_otsb_slider_nav  .ot-navigation-bar {
+    justify-content: center;
+  }
+{% elsif section.settings.alignment == 'right' %} 
+  #shopify-section-{{ section.id }} .hide_otsb_slider_nav  .ot-navigation-bar {
+    justify-content: end;
+  }
+  {% endif %}
+  #shopify-section-{{ section.id }} .hide_otsb_slider_nav .splide__arrows {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .otsb-arrow {
+    position: absolute;
+    display: flex;
+    user-select: auto;
+    height: 100%;
+  }
+  #shopify-section-{{ section.id }} .hide_otsb_slider_nav .ot-navigation-bar {
+   transform: translateX(0) !important;
+  }
+  #shopify-section-{{ section.id }} .otsb-arrow[aria-label="Previous slide"] {
+    left: 5px;
+  }
+  #shopify-section-{{ section.id }} .otsb-arrow[disabled] {
+    opacity: 0.5;
+  }
+  #shopify-section-{{ section.id }} {
+      {%- if settings.text_base_size != blank -%}
+        font-size: {{ section.settings.title_size | times: 0.01 | times: settings.text_base_size | times: 0.00875 }}rem;
+      {% elsif settings.type_size_paragraph != blank %}
+        font-size: {{ section.settings.title_size | times: 0.01 | times: settings.type_size_paragraph }}px;
+      {%- else -%}
+        font-size: {{ section.settings.title_size | times: 0.01 | times: 1.5 }}rem;
+      {%- endif -%}
+    }
+  @media only screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+    {%- if settings.text_base_size != blank -%}
+      font-size: {{ section.settings.title_size | times: 0.01 | times: settings.text_base_size | times: 0.00875 }}rem;
+    {% elsif settings.type_size_paragraph != blank %}
+        font-size: {{ section.settings.title_size | times: 0.01 | times: settings.type_size_paragraph }}px;
+    {%- else -%}
+      font-size: {{ section.settings.title_size | times: 0.01 | times: 1.6 }}rem;
+    {%- endif -%}
+    }
+    #shopify-section-{{ section.id }} .otsb-navigation-bar-container {
+      padding-top: {{ section.settings.padding_top_bottom_desktop }}px;
+      padding-bottom: {{ section.settings.padding_top_bottom_desktop }}px;
+    }
+  }
+{% endstyle %}
+<div class="otsb__root">
+  <input type="hidden" id="contentMaxWidth-{{ section.id }}" value="{{ section.settings.content_max_width }}" />
+  <div class="otsb-navigation-bar-container"
+       x-data="xNavbarSlider('{{ section.id }}')"
+       x-init="init()">
+    <div id="x-navbarnavigation-{{ section.id }}"
+         class="container-nav-bar x-splide splide otsb_slideshow visible">
+      <div class="splide__track">
+        <ul class="splide__list ot-navigation-bar" data-max-width="{{ section.settings.content_max_width }}">
+          {% for block in section.blocks %}
+            {% if block.settings.title != blank %}
+              <li class="splide__slide x-splide-slide item-navigation {% if block.settings.url == request.path %}active{% endif %}">
+                <div class="relative overflow-hidden pr-5 pl-5">
+                  <a {% if block.settings.url != blank %}href="{{ block.settings.url }}" {% endif %} {% if block.settings.open_new_window %} target="_blank" {% endif %} class="front {% if block.settings.url != blank %}cursor-pointer {% else %} cursor-not-allowed {% endif %} flex items-center p-break-words justify-center duration-200 hover-text-link transition is-focus:link-active">
+                    <span>{{ block.settings.title }}</span>
+                  </a>
+                  <a {% if block.settings.url != blank %}href="{{ block.settings.url }}" {% endif %} tabindex="-1" {% if block.settings.open_new_window %} target="_blank" {% endif %} class="back {% if block.settings.url != blank %}cursor-pointer {% else %} cursor-not-allowed {% endif %} flex items-center p-break-words justify-center duration-200 hover-text-link transition is-focus:link-active">
+                    <span>{{ block.settings.title }}</span>
+                  </a>
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ 'otsb-navigation-bar.min.js' | asset_url }}" defer></script> 

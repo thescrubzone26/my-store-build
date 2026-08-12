@@ -1,0 +1,365 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "custom_liquid_embroidery": {
+          "type": "embroidery",
+          "settings": {
+            "button_label": "Add Embroidery",
+            "modal_heading": "Personalize Your Scrub",
+            "tab_name_label": "Add Name",
+            "tab_icon_label": "Add Icon",
+            "tab_both_label": "Add Both",
+            "name_placement_label": "Left Chest",
+            "icon_placement_label": "Right Chest",
+            "summary_label": "Embroidery",
+            "preview_background_color": "#1C2B4A",
+            "enable_custom_icon_upload": true,
+            "upload_max_size_text": "Only Accepting files lesser than 10MB",
+            "color_1": "#9C9C9C",
+            "color_1_name": "Gray",
+            "color_2": "#FFFFFF",
+            "color_2_name": "White",
+            "color_3": "#F4D65A",
+            "color_3_name": "Yellow",
+            "color_4": "#111111",
+            "color_4_name": "Black",
+            "color_5": "#F3B4C6",
+            "color_5_name": "Pink",
+            "disclaimer": "<p>Note: Embroidered items are final sale. They can not be returned or exchange. Please note, embroidered items take up to 7 days to dispatch.</p>"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible_tab_VTUwW9": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details & Fit",
+            "icon": "check_mark",
+            "content": "<p>{{ product.metafields.custom.details_fit | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_nQrBwN": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Fabric & Care",
+            "icon": "check_mark",
+            "content": "<p>{{ product.metafields.custom.fabric_care | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_dcdBjL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Return & Exchange",
+            "icon": "check_mark",
+            "content": "<p>{{ product.metafields.custom.return_exchange | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "custom_liquid_embroidery",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "collapsible_tab_VTUwW9",
+        "collapsible_tab_nQrBwN",
+        "collapsible_tab_dcdBjL",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "disclosures": {
+      "type": "disclosures",
+      "settings": {
+        "heading": "Disclosures",
+        "heading_size": "h2",
+        "open_by_default": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "otsb_trust_badges_3_HGKc3f": {
+      "type": "otsb-trust-badges-3",
+      "blocks": {
+        "column_Jct9Bw": {
+          "type": "column",
+          "settings": {
+            "icon": "plane",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "Shipping & Return",
+            "title_link": "",
+            "open_new_window": false,
+            "heading_size": 100,
+            "text": "<p>If your aren't perfect, return them within 30 days for a full refund.</p>"
+          }
+        },
+        "column_Nk7rJK": {
+          "type": "column",
+          "settings": {
+            "icon": "box",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "Safe Payment",
+            "title_link": "",
+            "open_new_window": false,
+            "heading_size": 100,
+            "text": "<p>Pay with the world's most popular and secure payment methods</p>"
+          }
+        },
+        "column_bDFqXP": {
+          "type": "column",
+          "settings": {
+            "icon": "megaphone",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "Shop with Confidence",
+            "title_link": "",
+            "open_new_window": false,
+            "heading_size": 100,
+            "text": "<p>Our Buyer Protection covers your purchase from click to delivery.</p>"
+          }
+        },
+        "column_TXBPw9": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "Shipping & Return",
+            "title_link": "",
+            "open_new_window": false,
+            "heading_size": 100,
+            "text": "<p>If your plant aren't perfect, return them within 30 days</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_Jct9Bw",
+        "column_Nk7rJK",
+        "column_bDFqXP",
+        "column_TXBPw9"
+      ],
+      "name": "OT: Text with icon #3",
+      "settings": {
+        "title": "",
+        "highlight_type": "underline",
+        "heading_size": 40,
+        "heading_size_mobile": 32,
+        "heading_tag": "h2",
+        "description": "",
+        "description_size": 16,
+        "description_size_mobile": 14,
+        "column_heading_size": 25,
+        "column_heading_size_mobile": 20,
+        "column_text_size": 16,
+        "column_text_size_mobile": 16,
+        "corner_image": 0,
+        "border_column": "column",
+        "border_style": "solid",
+        "column_content_alignment": "start",
+        "icon_position": "next",
+        "icon_size": 45,
+        "icon_thickness": 2,
+        "show_icon_background": false,
+        "background_corner_radius": 4,
+        "enable_desktop_slider": true,
+        "swiper_on_mobile": false,
+        "show_navigation": true,
+        "show_navigation_mobile": false,
+        "auto_play": true,
+        "change_bar_every": 5,
+        "background_color": "#FFFFFF",
+        "background_column_color": "#FFFFFF",
+        "heading_color": "rgba(0,0,0,0)",
+        "marker_color": "rgba(0,0,0,0)",
+        "description_color": "rgba(0,0,0,0)",
+        "heading_column_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "color_text_link": "rgba(0,0,0,0)",
+        "line_border_color": "#EEEEEE",
+        "color_icon": "#FD8E16",
+        "color_icon_background": "#DEDEDE",
+        "slider_button_color": "#242424",
+        "slider_button_hover_color": "#000000",
+        "slider_button_hover_text_color": "#FFFFFF",
+        "column_layout_desktop": "lg:w-1/4",
+        "section_height_desktop": "md:py-7",
+        "spacing_desktop": 28,
+        "full_width": true,
+        "padding_full_width": true,
+        "show_section_divider": false,
+        "padding_left_right": 100,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "column_layout_mobile": "w-full",
+        "section_height_mobile": "py-5",
+        "spacing_mobile": 16,
+        "full_width_mobile": false,
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "collapsible_content_7jNTKw": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_hPbbyw": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What services does The Scrub Zone offer?",
+            "icon": "check_mark",
+            "row_content": "<p>The Scrub Zone offers a wide range of high-quality medical and healthcare products, including surgical scrubs, medical uniforms, lab coats, and other professional healthcare essentials.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_diXUFy": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Who can shop at The Scrub Zone?",
+            "icon": "check_mark",
+            "row_content": "<p>Our products are designed for doctors, nurses, medical students, surgeons, dentists, pharmacists, and other healthcare professionals who need comfortable and professional medical wear.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_QeCNXh": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I choose the right size?",
+            "icon": "check_mark",
+            "row_content": "<p>You can refer to our size guide available with the product details. If you’re unsure about your size, our team can help you select the right fit.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_tEGfnN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How can I place an order with The Scrub Zone?",
+            "icon": "check_mark",
+            "row_content": "<p>Simply browse our products, select your preferred size and quantity, add them to your cart, and complete the checkout process. For any assistance, you can contact our customer support team.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_hPbbyw",
+        "collapsible_row_diXUFy",
+        "collapsible_row_QeCNXh",
+        "collapsible_row_tEGfnN"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "Frequently asked questions",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "disclosures",
+    "related-products",
+    "otsb_trust_badges_3_HGKc3f",
+    "collapsible_content_7jNTKw"
+  ]
+}
