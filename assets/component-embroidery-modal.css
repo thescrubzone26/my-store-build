@@ -36,16 +36,40 @@
   font-weight: 500;
 }
 
+.embroidery-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 2rem;
+  overflow-y: auto;
+  background: rgba(var(--color-foreground), 0.5);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.embroidery-modal[open] {
+  opacity: 1;
+  visibility: visible;
+  z-index: 101;
+}
+
 .embroidery-modal .embroidery-modal__dialog {
   position: relative;
   width: 100%;
   max-width: 52rem;
-  max-height: 90vh;
-  margin: auto;
+  max-height: calc(100vh - 4rem);
   padding: 3rem;
   overflow-y: auto;
   border-radius: var(--text-boxes-radius, 0.8rem);
   background: rgb(var(--color-background));
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 .embroidery-modal__header {
@@ -298,13 +322,31 @@
 }
 
 @media screen and (max-width: 749px) {
+  .embroidery-modal {
+    padding: 1rem;
+  }
+
   .embroidery-modal .embroidery-modal__dialog {
     max-width: 100%;
+    max-height: calc(100vh - 2rem);
     padding: 2rem;
   }
 
   .embroidery-modal__tabs {
     flex-wrap: wrap;
+  }
+
+  .embroidery-modal__tab {
+    flex: 1 1 45%;
+  }
+
+  .embroidery-summary__body {
+    flex-direction: column;
+  }
+
+  .embroidery-summary__preview {
+    width: 100%;
+    height: 7rem;
   }
 }
 

@@ -194,7 +194,6 @@
               data-embroidery-name
               maxlength="20"
               placeholder="{{ 'products.product.embroidery.name_placeholder' | t }}"
-              disabled
             >
 
             <label class="form__label" for="EmbroideryDesignation-{{ section.id }}">
@@ -209,7 +208,6 @@
               data-embroidery-designation
               maxlength="30"
               placeholder="{{ 'products.product.embroidery.designation_placeholder' | t }}"
-              disabled
             >
 
             <input
@@ -346,7 +344,6 @@
                   class="visually-hidden"
                   accept="image/*"
                   data-embroidery-custom-icon-input
-                  disabled
                 >
                 <p class="embroidery-upload__hint">{{ block.settings.upload_max_size_text }}</p>
                 <p class="embroidery-upload__filename" data-embroidery-custom-icon-filename hidden></p>
@@ -363,7 +360,6 @@
                 data-embroidery-special-request
                 rows="3"
                 placeholder="{{ 'products.product.embroidery.special_requests_placeholder' | t }}"
-                disabled
               ></textarea>
             {%- endif -%}
           </div>

@@ -78,7 +78,7 @@ if (!customElements.get('embroidery-personalizer')) {
           this.unsubscribeCartUpdate = subscribe(PUB_SUB_EVENTS.cartUpdate, this.onCartUpdate.bind(this));
         }
 
-        this.updatePrice();
+        this.setActiveTab(this.activeTab);
       }
 
       disconnectedCallback() {
@@ -94,11 +94,25 @@ if (!customElements.get('embroidery-personalizer')) {
           el.setAttribute('aria-selected', isActive ? 'true' : 'false');
         });
 
+        const includesName = tab === 'name' || tab === 'both';
+        const includesIcon = tab === 'icon' || tab === 'both';
+
         this.groups.forEach((group) => {
           const groupName = group.dataset.embroideryGroup;
-          const visible = tab === 'both' ? true : groupName === tab;
+          const visible = groupName === 'name' ? includesName : includesIcon;
           group.hidden = !visible;
         });
+
+        if (this.nameInput) this.nameInput.disabled = !includesName;
+        if (this.designationInput) this.designationInput.disabled = !includesName;
+        if (this.namePlacementInput) this.namePlacementInput.disabled = !includesName;
+        if (this.colorInput) this.colorInput.disabled = !includesName;
+        if (this.fontInput) this.fontInput.disabled = !includesName;
+
+        if (this.iconPlacementInput) this.iconPlacementInput.disabled = !includesIcon;
+        if (this.iconInput) this.iconInput.disabled = !includesIcon;
+        if (this.uploadInput) this.uploadInput.disabled = !includesIcon;
+        if (this.specialRequestInput) this.specialRequestInput.disabled = !includesIcon;
 
         this.hideError();
         this.updatePrice();
@@ -198,23 +212,10 @@ if (!customElements.get('embroidery-personalizer')) {
       }
 
       resetFields() {
-        if (this.nameInput) {
-          this.nameInput.value = '';
-          this.nameInput.disabled = true;
-        }
-        if (this.designationInput) {
-          this.designationInput.value = '';
-          this.designationInput.disabled = true;
-        }
-        if (this.namePlacementInput) this.namePlacementInput.disabled = true;
-        if (this.colorInput) {
-          this.colorInput.value = '';
-          this.colorInput.disabled = true;
-        }
-        if (this.fontInput) {
-          this.fontInput.value = '';
-          this.fontInput.disabled = true;
-        }
+        if (this.nameInput) this.nameInput.value = '';
+        if (this.designationInput) this.designationInput.value = '';
+        if (this.colorInput) this.colorInput.value = '';
+        if (this.fontInput) this.fontInput.value = '';
 
         this.swatches.forEach((el, index) => el.setAttribute('aria-pressed', index === 0 ? 'true' : 'false'));
         this.fontOptions.forEach((el, index) => el.setAttribute('aria-pressed', index === 0 ? 'true' : 'false'));
@@ -223,26 +224,16 @@ if (!customElements.get('embroidery-personalizer')) {
         this.iconButtons.forEach((el) => el.setAttribute('aria-pressed', 'false'));
         this.selectedIcon = null;
         if (this.iconLabelEl) this.iconLabelEl.textContent = this.iconNoneLabel;
-        if (this.iconPlacementInput) this.iconPlacementInput.disabled = true;
-        if (this.iconInput) {
-          this.iconInput.value = '';
-          this.iconInput.disabled = true;
-        }
+        if (this.iconInput) this.iconInput.value = '';
 
-        if (this.uploadInput) {
-          this.uploadInput.value = '';
-          this.uploadInput.disabled = true;
-        }
+        if (this.uploadInput) this.uploadInput.value = '';
         this.customIconFile = null;
         if (this.uploadFilenameEl) {
           this.uploadFilenameEl.textContent = '';
           this.uploadFilenameEl.hidden = true;
         }
 
-        if (this.specialRequestInput) {
-          this.specialRequestInput.value = '';
-          this.specialRequestInput.disabled = true;
-        }
+        if (this.specialRequestInput) this.specialRequestInput.value = '';
 
         this.hideError();
         this.updatePrice();
@@ -283,6 +274,15 @@ if (!customElements.get('embroidery-personalizer')) {
           } else {
             this.uploadFilenameEl.textContent = '';
             this.uploadFilenameEl.hidden = true;
+          }
+        }
+        if (this.uploadInput) {
+          if (this.customIconFile && typeof DataTransfer !== 'undefined') {
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(this.customIconFile);
+            this.uploadInput.files = dataTransfer.files;
+          } else {
+            this.uploadInput.value = '';
           }
         }
 
