@@ -159,13 +159,6 @@
         "type": "shopify://apps/ot-theme-sections/blocks/otsb-script/45c0d634-d78b-458c-8bca-17086e7d65aa",
         "disabled": false,
         "settings": {}
-      },
-      "8170924994765517213": {
-        "type": "shopify://apps/qikify-product-options/blocks/app-embed/906ef57c-14e4-45d8-8b53-3ba7349d56a6",
-        "disabled": false,
-        "settings": {
-          "manual_load_script": false
-        }
       }
     },
     "color_schemes": {

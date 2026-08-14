@@ -157,35 +157,131 @@
                 "
               >
                 {% assign skip_card_product_styles = false %}
+                {% assign rendered_card_count = 0 %}
                 {%- for product in collection.products -%}
-                  {% assign lazy_load = false %}
-                  {%- if forloop.index > 2 -%}
-                    {%- assign lazy_load = true -%}
+                  {%- liquid
+                    assign product_color_option = null
+                    if collection.handle == 'all'
+                      for grid_option in product.options_with_values
+                        if grid_option.name == 'Color' and grid_option.values.size > 1
+                          assign product_color_option = grid_option
+                        endif
+                      endfor
+                    endif
+                  -%}
+                  {%- if product_color_option -%}
+                    {%- for color_value in product_color_option.values -%}
+                      {%- liquid
+                        assign color_value_string = color_value | append: ''
+
+                        assign color_variants = null
+                        if product_color_option.position == 1
+                          assign color_variants = product.variants | where: 'option1', color_value_string
+                        elsif product_color_option.position == 2
+                          assign color_variants = product.variants | where: 'option2', color_value_string
+                        elsif product_color_option.position == 3
+                          assign color_variants = product.variants | where: 'option3', color_value_string
+                        endif
+
+                        assign color_variant = null
+                        if color_variants
+                          assign imaged_color_variants = color_variants | where: 'featured_image'
+                          assign imaged_available_color_variants = imaged_color_variants | where: 'available', true
+                          assign available_color_variants = color_variants | where: 'available', true
+
+                          if imaged_available_color_variants.size > 0
+                            assign color_variant = imaged_available_color_variants.first
+                          elsif imaged_color_variants.size > 0
+                            assign color_variant = imaged_color_variants.first
+                          elsif available_color_variants.size > 0
+                            assign color_variant = available_color_variants.first
+                          else
+                            assign color_variant = color_variants.first
+                          endif
+                        endif
+                      -%}
+                      {%- if color_variant -%}
+                        {% assign lazy_load = false %}
+                        {%- if rendered_card_count > 1 -%}
+                          {%- assign lazy_load = true -%}
+                        {%- endif -%}
+                        <li
+                          class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                          {% if settings.animations_reveal_on_scroll %}
+                            data-cascade
+                            style="--animation-order: {{ rendered_card_count | plus: 1 }};"
+                          {% endif %}
+                        >
+                          {% render 'card-product',
+                            card_product: product,
+                            forced_variant: color_variant,
+                            title_suffix: color_value_string,
+                            media_aspect_ratio: section.settings.image_ratio,
+                            image_shape: section.settings.image_shape,
+                            show_secondary_image: section.settings.show_secondary_image,
+                            show_vendor: section.settings.show_vendor,
+                            show_rating: section.settings.show_rating,
+                            lazy_load: lazy_load,
+                            skip_styles: skip_card_product_styles,
+                            quick_add: section.settings.quick_add,
+                            section_id: section.id,
+                            product_view_context: 'collection'
+                          %}
+                        </li>
+                        {%- assign skip_card_product_styles = true -%}
+                        {%- assign rendered_card_count = rendered_card_count | plus: 1 -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- else -%}
+                    {% assign lazy_load = false %}
+                    {%- if rendered_card_count > 1 -%}
+                      {%- assign lazy_load = true -%}
+                    {%- endif -%}
+                    <li
+                      class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                      {% if settings.animations_reveal_on_scroll %}
+                        data-cascade
+                        style="--animation-order: {{ rendered_card_count | plus: 1 }};"
+                      {% endif %}
+                    >
+                      {% render 'card-product',
+                        card_product: product,
+                        media_aspect_ratio: section.settings.image_ratio,
+                        image_shape: section.settings.image_shape,
+                        show_secondary_image: section.settings.show_secondary_image,
+                        show_vendor: section.settings.show_vendor,
+                        show_rating: section.settings.show_rating,
+                        lazy_load: lazy_load,
+                        skip_styles: skip_card_product_styles,
+                        quick_add: section.settings.quick_add,
+                        section_id: section.id,
+                        product_view_context: 'collection'
+                      %}
+                    </li>
+                    {%- assign skip_card_product_styles = true -%}
+                    {%- assign rendered_card_count = rendered_card_count | plus: 1 -%}
                   {%- endif -%}
-                  <li
-                    class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                    {% if settings.animations_reveal_on_scroll %}
-                      data-cascade
-                      style="--animation-order: {{ forloop.index }};"
-                    {% endif %}
-                  >
-                    {% render 'card-product',
-                      card_product: product,
-                      media_aspect_ratio: section.settings.image_ratio,
-                      image_shape: section.settings.image_shape,
-                      show_secondary_image: section.settings.show_secondary_image,
-                      show_vendor: section.settings.show_vendor,
-                      show_rating: section.settings.show_rating,
-                      lazy_load: lazy_load,
-                      skip_styles: skip_card_product_styles,
-                      quick_add: section.settings.quick_add,
-                      section_id: section.id,
-                      product_view_context: 'collection'
-                    %}
-                  </li>
-                  {%- assign skip_card_product_styles = true -%}
                 {%- endfor -%}
               </ul>
+
+              {%- if collection.handle == 'all' -%}
+                <script>
+                  (function () {
+                    var grid = document.querySelector('#product-grid[data-id="{{ section.id }}"]');
+                    if (!grid) return;
+                    var items = Array.prototype.slice.call(grid.children);
+                    for (var i = items.length - 1; i > 0; i--) {
+                      var j = Math.floor(Math.random() * (i + 1));
+                      var temp = items[i];
+                      items[i] = items[j];
+                      items[j] = temp;
+                    }
+                    items.forEach(function (item) {
+                      grid.appendChild(item);
+                    });
+                  })();
+                </script>
+              {%- endif -%}
 
               {%- if paginate.pages > 1 -%}
                 {% render 'pagination', paginate: paginate, anchor: '' %}
