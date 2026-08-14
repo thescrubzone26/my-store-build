@@ -1,0 +1,167 @@
+{{ 'social-shop-feed.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="social-feed page-width section-{{ section.id }}-padding">
+    <div class="social-feed__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="social-feed__heading-group">
+        {%- if section.settings.caption != blank -%}
+          <p class="social-feed__caption">{{ section.settings.caption | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="social-feed__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="social-feed__subheading">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.follow_label != blank and section.settings.follow_link != blank -%}
+        <a href="{{ section.settings.follow_link }}" class="social-feed__follow" target="_blank" rel="noopener">
+          {{ section.settings.follow_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <social-shop-feed-carousel class="social-feed__carousel">
+        <div class="social-feed__row" data-social-feed-list>
+          {%- for block in section.blocks -%}
+            <div class="social-feed__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.instagram_url != blank -%}
+                <blockquote
+                  class="instagram-media"
+                  data-instgrm-permalink="{{ block.settings.instagram_url }}"
+                  data-instgrm-version="14"
+                ></blockquote>
+              {%- else -%}
+                <div class="social-feed__placeholder">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="social-feed__nav">
+          <button type="button" class="social-feed__arrow" data-social-feed-prev aria-label="Previous posts">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </button>
+          <button type="button" class="social-feed__arrow" data-social-feed-next aria-label="Next posts">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </button>
+        </div>
+      </social-shop-feed-carousel>
+    {%- endif -%}
+  </div>
+</div>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+<script src="{{ 'social-shop-feed.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Social shop feed",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "Social Shop Feed"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop Our Social Looks"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "See how our community wears The Scrub Zone"
+    },
+    {
+      "type": "text",
+      "id": "follow_label",
+      "label": "Follow button label",
+      "default": "@the.sccrubbzone Follow"
+    },
+    {
+      "type": "url",
+      "id": "follow_link",
+      "label": "Follow button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Instagram post",
+      "settings": [
+        {
+          "type": "text",
+          "id": "instagram_url",
+          "label": "Instagram post or reel link",
+          "info": "Paste the full link to a public Instagram post or reel, e.g. https://www.instagram.com/p/ABC123/"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social shop feed",
+      "blocks": [
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -396,30 +396,77 @@
       }
     },
     "1785932032d04d1c5c": {
-      "type": "_blocks",
+      "type": "collection-collage",
       "blocks": {
-        "ai_gen_block_4511f1d_jzqqdg": {
-          "type": "ai_gen_block_4511f1d",
+        "tile_lifestyle": {
+          "type": "tile",
           "settings": {
-            "image_1": "shopify://shop_images/Collage_11.jpg",
-            "image_1_fit": "cover",
-            "image_2": "shopify://shop_images/Collage_2.jpg",
-            "image_2_fit": "cover",
-            "image_3": "shopify://shop_images/Collage_3_600_x_600_px.jpg",
-            "image_3_fit": "cover",
-            "image_4": "shopify://shop_images/Collage_3_600_x_600_px_1.jpg",
-            "image_4_fit": "cover",
-            "desktop_width_percent": 70,
-            "gap": 8,
-            "border_radius": 10
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/Collage_11.jpg",
+            "content_type": "none"
+          }
+        },
+        "tile_women": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/Collage_2.jpg",
+            "content_type": "heading_button",
+            "heading": "Women's Collection",
+            "subtext": "Flattering fits, functional details & all-day comfort made for women who care.",
+            "button_label": "Shop Women",
+            "button_link": "/collections/women",
+            "panel_color": "#dbe9f5",
+            "text_color": "#13253f",
+            "accent_color": "#d6127f",
+            "button_color": "#d6127f",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "tile_men": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/Collage_3_600_x_600_px.jpg",
+            "content_type": "heading_button",
+            "heading": "Men's Collection",
+            "subtext": "Modern designs, durable fabrics & unrestricted movement for every shift.",
+            "button_label": "Shop Men",
+            "button_link": "/collections/men",
+            "panel_color": "#ede4d3",
+            "text_color": "#13253f",
+            "accent_color": "#1f6b52",
+            "button_color": "#1f6b52",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "tile_benefits": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/Collage_3_600_x_600_px_1.jpg",
+            "content_type": "icon_list",
+            "icon_1": "leaf",
+            "icon_label_1": "All-Day Comfort",
+            "icon_2": "recycle",
+            "icon_label_2": "Moisture Wicking",
+            "icon_3": "washing",
+            "icon_label_3": "Easy Care & Long Lasting",
+            "panel_color": "#f5f5f5",
+            "text_color": "#13253f"
+          }
         }
       },
       "block_order": [
-        "ai_gen_block_4511f1d_jzqqdg"
+        "tile_lifestyle",
+        "tile_women",
+        "tile_men",
+        "tile_benefits"
       ],
-      "settings": {}
+      "name": "Collection collage",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "gap": 12,
+        "border_radius": 16,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     },
     "17859341091118b1a1": {
       "type": "_blocks",
@@ -454,126 +501,138 @@
       "settings": {}
     },
     "otsb_trust_badges_1_pYDEQh": {
-      "type": "otsb-trust-badges-1",
+      "type": "trust-badges",
       "blocks": {
-        "column_QwDX7t": {
-          "type": "column",
+        "badge_shipping": {
+          "type": "badge",
           "settings": {
             "icon": "plane",
-            "another_icon": "",
-            "custom_icon": "",
-            "title": "Shipping & Return",
-            "title_link": "",
-            "open_new_window": false,
-            "heading_size": 100,
-            "text": "<p>If your aren't perfect, return them within 30 days for a full refund.</p>"
+            "heading": "Fast Shipping",
+            "text": "Free shipping across India on every order."
           }
         },
-        "column_7VNeVf": {
-          "type": "column",
+        "badge_payment": {
+          "type": "badge",
           "settings": {
-            "icon": "box",
-            "another_icon": "",
-            "custom_icon": "",
-            "title": "Safe Payment",
-            "title_link": "",
-            "open_new_window": false,
-            "heading_size": 100,
-            "text": "<p>Pay with the world's most popular and secure payment methods</p>"
+            "icon": "lock",
+            "heading": "Secure Payment",
+            "text": "Pay safely with all major cards, UPI & wallets."
           }
         },
-        "column_hmhw7W": {
-          "type": "column",
+        "badge_confidence": {
+          "type": "badge",
           "settings": {
-            "icon": "megaphone",
-            "another_icon": "",
-            "custom_icon": "",
-            "title": "Shop with Confidence",
-            "title_link": "",
-            "open_new_window": false,
-            "heading_size": 100,
-            "text": "<p>Our Buyer Protection covers your purchase from click to delivery.</p>"
+            "icon": "star",
+            "heading": "Shop with Confidence",
+            "text": "Quality-checked scrubs trusted by healthcare professionals."
           }
         },
-        "column_96cPNq": {
-          "type": "column",
+        "badge_returns": {
+          "type": "badge",
           "settings": {
-            "icon": "truck",
-            "another_icon": "",
-            "custom_icon": "",
-            "title": "Shipping & Return",
-            "title_link": "",
-            "open_new_window": false,
-            "heading_size": 100,
-            "text": "<p>If your plant aren't perfect, return them within 30 days</p>"
+            "icon": "return",
+            "heading": "Easy Returns",
+            "text": "30-day hassle-free returns and exchanges."
           }
         }
       },
       "block_order": [
-        "column_QwDX7t",
-        "column_7VNeVf",
-        "column_hmhw7W",
-        "column_96cPNq"
+        "badge_shipping",
+        "badge_payment",
+        "badge_confidence",
+        "badge_returns"
       ],
-      "name": "OT: Text with icon #1",
+      "name": "Trust badges",
       "settings": {
-        "title": "",
-        "highlight_type": "underline",
-        "heading_size": 40,
-        "heading_size_mobile": 48,
-        "heading_tag": "h2",
-        "description": "",
-        "description_size": 16,
-        "description_size_mobile": 21,
-        "column_heading_size": 23,
-        "column_heading_size_mobile": 21,
-        "column_text_size": 16,
-        "column_text_size_mobile": 12,
-        "corner_image": 16,
-        "border_column": "line_vertical",
-        "border_style": "solid",
-        "column_content_alignment": "center",
-        "icon_position": "above",
-        "icon_size": 45,
-        "icon_thickness": 2,
-        "show_icon_background": false,
-        "background_corner_radius": 4,
-        "enable_desktop_slider": true,
-        "swiper_on_mobile": false,
-        "show_navigation": true,
-        "show_navigation_mobile": false,
-        "auto_play": true,
-        "change_bar_every": 5,
-        "background_color": "#e3e3e3",
-        "background_column_color": "rgba(0,0,0,0)",
-        "heading_color": "rgba(0,0,0,0)",
-        "marker_color": "rgba(0,0,0,0)",
-        "description_color": "rgba(0,0,0,0)",
-        "heading_column_color": "rgba(0,0,0,0)",
-        "text_color": "rgba(0,0,0,0)",
-        "color_text_link": "rgba(0,0,0,0)",
-        "line_border_color": "#eeeeee",
-        "color_icon": "#fd8e16",
-        "color_icon_background": "#dedede",
-        "slider_button_color": "#242424",
-        "slider_button_hover_color": "#000000",
-        "slider_button_hover_text_color": "#ffffff",
-        "column_layout_desktop": "lg:w-1/4",
-        "section_height_desktop": "md:py-7",
-        "spacing_desktop": 28,
-        "full_width": false,
-        "padding_full_width": false,
-        "show_section_divider": false,
-        "padding_left_right": 20,
-        "padding_top": 28,
-        "padding_bottom": 28,
-        "column_layout_mobile": "w-full",
-        "section_height_mobile": "py-5",
-        "spacing_mobile": 16,
-        "full_width_mobile": false,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
+        "color_scheme": "scheme-1",
+        "accent_color": "#0f2a4a",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "faq_help_1": {
+      "type": "faq-help",
+      "blocks": {
+        "question_services": {
+          "type": "question",
+          "settings": {
+            "icon": "shirt",
+            "question": "What services does The Scrub Zone offer?",
+            "answer": "<p>We offer a wide range of high-quality medical and healthcare products, including surgical scrubs, medical uniforms, lab coats, and other professional healthcare essentials — plus embroidery personalization on select styles.</p>"
+          }
+        },
+        "question_size": {
+          "type": "question",
+          "settings": {
+            "icon": "ruler",
+            "question": "How do I choose the right size?",
+            "answer": "<p>You can refer to our size guide available on every product page. If you're unsure about your size, our team is happy to help you find the right fit.</p>"
+          }
+        },
+        "question_personalize": {
+          "type": "question",
+          "settings": {
+            "icon": "star",
+            "question": "Can I personalize my scrubs?",
+            "answer": "<p>Yes! Select styles let you add your name, an image, or both via embroidery. Just choose \"Add Embroidery\" on the product page and customize before adding to cart.</p>"
+          }
+        },
+        "question_returns": {
+          "type": "question",
+          "settings": {
+            "icon": "return",
+            "question": "What is your return & exchange policy?",
+            "answer": "<p>Unworn, unwashed items in original condition can be returned or exchanged within 30 days of delivery. Embroidered and personalized items are final sale.</p>"
+          }
+        },
+        "question_tracking": {
+          "type": "question",
+          "settings": {
+            "icon": "truck",
+            "question": "How can I track my order?",
+            "answer": "<p>Once your order ships, you'll receive a confirmation email with a tracking link so you can follow your package every step of the way.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_services",
+        "question_size",
+        "question_personalize",
+        "question_returns",
+        "question_tracking"
+      ],
+      "name": "FAQ - Need help",
+      "settings": {
+        "caption": "FAQS",
+        "heading": "Need Help?",
+        "subheading": "Answers to our most common questions, so you can shop with confidence.",
+        "image": "shopify://shop_images/The_Scrub_Zone_home_banner_2.jpg",
+        "accent_color": "#0f2a4a",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "social_shop_feed_1": {
+      "type": "social-shop-feed",
+      "blocks": {
+        "post_1": { "type": "post", "settings": { "instagram_url": "" } },
+        "post_2": { "type": "post", "settings": { "instagram_url": "" } },
+        "post_3": { "type": "post", "settings": { "instagram_url": "" } },
+        "post_4": { "type": "post", "settings": { "instagram_url": "" } },
+        "post_5": { "type": "post", "settings": { "instagram_url": "" } }
+      },
+      "block_order": ["post_1", "post_2", "post_3", "post_4", "post_5"],
+      "name": "Social shop feed",
+      "settings": {
+        "caption": "Social Shop Feed",
+        "heading": "Shop Our Social Looks",
+        "subheading": "See how our community wears The Scrub Zone",
+        "follow_label": "@the.sccrubbzone Follow",
+        "follow_link": "https://www.instagram.com/the.sccrubbzone/",
+        "color_scheme": "scheme-2",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
@@ -587,6 +646,8 @@
     "featured_collection",
     "1785932032d04d1c5c",
     "17859341091118b1a1",
-    "otsb_trust_badges_1_pYDEQh"
+    "otsb_trust_badges_1_pYDEQh",
+    "faq_help_1",
+    "social_shop_feed_1"
   ]
 }
