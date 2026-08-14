@@ -10,13 +10,15 @@ if (!customElements.get('embroidery-personalizer')) {
         this.productTitle = this.dataset.productTitle;
         this.nameVariantId = this.dataset.nameVariantId || null;
         this.namePriceFormatted = this.dataset.namePriceFormatted || '';
-        this.iconRangeFormatted = this.dataset.iconRangeFormatted || '';
         this.namePlacement = this.dataset.namePlacement || '';
-        this.iconPlacement = this.dataset.iconPlacement || '';
+        this.imageVariantId = this.dataset.imageVariantId || null;
+        this.imagePriceFormatted = this.dataset.imagePriceFormatted || '';
+        this.imagePlacement = this.dataset.imagePlacement || '';
+        this.bothPriceFormatted = this.dataset.bothPriceFormatted || '';
         this.typeLabels = {
           name: this.dataset.typeNameLabel || 'Name',
-          icon: this.dataset.typeIconLabel || 'Icon',
-          both: this.dataset.typeBothLabel || 'Name + Icon',
+          image: this.dataset.typeImageLabel || 'Image',
+          both: this.dataset.typeBothLabel || 'Name + Image',
         };
         this.activeTab = this.dataset.activeTab || 'name';
 
@@ -27,8 +29,6 @@ if (!customElements.get('embroidery-personalizer')) {
         this.swatches = Array.from(this.querySelectorAll('[data-embroidery-color]'));
         this.fontOptions = Array.from(this.querySelectorAll('[data-embroidery-font]'));
         this.fontLabelEl = this.querySelector('[data-embroidery-font-label]');
-        this.iconButtons = Array.from(this.querySelectorAll('[data-embroidery-icon-id]'));
-        this.iconLabelEl = this.querySelector('[data-embroidery-icon-label]');
         this.resetButton = this.querySelector('[data-embroidery-reset]');
         this.submitButton = this.querySelector('[data-embroidery-submit]');
         this.submitLabelEl = this.querySelector('[data-embroidery-submit-label]');
@@ -39,10 +39,9 @@ if (!customElements.get('embroidery-personalizer')) {
         this.namePlacementInput = this.querySelector('[data-embroidery-name-placement-input]');
         this.colorInput = this.querySelector('[data-embroidery-color-input]');
         this.fontInput = this.querySelector('[data-embroidery-font-input]');
-        this.iconPlacementInput = this.querySelector('[data-embroidery-icon-placement-input]');
-        this.iconInput = this.querySelector('[data-embroidery-icon-input]');
-        this.uploadInput = this.querySelector('[data-embroidery-custom-icon-input]');
-        this.uploadFilenameEl = this.querySelector('[data-embroidery-custom-icon-filename]');
+        this.imagePlacementInput = this.querySelector('[data-embroidery-image-placement-input]');
+        this.uploadInput = this.querySelector('[data-embroidery-custom-image-input]');
+        this.uploadFilenameEl = this.querySelector('[data-embroidery-custom-image-filename]');
         this.specialRequestInput = this.querySelector('[data-embroidery-special-request]');
 
         const wrapper = document.querySelector(`[data-embroidery-section="${this.sectionId}"]`);
@@ -51,6 +50,7 @@ if (!customElements.get('embroidery-personalizer')) {
         this.summaryEl = wrapper.querySelector('[data-embroidery-summary]');
         this.summaryPriceEl = wrapper.querySelector('[data-embroidery-summary-price]');
         this.summaryPreviewTextEl = wrapper.querySelector('[data-embroidery-summary-preview-text]');
+        this.summaryPreviewImageEl = wrapper.querySelector('[data-embroidery-summary-preview-image]');
         this.summaryDetailsEl = wrapper.querySelector('[data-embroidery-summary-details]');
         this.editButton = wrapper.querySelector('[data-embroidery-edit]');
         this.deleteButton = wrapper.querySelector('[data-embroidery-delete]');
@@ -58,15 +58,13 @@ if (!customElements.get('embroidery-personalizer')) {
 
         this.cartEl = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
 
-        this.selectedIcon = null;
         this.customIconFile = null;
-        this.iconNoneLabel = this.iconLabelEl ? this.iconLabelEl.textContent : '';
+        this.customIconPreviewUrl = null;
         this.staged = null;
 
         this.tabs.forEach((tab) => tab.addEventListener('click', () => this.setActiveTab(tab.dataset.embroideryTab)));
         this.swatches.forEach((swatch) => swatch.addEventListener('click', this.onSwatchClick.bind(this)));
         this.fontOptions.forEach((option) => option.addEventListener('click', this.onFontClick.bind(this)));
-        this.iconButtons.forEach((button) => button.addEventListener('click', this.onIconClick.bind(this)));
         if (this.uploadInput) this.uploadInput.addEventListener('change', this.onUploadChange.bind(this));
         if (this.resetButton) this.resetButton.addEventListener('click', () => this.resetFields());
         if (this.submitButton) this.submitButton.addEventListener('click', this.onStage.bind(this));
@@ -83,6 +81,7 @@ if (!customElements.get('embroidery-personalizer')) {
 
       disconnectedCallback() {
         if (this.unsubscribeCartUpdate) this.unsubscribeCartUpdate();
+        if (this.customIconPreviewUrl) URL.revokeObjectURL(this.customIconPreviewUrl);
       }
 
       setActiveTab(tab) {
@@ -95,11 +94,11 @@ if (!customElements.get('embroidery-personalizer')) {
         });
 
         const includesName = tab === 'name' || tab === 'both';
-        const includesIcon = tab === 'icon' || tab === 'both';
+        const includesImage = tab === 'image' || tab === 'both';
 
         this.groups.forEach((group) => {
           const groupName = group.dataset.embroideryGroup;
-          const visible = groupName === 'name' ? includesName : includesIcon;
+          const visible = groupName === 'name' ? includesName : includesImage;
           group.hidden = !visible;
         });
 
@@ -109,10 +108,9 @@ if (!customElements.get('embroidery-personalizer')) {
         if (this.colorInput) this.colorInput.disabled = !includesName;
         if (this.fontInput) this.fontInput.disabled = !includesName;
 
-        if (this.iconPlacementInput) this.iconPlacementInput.disabled = !includesIcon;
-        if (this.iconInput) this.iconInput.disabled = !includesIcon;
-        if (this.uploadInput) this.uploadInput.disabled = !includesIcon;
-        if (this.specialRequestInput) this.specialRequestInput.disabled = !includesIcon;
+        if (this.imagePlacementInput) this.imagePlacementInput.disabled = !includesImage;
+        if (this.uploadInput) this.uploadInput.disabled = !includesImage;
+        if (this.specialRequestInput) this.specialRequestInput.disabled = !includesImage;
 
         this.hideError();
         this.updatePrice();
@@ -129,34 +127,16 @@ if (!customElements.get('embroidery-personalizer')) {
         if (this.fontLabelEl) this.fontLabelEl.textContent = event.currentTarget.dataset.embroideryFont;
       }
 
-      onIconClick(event) {
-        const button = event.currentTarget;
-        const alreadySelected = button.getAttribute('aria-pressed') === 'true';
-        this.iconButtons.forEach((el) => el.setAttribute('aria-pressed', 'false'));
-
-        if (alreadySelected) {
-          this.selectedIcon = null;
-          if (this.iconLabelEl) this.iconLabelEl.textContent = this.iconNoneLabel;
-        } else {
-          button.setAttribute('aria-pressed', 'true');
-          const image = button.querySelector('img');
-          this.selectedIcon = {
-            id: button.dataset.embroideryIconId,
-            label: button.dataset.embroideryIconLabel,
-            priceFormatted: button.dataset.embroideryIconPriceFormatted,
-            bothPriceFormatted: button.dataset.embroideryIconBothPriceFormatted || button.dataset.embroideryIconPriceFormatted,
-            imageSrc: image ? image.currentSrc || image.src : null,
-          };
-          if (this.iconLabelEl) this.iconLabelEl.textContent = this.selectedIcon.label;
-        }
-
-        this.hideError();
-        this.updatePrice();
-      }
-
       onUploadChange(event) {
         const file = event.target.files && event.target.files[0];
         this.customIconFile = file || null;
+
+        if (this.customIconPreviewUrl) {
+          URL.revokeObjectURL(this.customIconPreviewUrl);
+          this.customIconPreviewUrl = null;
+        }
+        if (this.customIconFile) this.customIconPreviewUrl = URL.createObjectURL(this.customIconFile);
+
         if (this.uploadFilenameEl) {
           if (file) {
             this.uploadFilenameEl.textContent = file.name;
@@ -166,6 +146,8 @@ if (!customElements.get('embroidery-personalizer')) {
             this.uploadFilenameEl.hidden = true;
           }
         }
+
+        this.hideError();
       }
 
       updatePrice() {
@@ -173,16 +155,10 @@ if (!customElements.get('embroidery-personalizer')) {
 
         if (this.activeTab === 'name') {
           this.priceEl.textContent = this.namePriceFormatted;
-          return;
-        }
-
-        if (this.activeTab === 'icon') {
-          this.priceEl.textContent = this.selectedIcon ? this.selectedIcon.priceFormatted : this.iconRangeFormatted;
-          return;
-        }
-
-        if (this.activeTab === 'both') {
-          this.priceEl.textContent = this.selectedIcon ? this.selectedIcon.bothPriceFormatted : this.namePriceFormatted;
+        } else if (this.activeTab === 'image') {
+          this.priceEl.textContent = this.imagePriceFormatted;
+        } else if (this.activeTab === 'both') {
+          this.priceEl.textContent = this.bothPriceFormatted;
         }
       }
 
@@ -194,8 +170,8 @@ if (!customElements.get('embroidery-personalizer')) {
         return this.activeTab === 'name' || this.activeTab === 'both';
       }
 
-      getIncludesIcon() {
-        return this.activeTab === 'icon' || this.activeTab === 'both';
+      getIncludesImage() {
+        return this.activeTab === 'image' || this.activeTab === 'both';
       }
 
       validate() {
@@ -204,8 +180,8 @@ if (!customElements.get('embroidery-personalizer')) {
           return window.embroideryStrings.nameRequiredError;
         }
 
-        if (this.getIncludesIcon() && !this.selectedIcon) {
-          return window.embroideryStrings.selectIconError;
+        if (this.getIncludesImage() && !this.customIconFile) {
+          return window.embroideryStrings.uploadImageError;
         }
 
         return null;
@@ -221,13 +197,12 @@ if (!customElements.get('embroidery-personalizer')) {
         this.fontOptions.forEach((el, index) => el.setAttribute('aria-pressed', index === 0 ? 'true' : 'false'));
         if (this.fontLabelEl && this.fontOptions[0]) this.fontLabelEl.textContent = this.fontOptions[0].dataset.embroideryFont;
 
-        this.iconButtons.forEach((el) => el.setAttribute('aria-pressed', 'false'));
-        this.selectedIcon = null;
-        if (this.iconLabelEl) this.iconLabelEl.textContent = this.iconNoneLabel;
-        if (this.iconInput) this.iconInput.value = '';
-
         if (this.uploadInput) this.uploadInput.value = '';
         this.customIconFile = null;
+        if (this.customIconPreviewUrl) {
+          URL.revokeObjectURL(this.customIconPreviewUrl);
+          this.customIconPreviewUrl = null;
+        }
         if (this.uploadFilenameEl) {
           this.uploadFilenameEl.textContent = '';
           this.uploadFilenameEl.hidden = true;
@@ -259,14 +234,13 @@ if (!customElements.get('embroidery-personalizer')) {
           if (isActive && this.fontLabelEl) this.fontLabelEl.textContent = el.dataset.embroideryFont;
         });
 
-        this.iconButtons.forEach((el) => {
-          const isActive = this.staged.icon && el.dataset.embroideryIconId === this.staged.icon.id;
-          el.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-        });
-        this.selectedIcon = this.staged.icon;
-        if (this.iconLabelEl) this.iconLabelEl.textContent = this.staged.icon ? this.staged.icon.label : this.iconNoneLabel;
-
         this.customIconFile = this.staged.customIconFile;
+        if (this.customIconPreviewUrl) {
+          URL.revokeObjectURL(this.customIconPreviewUrl);
+          this.customIconPreviewUrl = null;
+        }
+        if (this.customIconFile) this.customIconPreviewUrl = URL.createObjectURL(this.customIconFile);
+
         if (this.uploadFilenameEl) {
           if (this.customIconFile) {
             this.uploadFilenameEl.textContent = this.customIconFile.name;
@@ -323,7 +297,7 @@ if (!customElements.get('embroidery-personalizer')) {
         this.hideError();
 
         const includesName = this.getIncludesName();
-        const includesIcon = this.getIncludesIcon();
+        const includesImage = this.getIncludesImage();
         const activeSwatch = this.swatches.find((el) => el.getAttribute('aria-pressed') === 'true');
         const activeFont = this.fontOptions.find((el) => el.getAttribute('aria-pressed') === 'true');
         const designationValue = this.designationInput ? this.designationInput.value.trim() : '';
@@ -337,9 +311,9 @@ if (!customElements.get('embroidery-personalizer')) {
           colorName: includesName && activeSwatch ? activeSwatch.dataset.embroideryColorName : '',
           font: includesName && activeFont ? activeFont.dataset.embroideryFont : '',
           fontStyle: includesName && activeFont ? activeFont.dataset.embroideryFontStyle : '',
-          icon: includesIcon ? this.selectedIcon : null,
-          customIconFile: includesIcon ? this.customIconFile : null,
-          specialRequest: includesIcon ? specialRequestValue : '',
+          customIconFile: includesImage ? this.customIconFile : null,
+          customIconPreviewUrl: includesImage ? this.customIconPreviewUrl : null,
+          specialRequest: includesImage ? specialRequestValue : '',
           priceFormatted: this.currentPriceFormatted(),
         };
 
@@ -355,13 +329,9 @@ if (!customElements.get('embroidery-personalizer')) {
           this.fontInput.disabled = !includesName;
         }
 
-        if (this.iconPlacementInput) this.iconPlacementInput.disabled = !includesIcon;
-        if (this.iconInput) {
-          this.iconInput.value = this.staged.icon ? this.staged.icon.label : '';
-          this.iconInput.disabled = !includesIcon;
-        }
-        if (this.uploadInput) this.uploadInput.disabled = !includesIcon || !this.staged.customIconFile;
-        if (this.specialRequestInput) this.specialRequestInput.disabled = !includesIcon || specialRequestValue === '';
+        if (this.imagePlacementInput) this.imagePlacementInput.disabled = !includesImage;
+        if (this.uploadInput) this.uploadInput.disabled = !includesImage || !this.staged.customIconFile;
+        if (this.specialRequestInput) this.specialRequestInput.disabled = !includesImage || specialRequestValue === '';
 
         this.renderSummary();
         this.hideWrapError();
@@ -375,8 +345,17 @@ if (!customElements.get('embroidery-personalizer')) {
 
         if (this.summaryPriceEl) this.summaryPriceEl.textContent = `+ ${this.staged.priceFormatted}`;
 
+        if (this.summaryPreviewImageEl) {
+          if (this.staged.customIconPreviewUrl) {
+            this.summaryPreviewImageEl.src = this.staged.customIconPreviewUrl;
+            this.summaryPreviewImageEl.hidden = false;
+          } else {
+            this.summaryPreviewImageEl.hidden = true;
+          }
+        }
+
         if (this.summaryPreviewTextEl) {
-          this.summaryPreviewTextEl.textContent = this.staged.name || (this.staged.icon ? this.staged.icon.label : '');
+          this.summaryPreviewTextEl.textContent = this.staged.name || '';
           this.summaryPreviewTextEl.style.color = this.staged.color || '';
           this.summaryPreviewTextEl.classList.toggle(
             'embroidery-summary__preview-text--script',
@@ -394,11 +373,10 @@ if (!customElements.get('embroidery-personalizer')) {
           if (this.staged.colorName) rows.push([window.embroideryStrings.colorLabel, this.staged.colorName]);
           if (this.staged.font) rows.push([window.embroideryStrings.fontLabel, this.staged.font]);
 
-          if (this.staged.icon) {
-            rows.push([window.embroideryStrings.iconLabel, this.staged.icon.label]);
-            rows.push([window.embroideryStrings.iconPlacementLabel, this.iconPlacement]);
+          if (this.staged.customIconFile) {
+            rows.push([window.embroideryStrings.customImageLabel, this.staged.customIconFile.name]);
+            rows.push([window.embroideryStrings.imagePlacementLabel, this.imagePlacement]);
           }
-          if (this.staged.customIconFile) rows.push([window.embroideryStrings.customIconLabel, this.staged.customIconFile.name]);
           if (this.staged.specialRequest) rows.push([window.embroideryStrings.specialRequestsLabel, this.staged.specialRequest]);
 
           this.summaryDetailsEl.innerHTML = rows
@@ -447,14 +425,14 @@ if (!customElements.get('embroidery-personalizer')) {
           });
         }
 
-        if ((staged.tab === 'icon' || staged.tab === 'both') && staged.icon) {
+        if ((staged.tab === 'image' || staged.tab === 'both') && staged.customIconFile && this.imageVariantId) {
           items.push({
-            id: staged.icon.id,
+            id: this.imageVariantId,
             quantity,
             properties: {
               'Personalization For': this.productTitle,
-              Type: 'Icon Embroidery',
-              Icon: staged.icon.label,
+              Type: 'Image Embroidery',
+              Image: staged.customIconFile.name,
             },
           });
         }

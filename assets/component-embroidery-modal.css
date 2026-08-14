@@ -226,43 +226,6 @@
   border-width: 0.2rem;
 }
 
-.embroidery-icon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(4.4rem, 1fr));
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.embroidery-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4.4rem;
-  height: 4.4rem;
-  padding: 0;
-  border: 0.1rem solid transparent;
-  border-radius: 0.4rem;
-  background: rgba(var(--color-foreground), 0.85);
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.embroidery-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.embroidery-icon__placeholder {
-  color: rgb(var(--color-background));
-  font-weight: 600;
-}
-
-.embroidery-icon[aria-pressed='true'] {
-  border-color: rgb(var(--color-foreground));
-  box-shadow: 0 0 0 0.2rem rgb(var(--color-background)), 0 0 0 0.4rem rgb(var(--color-foreground));
-}
-
 .embroidery-upload {
   display: flex;
   flex-wrap: wrap;
@@ -412,6 +375,7 @@
 }
 
 .embroidery-summary__preview {
+  position: relative;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -425,11 +389,22 @@
   overflow: hidden;
 }
 
+.embroidery-summary__preview img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .embroidery-summary__preview span {
+  position: relative;
+  z-index: 1;
   color: #ffffff;
   font-weight: 700;
   font-size: 1.4rem;
   word-break: break-word;
+  text-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.6);
 }
 
 .embroidery-summary__preview-text--script {

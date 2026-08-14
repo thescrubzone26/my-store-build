@@ -500,23 +500,21 @@
                 {%- when 'embroidery' -%}
                   {%- liquid
                     assign embroidery_name_product = block.settings.name_product
-                    assign embroidery_icon_product = block.settings.icon_product
+                    assign embroidery_image_product = block.settings.image_product
                     assign embroidery_name_available = false
-                    assign embroidery_icon_available = false
+                    assign embroidery_image_available = false
 
                     if embroidery_name_product != blank and embroidery_name_product.selected_or_first_available_variant != null
                       assign embroidery_name_available = true
                       assign embroidery_name_variant = embroidery_name_product.selected_or_first_available_variant
                     endif
 
-                    if embroidery_icon_product != blank
-                      assign embroidery_icon_variants = embroidery_icon_product.variants | where: 'available', true
-                      if embroidery_icon_variants.size > 0
-                        assign embroidery_icon_available = true
-                      endif
+                    if embroidery_image_product != blank and embroidery_image_product.selected_or_first_available_variant != null
+                      assign embroidery_image_available = true
+                      assign embroidery_image_variant = embroidery_image_product.selected_or_first_available_variant
                     endif
                   -%}
-                  {%- if embroidery_name_available or embroidery_icon_available -%}
+                  {%- if embroidery_name_available or embroidery_image_available -%}
                     {%- render 'embroidery-modal',
                       block: block,
                       product: product,
@@ -525,9 +523,9 @@
                       name_product: embroidery_name_product,
                       name_available: embroidery_name_available,
                       name_variant: embroidery_name_variant,
-                      icon_product: embroidery_icon_product,
-                      icon_variants: embroidery_icon_variants,
-                      icon_available: embroidery_icon_available
+                      image_product: embroidery_image_product,
+                      image_variant: embroidery_image_variant,
+                      image_available: embroidery_image_available
                     -%}
                   {%- endif -%}
                 {%- when 'buy_buttons' -%}
@@ -994,9 +992,9 @@
         },
         {
           "type": "text",
-          "id": "tab_icon_label",
-          "label": "\"Add Icon\" tab label",
-          "default": "Add Icon"
+          "id": "tab_image_label",
+          "label": "\"Add Image\" tab label",
+          "default": "Add Image"
         },
         {
           "type": "text",
@@ -1025,28 +1023,22 @@
         },
         {
           "type": "header",
-          "content": "Icon personalization"
+          "content": "Image personalization"
         },
         {
           "type": "paragraph",
-          "content": "Pick the product whose variants become the icon catalog. Each variant's image is shown as the icon, its option value as the icon label, and its price as the icon's cost. Add, remove, price, or re-image icons directly on this product in your Shopify admin."
+          "content": "Pick the product that's charged when a customer uploads their own image to embroider. Its price is shown to customers and its variant is added to the cart alongside the main product. Manage the price from this product in your Shopify admin."
         },
         {
           "type": "product",
-          "id": "icon_product",
-          "label": "Icon personalization product"
+          "id": "image_product",
+          "label": "Image personalization product"
         },
         {
           "type": "text",
-          "id": "icon_placement_label",
-          "label": "Icon placement label",
+          "id": "image_placement_label",
+          "label": "Image placement label",
           "default": "Right Chest"
-        },
-        {
-          "type": "checkbox",
-          "id": "enable_custom_icon_upload",
-          "label": "Allow customers to upload a custom icon",
-          "default": true
         },
         {
           "type": "text",

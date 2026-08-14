@@ -1,7 +1,7 @@
 {% comment %}
   Renders the "Add Embroidery" trigger, its staged-summary card, and the personalization modal.
 
-  The modal only stages a customization (name/designation/icon/upload/etc). Nothing is added to
+  The modal only stages a customization (name/designation/image upload/etc). Nothing is added to
   the cart until the customer clicks the product's real "Add to cart" button - the staged values
   are attached to that submission via inputs associated to product_form_id through the `form`
   attribute, and the matching priced personalization product/variant is added as a second cart
@@ -15,9 +15,9 @@
   - name_product: {Object} product charged for name embroidery (or blank)
   - name_available: {Boolean} whether name_product has a purchasable variant
   - name_variant: {Object} name_product's selected_or_first_available_variant
-  - icon_product: {Object} product whose variants make up the icon catalog (or blank)
-  - icon_variants: {Array} icon_product's available variants
-  - icon_available: {Boolean} whether icon_variants has at least one entry
+  - image_product: {Object} product charged for custom-image embroidery (or blank)
+  - image_available: {Boolean} whether image_product has a purchasable variant
+  - image_variant: {Object} image_product's selected_or_first_available_variant
 
   Usage:
   {% render 'embroidery-modal', block: block, product: product, section: section, product_form_id: product_form_id, ... %}
@@ -26,7 +26,7 @@
 {%- liquid
   assign embroidery_default_tab = 'name'
   unless name_available
-    assign embroidery_default_tab = 'icon'
+    assign embroidery_default_tab = 'image'
   endunless
 
   assign embroidery_colors = block.settings.color_1 | append: '|' | append: block.settings.color_2 | append: '|' | append: block.settings.color_3 | append: '|' | append: block.settings.color_4 | append: '|' | append: block.settings.color_5
@@ -34,12 +34,6 @@
 
   assign embroidery_color_names = block.settings.color_1_name | append: '|' | append: block.settings.color_2_name | append: '|' | append: block.settings.color_3_name | append: '|' | append: block.settings.color_4_name | append: '|' | append: block.settings.color_5_name
   assign embroidery_color_names = embroidery_color_names | split: '|'
-
-  if icon_available
-    assign embroidery_icon_prices = icon_variants | map: 'price' | sort
-    assign embroidery_icon_min_price = embroidery_icon_prices | first
-    assign embroidery_icon_max_price = embroidery_icon_prices | last
-  endif
 -%}
 
 <div class="embroidery-wrap" data-embroidery-section="{{ section.id }}">
@@ -78,6 +72,7 @@
         data-embroidery-summary-preview
         style="--embroidery-preview-bg: {{ block.settings.preview_background_color }};"
       >
+        <img data-embroidery-summary-preview-image alt="" hidden>
         <span data-embroidery-summary-preview-text></span>
       </div>
       <dl class="embroidery-summary__details" data-embroidery-summary-details></dl>
@@ -102,16 +97,20 @@
       data-product-title="{{ product.title | escape }}"
       data-active-tab="{{ embroidery_default_tab }}"
       data-type-name-label="{{ 'products.product.embroidery.type_name' | t }}"
-      data-type-icon-label="{{ 'products.product.embroidery.type_icon' | t }}"
+      data-type-image-label="{{ 'products.product.embroidery.type_image' | t }}"
       data-type-both-label="{{ 'products.product.embroidery.type_both' | t }}"
       {% if name_available %}
         data-name-variant-id="{{ name_variant.id }}"
         data-name-price-formatted="{{ name_variant.price | money }}"
         data-name-placement="{{ block.settings.name_placement_label | escape }}"
       {% endif %}
-      {% if icon_available %}
-        data-icon-range-formatted="{{ embroidery_icon_min_price | money }}{% if embroidery_icon_min_price != embroidery_icon_max_price %} - {{ embroidery_icon_max_price | money }}{% endif %}"
-        data-icon-placement="{{ block.settings.icon_placement_label | escape }}"
+      {% if image_available %}
+        data-image-variant-id="{{ image_variant.id }}"
+        data-image-price-formatted="{{ image_variant.price | money }}"
+        data-image-placement="{{ block.settings.image_placement_label | escape }}"
+        {% if name_available %}
+          data-both-price-formatted="{{ image_variant.price | plus: name_variant.price | money }}"
+        {% endif %}
       {% endif %}
     >
       <div class="embroidery-modal__header">
@@ -138,18 +137,18 @@
             {{ block.settings.tab_name_label }}
           </button>
         {%- endif -%}
-        {%- if icon_available -%}
+        {%- if image_available -%}
           <button
             type="button"
-            class="embroidery-modal__tab{% if embroidery_default_tab == 'icon' %} embroidery-modal__tab--active{% endif %}"
+            class="embroidery-modal__tab{% if embroidery_default_tab == 'image' %} embroidery-modal__tab--active{% endif %}"
             role="tab"
-            data-embroidery-tab="icon"
-            aria-selected="{% if embroidery_default_tab == 'icon' %}true{% else %}false{% endif %}"
+            data-embroidery-tab="image"
+            aria-selected="{% if embroidery_default_tab == 'image' %}true{% else %}false{% endif %}"
           >
-            {{ block.settings.tab_icon_label }}
+            {{ block.settings.tab_image_label }}
           </button>
         {%- endif -%}
-        {%- if name_available and icon_available -%}
+        {%- if name_available and image_available -%}
           <button
             type="button"
             class="embroidery-modal__tab"
@@ -165,12 +164,8 @@
       <p class="embroidery-modal__price" data-embroidery-price>
         {%- if embroidery_default_tab == 'name' and name_available -%}
           {{- name_variant.price | money -}}
-        {%- elsif icon_available -%}
-          {%- if embroidery_icon_min_price == embroidery_icon_max_price -%}
-            {{- embroidery_icon_min_price | money -}}
-          {%- else -%}
-            {{- embroidery_icon_min_price | money }} - {{ embroidery_icon_max_price | money -}}
-          {%- endif -%}
+        {%- elsif image_available -%}
+          {{- image_variant.price | money -}}
         {%- endif -%}
       </p>
 
@@ -275,93 +270,57 @@
           </div>
         {%- endif -%}
 
-        {%- if icon_available -%}
-          <div class="embroidery-field-group" data-embroidery-group="icon" {% if embroidery_default_tab != 'icon' %}hidden{% endif %}>
+        {%- if image_available -%}
+          <div class="embroidery-field-group" data-embroidery-group="image" {% if embroidery_default_tab != 'image' %}hidden{% endif %}>
             <p class="embroidery-field-group__placement">
-              {{ 'products.product.embroidery.icon_placement' | t }}
-              <strong>{{ block.settings.icon_placement_label }}</strong>
+              {{ 'products.product.embroidery.image_placement' | t }}
+              <strong>{{ block.settings.image_placement_label }}</strong>
             </p>
 
             <input
               type="hidden"
-              name="properties[Icon Placement]"
+              name="properties[Image Placement]"
               form="{{ product_form_id }}"
-              value="{{ block.settings.icon_placement_label }}"
-              data-embroidery-icon-placement-input
-              disabled
-            >
-            <input
-              type="hidden"
-              name="properties[Icon]"
-              form="{{ product_form_id }}"
-              data-embroidery-icon-input
+              value="{{ block.settings.image_placement_label }}"
+              data-embroidery-image-placement-input
               disabled
             >
 
-            <p class="embroidery-field-group__label">
-              {{ 'products.product.embroidery.icon' | t }}
-              <strong data-embroidery-icon-label>{{ 'products.product.embroidery.icon_none_selected' | t }}</strong>
-            </p>
-            <div class="embroidery-icon-grid" role="radiogroup" aria-label="{{ 'products.product.embroidery.icon' | t }}">
-              {%- for variant in icon_variants -%}
-                <button
-                  type="button"
-                  class="embroidery-icon"
-                  data-embroidery-icon-id="{{ variant.id }}"
-                  data-embroidery-icon-label="{{ variant.title | escape }}"
-                  data-embroidery-icon-price-formatted="{{ variant.price | money }}"
-                  {% if name_available %}
-                    data-embroidery-icon-both-price-formatted="{{ variant.price | plus: name_variant.price | money }}"
-                  {% endif %}
-                  aria-pressed="false"
-                  aria-label="{{ variant.title | escape }}"
-                >
-                  {%- if variant.featured_image -%}
-                    {{ variant.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80,160', sizes: '40px' }}
-                  {%- else -%}
-                    <span class="embroidery-icon__placeholder">{{ variant.title | slice: 0, 1 }}</span>
-                  {%- endif -%}
-                </button>
-              {%- endfor -%}
+            <div class="embroidery-upload">
+              <label class="embroidery-upload__button" for="EmbroideryUpload-{{ section.id }}">
+                <span class="svg-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 16V4M12 4L7 9M12 4l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                {{ 'products.product.embroidery.upload_image' | t }}
+              </label>
+              <input
+                type="file"
+                id="EmbroideryUpload-{{ section.id }}"
+                name="properties[Custom Image]"
+                form="{{ product_form_id }}"
+                class="visually-hidden"
+                accept="image/*"
+                data-embroidery-custom-image-input
+              >
+              <p class="embroidery-upload__hint">{{ block.settings.upload_max_size_text }}</p>
+              <p class="embroidery-upload__filename" data-embroidery-custom-image-filename hidden></p>
             </div>
 
-            {%- if block.settings.enable_custom_icon_upload -%}
-              <div class="embroidery-upload">
-                <label class="embroidery-upload__button" for="EmbroideryUpload-{{ section.id }}">
-                  <span class="svg-wrapper" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 16V4M12 4L7 9M12 4l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </span>
-                  {{ 'products.product.embroidery.upload_custom_icon' | t }}
-                </label>
-                <input
-                  type="file"
-                  id="EmbroideryUpload-{{ section.id }}"
-                  name="properties[Custom Icon]"
-                  form="{{ product_form_id }}"
-                  class="visually-hidden"
-                  accept="image/*"
-                  data-embroidery-custom-icon-input
-                >
-                <p class="embroidery-upload__hint">{{ block.settings.upload_max_size_text }}</p>
-                <p class="embroidery-upload__filename" data-embroidery-custom-icon-filename hidden></p>
-              </div>
-
-              <label class="form__label" for="EmbroiderySpecialRequest-{{ section.id }}">
-                {{ 'products.product.embroidery.special_requests' | t }}
-              </label>
-              <textarea
-                id="EmbroiderySpecialRequest-{{ section.id }}"
-                name="properties[Special Requests]"
-                form="{{ product_form_id }}"
-                class="embroidery-textarea"
-                data-embroidery-special-request
-                rows="3"
-                placeholder="{{ 'products.product.embroidery.special_requests_placeholder' | t }}"
-              ></textarea>
-            {%- endif -%}
+            <label class="form__label" for="EmbroiderySpecialRequest-{{ section.id }}">
+              {{ 'products.product.embroidery.special_requests' | t }}
+            </label>
+            <textarea
+              id="EmbroiderySpecialRequest-{{ section.id }}"
+              name="properties[Special Requests]"
+              form="{{ product_form_id }}"
+              class="embroidery-textarea"
+              data-embroidery-special-request
+              rows="3"
+              placeholder="{{ 'products.product.embroidery.special_requests_placeholder' | t }}"
+            ></textarea>
           </div>
         {%- endif -%}
       </div>
