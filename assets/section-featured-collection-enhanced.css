@@ -1,0 +1,127 @@
+.featured-collection__row {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media screen and (max-width: 989px) {
+  .featured-collection__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.4rem;
+  }
+}
+
+.featured-collection__title-wrapper {
+  flex: 0 0 30%;
+  max-width: 34rem;
+  text-align: left;
+}
+
+@media screen and (max-width: 989px) {
+  .featured-collection__title-wrapper {
+    flex: 1 1 auto;
+    max-width: none;
+    text-align: center;
+  }
+}
+
+.featured-collection__caption {
+  margin: 0 0 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--featured-collection-accent);
+}
+
+.featured-collection__heading {
+  margin: 0 0 1.4rem;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.05;
+  font-size: 3.2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .featured-collection__heading {
+    font-size: 4.2rem;
+  }
+}
+
+.featured-collection__accent {
+  display: block;
+  width: 4.4rem;
+  height: 0.4rem;
+  margin: 0 0 1.6rem;
+  border-radius: 999px;
+  background: var(--featured-collection-accent);
+}
+
+@media screen and (max-width: 989px) {
+  .featured-collection__accent {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.featured-collection__subheading {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  opacity: 0.75;
+}
+
+.featured-collection__slider-wrap {
+  position: relative;
+  flex: 1 1 0%;
+  min-width: 0;
+  padding-right: 3.6rem;
+}
+
+@media screen and (max-width: 989px) {
+  .featured-collection__slider-wrap {
+    padding-right: 0;
+  }
+}
+
+.featured-collection__slider-wrap .slider-buttons {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  margin: 0;
+}
+
+.featured-collection__slider-wrap .slider-button--prev,
+.featured-collection__slider-wrap .slider-counter {
+  display: none;
+}
+
+.featured-collection__slider-wrap .slider-button--next {
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 50%;
+  background: rgb(var(--color-background));
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.18);
+}
+
+@media screen and (max-width: 989px) {
+  .featured-collection__slider-wrap .slider-buttons {
+    position: static;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.6rem;
+  }
+}
+
+a.button.featured-collection__view-all {
+  border-radius: 999px;
+  background: var(--featured-collection-accent);
+  border-color: var(--featured-collection-accent);
+  padding-left: 3rem;
+  padding-right: 3rem;
+}

@@ -24,6 +24,10 @@
   <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{%- if section.settings.use_enhanced_header -%}
+  {{ 'section-featured-collection-enhanced.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -36,6 +40,24 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .featured-collection-{{ section.id }} {
+    --featured-collection-accent: {{ section.settings.accent_color }};
+  }
+
+  {%- if section.settings.tinted_background -%}
+    .featured-collection-{{ section.id }} {
+      background: color-mix(in srgb, var(--featured-collection-accent) 7%, rgb(var(--color-background)));
+      margin: 2.4rem 0;
+      border-radius: 2.4rem;
+    }
+
+    @media screen and (min-width: 750px) {
+      .featured-collection-{{ section.id }} {
+        margin: 4rem 0;
+      }
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 {%- liquid
@@ -65,34 +87,64 @@
 -%}
 
 <div
-  class="color-{{ section.settings.color_scheme }} isolate gradient"
+  class="color-{{ section.settings.color_scheme }} isolate gradient featured-collection-{{ section.id }}"
 >
   <div
     class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
-    <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
-      {%- if section.settings.title != blank -%}
-        <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          {{ section.settings.title }}
-        </h2>
-      {%- endif -%}
-      {%- if section.settings.description != blank
-        or section.settings.show_description
-        and section.settings.collection.description != empty
-      -%}
-        <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          {%- if section.settings.show_description -%}
-            {{ section.settings.collection.description }}
-          {%- else -%}
-            {{ section.settings.description -}}
-          {%- endif %}
-        </div>
-      {%- endif -%}
-    </div>
+    {%- if section.settings.use_enhanced_header -%}
+      <div class="featured-collection__row page-width">
+      <div class="collection__title featured-collection__title-wrapper">
+        {%- if section.settings.caption != blank -%}
+          <p class="featured-collection__caption">{{ section.settings.caption | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="featured-collection__heading inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {{ section.settings.title }}
+          </h2>
+        {%- endif -%}
+        <span class="featured-collection__accent"></span>
+        {%- if section.settings.subheading != blank -%}
+          <p class="featured-collection__subheading">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.description != blank
+          or section.settings.show_description
+          and section.settings.collection.description != empty
+        -%}
+          <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {%- if section.settings.show_description -%}
+              {{ section.settings.collection.description }}
+            {%- else -%}
+              {{ section.settings.description -}}
+            {%- endif %}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
+        {%- if section.settings.title != blank -%}
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {{ section.settings.title }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank
+          or section.settings.show_description
+          and section.settings.collection.description != empty
+        -%}
+          <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {%- if section.settings.show_description -%}
+              {{ section.settings.collection.description }}
+            {%- else -%}
+              {{ section.settings.description -}}
+            {%- endif %}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
 
-    <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <slider-component class="{% if section.settings.use_enhanced_header %}featured-collection__slider-wrap{% else %}slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
         id="Slider-{{ section.id }}"
         data-id="{{ section.id }}"
@@ -197,12 +249,15 @@
         </div>
       {%- endif -%}
     </slider-component>
+      {%- if section.settings.use_enhanced_header -%}
+      </div>
+      {%- endif -%}
 
     {%- if section.settings.show_view_all and more_in_collection -%}
       <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <a
           href="{{ section.settings.collection.url }}"
-          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}{% if section.settings.use_enhanced_header %} featured-collection__view-all{% endif %}"
           aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
         >
           {{ 'sections.featured_collection.view_all' | t }}
@@ -241,7 +296,39 @@
     {
       "type": "header",
       "content": "t:sections.featured-collection.settings.header_text.content"
-    },   
+    },
+    {
+      "type": "checkbox",
+      "id": "use_enhanced_header",
+      "label": "Use styled header",
+      "info": "Replaces the plain heading with a caption, bold italic heading, accent underline and subheading.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "info": "Only shown when \"Use styled header\" is on."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "info": "Only shown when \"Use styled header\" is on."
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#0f2a4a"
+    },
+    {
+      "type": "checkbox",
+      "id": "tinted_background",
+      "label": "Tint section background",
+      "info": "Washes the whole section in a soft tint of the accent color so it reads as its own zone on the page.",
+      "default": false
+    },
     {
       "type": "inline_richtext",
       "id": "title",
