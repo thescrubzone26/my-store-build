@@ -1,0 +1,183 @@
+{{ 'latest-blogs.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign blog = section.settings.blog
+  assign has_posts = false
+  if blog != blank and blog.articles_count > 0
+    assign has_posts = true
+  endif
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="latest-blogs page-width section-{{ section.id }}-padding">
+    <div class="latest-blogs__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.caption != blank -%}
+        <p class="latest-blogs__caption">{{ section.settings.caption | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="latest-blogs__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="latest-blogs__subheading">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="latest-blogs__grid">
+      {%- if has_posts -%}
+        {%- for article in blog.articles limit: 4 -%}
+          <a href="{{ article.url }}" class="latest-blogs__card">
+            <div class="latest-blogs__image">
+              {%- if article.image -%}
+                {{
+                  article.image
+                  | image_url: width: 900
+                  | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, (min-width: 750px) 50vw, 100vw', widths: '300, 450, 600, 750, 900'
+                }}
+              {%- else -%}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+              {%- if section.settings.show_date -%}
+                <span class="latest-blogs__date">{{ article.published_at | date: '%d %b' }}</span>
+              {%- endif -%}
+            </div>
+            <div class="latest-blogs__content">
+              <h3 class="latest-blogs__title">{{ article.title }}</h3>
+              {%- if section.settings.show_excerpt -%}
+                <p class="latest-blogs__excerpt">
+                  {{ article.excerpt_or_content | strip_html | truncatewords: 16 }}
+                </p>
+              {%- endif -%}
+              <span class="latest-blogs__readmore">
+                Read More
+                {{- 'icon-arrow.svg' | inline_asset_content -}}
+              </span>
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          <div class="latest-blogs__card latest-blogs__card--placeholder">
+            <div class="latest-blogs__image">
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            <div class="latest-blogs__content">
+              <h3 class="latest-blogs__title">Blog post title</h3>
+              <p class="latest-blogs__excerpt">Share news, updates, or stories with your customers.</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if has_posts and blog.articles_count > 4 -%}
+      <div class="latest-blogs__view-all">
+        <a href="{{ blog.url }}" class="button">
+          {{ section.settings.view_all_label | escape }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Latest blogs",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "From The Blog"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Latest Stories"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Tips, guides and updates from The Scrub Zone"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show excerpt",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "\"View all\" button label",
+      "default": "View All Posts"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "Latest blogs"
+    }
+  ]
+}
+{% endschema %}

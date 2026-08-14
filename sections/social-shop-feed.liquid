@@ -12,6 +12,11 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .social-feed {
+    --social-feed-crop-top: {{ section.settings.crop_top }}px;
+    --social-feed-window-height: {{ section.settings.window_height }}px;
+  }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
@@ -41,11 +46,13 @@
           {%- for block in section.blocks -%}
             <div class="social-feed__item" {{ block.shopify_attributes }}>
               {%- if block.settings.instagram_url != blank -%}
-                <blockquote
-                  class="instagram-media"
-                  data-instgrm-permalink="{{ block.settings.instagram_url }}"
-                  data-instgrm-version="14"
-                ></blockquote>
+                <div class="social-feed__frame">
+                  <blockquote
+                    class="instagram-media"
+                    data-instgrm-permalink="{{ block.settings.instagram_url }}"
+                    data-instgrm-version="14"
+                  ></blockquote>
+                </div>
               {%- else -%}
                 <div class="social-feed__placeholder">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
               {%- endif -%}
@@ -111,6 +118,28 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "crop_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Crop Instagram header",
+      "info": "Hides Instagram's profile/header row above each video. Increase if a sliver of the header still shows; decrease if too much video gets cropped.",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "window_height",
+      "min": 150,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Video window height",
+      "info": "How tall each video preview is. Instagram's likes/comment/share row and \"View more on Instagram\" link sit below this and are always hidden. Decrease if any of that footer still peeks through; increase to show more of the video.",
+      "default": 280
     },
     {
       "type": "header",

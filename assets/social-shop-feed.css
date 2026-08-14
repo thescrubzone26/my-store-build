@@ -129,10 +129,23 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
-.social-feed__item .instagram-media {
-  margin: 0 !important;
+/* Crops Instagram's cross-origin embed iframe to hide its header/footer chrome: the iframe is forced taller than any realistic post so its footer always lands below this fixed-height window, and shifted up to hide the header above it. */
+.social-feed__frame {
+  position: relative;
+  overflow: hidden;
+  height: var(--social-feed-window-height, 280px);
+}
+
+.social-feed__frame .instagram-media,
+.social-feed__frame iframe {
+  position: absolute !important;
+  top: calc(-1 * var(--social-feed-crop-top, 64px)) !important;
+  left: 0 !important;
   width: 100% !important;
   min-width: 100% !important;
+  height: 900px !important;
+  margin: 0 !important;
+  border: none !important;
 }
 
 .social-feed__placeholder {

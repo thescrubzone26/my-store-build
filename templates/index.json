@@ -160,7 +160,7 @@
         "display_on": "all",
         "container_full_width": false,
         "custom_width": true,
-        "section_width": 880,
+        "section_width": 800,
         "sub_heading": "",
         "sub_heading_size": "smi-text-sub",
         "heading": "Shop by Categories",
@@ -176,7 +176,7 @@
         "arrow_style": "arr-square-style-4",
         "sticky_page_dot_style": "line-dot",
         "auto_rotate_slides": true,
-        "change_slides_every": 5,
+        "change_slides_every": 6,
         "number_of_columns_on_desktop": "5",
         "number_of_columns_on_mobile": "2",
         "slider_overflow": false,
@@ -367,6 +367,114 @@
         "padding_bottom": 36
       }
     },
+    "1785932032d04d1c5c": {
+      "type": "collection-collage",
+      "blocks": {
+        "tile_lifestyle": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/Collage_11.jpg",
+            "content_type": "none",
+            "heading": "",
+            "subtext": "",
+            "button_label": "",
+            "button_link": "",
+            "icon_1": "leaf",
+            "icon_label_1": "",
+            "icon_2": "recycle",
+            "icon_label_2": "",
+            "icon_3": "washing",
+            "icon_label_3": "",
+            "panel_color": "#eef4fa",
+            "text_color": "#13253f",
+            "accent_color": "#d6127f",
+            "button_color": "#d6127f",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "tile_women": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/Collage_2.jpg",
+            "content_type": "heading_button",
+            "heading": "Women's Collection",
+            "subtext": "Flattering fits, functional details & all-day comfort made for women who care.",
+            "button_label": "Shop Women",
+            "button_link": "/collections/women",
+            "icon_1": "leaf",
+            "icon_label_1": "",
+            "icon_2": "recycle",
+            "icon_label_2": "",
+            "icon_3": "washing",
+            "icon_label_3": "",
+            "panel_color": "#dbe9f5",
+            "text_color": "#13253f",
+            "accent_color": "#d6127f",
+            "button_color": "#d6127f",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "tile_men": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/Collage_3_600_x_600_px.jpg",
+            "content_type": "heading_button",
+            "heading": "Men's Collection",
+            "subtext": "Modern designs, durable fabrics & unrestricted movement for every shift.",
+            "button_label": "Shop Men",
+            "button_link": "/collections/men",
+            "icon_1": "leaf",
+            "icon_label_1": "",
+            "icon_2": "recycle",
+            "icon_label_2": "",
+            "icon_3": "washing",
+            "icon_label_3": "",
+            "panel_color": "#ede4d3",
+            "text_color": "#13253f",
+            "accent_color": "#1f6b52",
+            "button_color": "#1f6b52",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "tile_benefits": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/Collage_3_600_x_600_px_1.jpg",
+            "content_type": "icon_list",
+            "heading": "",
+            "subtext": "",
+            "button_label": "",
+            "button_link": "",
+            "icon_1": "leaf",
+            "icon_label_1": "All-Day Comfort",
+            "icon_2": "recycle",
+            "icon_label_2": "Moisture Wicking",
+            "icon_3": "washing",
+            "icon_label_3": "Easy Care & Long Lasting",
+            "panel_color": "#f5f5f5",
+            "text_color": "#13253f",
+            "accent_color": "#d6127f",
+            "button_color": "#d6127f",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "tile_lifestyle",
+        "tile_women",
+        "tile_men",
+        "tile_benefits"
+      ],
+      "name": "Collection collage",
+      "settings": {
+        "heading": "",
+        "color_scheme": "scheme-1",
+        "gap": 12,
+        "border_radius": 16,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -393,79 +501,6 @@
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
-      }
-    },
-    "1785932032d04d1c5c": {
-      "type": "collection-collage",
-      "blocks": {
-        "tile_lifestyle": {
-          "type": "tile",
-          "settings": {
-            "image": "shopify://shop_images/Collage_11.jpg",
-            "content_type": "none"
-          }
-        },
-        "tile_women": {
-          "type": "tile",
-          "settings": {
-            "image": "shopify://shop_images/Collage_2.jpg",
-            "content_type": "heading_button",
-            "heading": "Women's Collection",
-            "subtext": "Flattering fits, functional details & all-day comfort made for women who care.",
-            "button_label": "Shop Women",
-            "button_link": "/collections/women",
-            "panel_color": "#dbe9f5",
-            "text_color": "#13253f",
-            "accent_color": "#d6127f",
-            "button_color": "#d6127f",
-            "button_text_color": "#ffffff"
-          }
-        },
-        "tile_men": {
-          "type": "tile",
-          "settings": {
-            "image": "shopify://shop_images/Collage_3_600_x_600_px.jpg",
-            "content_type": "heading_button",
-            "heading": "Men's Collection",
-            "subtext": "Modern designs, durable fabrics & unrestricted movement for every shift.",
-            "button_label": "Shop Men",
-            "button_link": "/collections/men",
-            "panel_color": "#ede4d3",
-            "text_color": "#13253f",
-            "accent_color": "#1f6b52",
-            "button_color": "#1f6b52",
-            "button_text_color": "#ffffff"
-          }
-        },
-        "tile_benefits": {
-          "type": "tile",
-          "settings": {
-            "image": "shopify://shop_images/Collage_3_600_x_600_px_1.jpg",
-            "content_type": "icon_list",
-            "icon_1": "leaf",
-            "icon_label_1": "All-Day Comfort",
-            "icon_2": "recycle",
-            "icon_label_2": "Moisture Wicking",
-            "icon_3": "washing",
-            "icon_label_3": "Easy Care & Long Lasting",
-            "panel_color": "#f5f5f5",
-            "text_color": "#13253f"
-          }
-        }
-      },
-      "block_order": [
-        "tile_lifestyle",
-        "tile_women",
-        "tile_men",
-        "tile_benefits"
-      ],
-      "name": "Collection collage",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "gap": 12,
-        "border_radius": 16,
-        "padding_top": 48,
-        "padding_bottom": 48
       }
     },
     "17859341091118b1a1": {
@@ -500,54 +535,57 @@
       "disabled": true,
       "settings": {}
     },
-    "otsb_trust_badges_1_pYDEQh": {
-      "type": "trust-badges",
+    "social_shop_feed_1": {
+      "type": "social-shop-feed",
       "blocks": {
-        "badge_shipping": {
-          "type": "badge",
+        "post_1": {
+          "type": "post",
           "settings": {
-            "icon": "plane",
-            "heading": "Fast Shipping",
-            "text": "Free shipping across India on every order."
+            "instagram_url": "https://www.instagram.com/p/DcBSSuyI8lx/"
           }
         },
-        "badge_payment": {
-          "type": "badge",
+        "post_2": {
+          "type": "post",
           "settings": {
-            "icon": "lock",
-            "heading": "Secure Payment",
-            "text": "Pay safely with all major cards, UPI & wallets."
+            "instagram_url": "https://www.instagram.com/p/Db3AIc8Ipml/"
           }
         },
-        "badge_confidence": {
-          "type": "badge",
+        "post_3": {
+          "type": "post",
           "settings": {
-            "icon": "star",
-            "heading": "Shop with Confidence",
-            "text": "Quality-checked scrubs trusted by healthcare professionals."
+            "instagram_url": "https://www.instagram.com/p/DbarjoPxeay/"
           }
         },
-        "badge_returns": {
-          "type": "badge",
+        "post_4": {
+          "type": "post",
           "settings": {
-            "icon": "return",
-            "heading": "Easy Returns",
-            "text": "30-day hassle-free returns and exchanges."
+            "instagram_url": "https://www.instagram.com/p/DbYH344RVpM/"
+          }
+        },
+        "post_5": {
+          "type": "post",
+          "settings": {
+            "instagram_url": "https://www.instagram.com/p/Dbk6aQbx5X1/"
           }
         }
       },
       "block_order": [
-        "badge_shipping",
-        "badge_payment",
-        "badge_confidence",
-        "badge_returns"
+        "post_1",
+        "post_2",
+        "post_3",
+        "post_4",
+        "post_5"
       ],
-      "name": "Trust badges",
+      "name": "Social shop feed",
       "settings": {
-        "color_scheme": "scheme-1",
-        "accent_color": "#0f2a4a",
-        "padding_top": 48,
-        "padding_bottom": 48
+        "caption": "Social Shop Feed",
+        "heading": "Shop Our Social Looks",
+        "subheading": "See how our community wears The Scrub Zone",
+        "follow_label": "@the.sccrubbzone Follow",
+        "follow_link": "https://www.instagram.com/the.sccrubbzone/",
+        "color_scheme": "scheme-2",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "faq_help_1": {
@@ -613,26 +651,70 @@
         "padding_bottom": 60
       }
     },
-    "social_shop_feed_1": {
-      "type": "social-shop-feed",
+    "otsb_trust_badges_1_pYDEQh": {
+      "type": "trust-badges",
       "blocks": {
-        "post_1": { "type": "post", "settings": { "instagram_url": "" } },
-        "post_2": { "type": "post", "settings": { "instagram_url": "" } },
-        "post_3": { "type": "post", "settings": { "instagram_url": "" } },
-        "post_4": { "type": "post", "settings": { "instagram_url": "" } },
-        "post_5": { "type": "post", "settings": { "instagram_url": "" } }
+        "badge_shipping": {
+          "type": "badge",
+          "settings": {
+            "icon": "plane",
+            "heading": "Fast Shipping",
+            "text": "Free shipping across India on every order."
+          }
+        },
+        "badge_payment": {
+          "type": "badge",
+          "settings": {
+            "icon": "lock",
+            "heading": "Secure Payment",
+            "text": "Pay safely with all major cards, UPI & wallets."
+          }
+        },
+        "badge_confidence": {
+          "type": "badge",
+          "settings": {
+            "icon": "star",
+            "heading": "Shop with Confidence",
+            "text": "Quality-checked scrubs trusted by healthcare professionals."
+          }
+        },
+        "badge_returns": {
+          "type": "badge",
+          "settings": {
+            "icon": "return",
+            "heading": "Easy Returns",
+            "text": "30-day hassle-free returns and exchanges."
+          }
+        }
       },
-      "block_order": ["post_1", "post_2", "post_3", "post_4", "post_5"],
-      "name": "Social shop feed",
+      "block_order": [
+        "badge_shipping",
+        "badge_payment",
+        "badge_confidence",
+        "badge_returns"
+      ],
+      "name": "Trust badges",
       "settings": {
-        "caption": "Social Shop Feed",
-        "heading": "Shop Our Social Looks",
-        "subheading": "See how our community wears The Scrub Zone",
-        "follow_label": "@the.sccrubbzone Follow",
-        "follow_link": "https://www.instagram.com/the.sccrubbzone/",
-        "color_scheme": "scheme-2",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "color_scheme": "scheme-c436a992-c52f-4dac-b84f-354d1cc3b6d9",
+        "accent_color": "#0f2a4a",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "latest_blogs_1": {
+      "type": "latest-blogs",
+      "name": "Latest blogs",
+      "settings": {
+        "blog": "news",
+        "caption": "From The Blog",
+        "heading": "Latest Stories",
+        "subheading": "Tips, guides and updates from The Scrub Zone",
+        "show_date": true,
+        "show_excerpt": true,
+        "view_all_label": "View All Posts",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     }
   },
@@ -643,11 +725,12 @@
     "smi_divider_1_1_3qUq4K",
     "featured_collection_yJTDCP",
     "featured_collection_iEjEnR",
-    "featured_collection",
     "1785932032d04d1c5c",
+    "featured_collection",
     "17859341091118b1a1",
-    "otsb_trust_badges_1_pYDEQh",
+    "social_shop_feed_1",
     "faq_help_1",
-    "social_shop_feed_1"
+    "latest_blogs_1",
+    "otsb_trust_badges_1_pYDEQh"
   ]
 }
