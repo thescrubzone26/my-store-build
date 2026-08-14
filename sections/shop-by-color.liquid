@@ -1,0 +1,176 @@
+{{ 'component-shop-by-color.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'shop-by-color.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #shop-by-color-{{ section.id }} .shop-by-color__item {
+    max-width: {% if section.settings.swatch_size == 'small' %}9rem{% elsif section.settings.swatch_size == 'large' %}15rem{% else %}12rem{% endif %};
+  }
+{%- endstyle -%}
+
+<div
+  id="shop-by-color-{{ section.id }}"
+  class="shop-by-color color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding"
+>
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="shop-by-color__heading {{ section.settings.heading_size }}">
+        {{- section.settings.heading -}}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <shop-by-color-carousel class="shop-by-color__carousel">
+        <div class="shop-by-color__row">
+          <button type="button" class="shop-by-color__arrow shop-by-color__arrow--prev" data-shop-by-color-prev aria-label="{{ 'general.slider.previous_slide' | t }}">
+            <span class="shop-by-color__arrow-icon">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+          </button>
+
+          <ul class="shop-by-color__list" role="list" data-shop-by-color-list>
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign swatch_label = block.settings.label
+                if swatch_label == blank
+                  assign swatch_label = block.settings.collection.title
+                endif
+                assign swatch_url = block.settings.collection.url | default: '#'
+              -%}
+              <li class="shop-by-color__item" {{ block.shopify_attributes }}>
+                <a href="{{ swatch_url }}" class="shop-by-color__link">
+                  <span
+                    class="shop-by-color__swatch"
+                    style="background-color: {{ block.settings.swatch_color }};"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="shop-by-color__label">{{ swatch_label | escape }}</span>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+
+          <button type="button" class="shop-by-color__arrow shop-by-color__arrow--next" data-shop-by-color-next aria-label="{{ 'general.slider.next_slide' | t }}">
+            <span class="shop-by-color__arrow-icon">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+          </button>
+        </div>
+
+        <div class="shop-by-color__dots" data-shop-by-color-dots role="tablist" aria-label="{{ 'general.slider.name' | t }}"></div>
+      </shop-by-color-carousel>
+    {%- elsif request.design_mode -%}
+      <p class="shop-by-color__placeholder">Add a "Color" block to get started.</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shop by color",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Color"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "select",
+      "id": "swatch_size",
+      "label": "Swatch size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "color",
+      "name": "Color",
+      "settings": [
+        {
+          "type": "color",
+          "id": "swatch_color",
+          "label": "Swatch color",
+          "default": "#111111"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "info": "Leave blank to use the linked collection's title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Linked collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by color",
+      "blocks": [
+        { "type": "color" },
+        { "type": "color" },
+        { "type": "color" }
+      ]
+    }
+  ]
+}
+{% endschema %}

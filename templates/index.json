@@ -189,6 +189,72 @@
         "margin_sides_mobile": 0
       }
     },
+    "shop_by_color_1": {
+      "type": "shop-by-color",
+      "blocks": {
+        "color_black": {
+          "type": "color",
+          "settings": { "swatch_color": "#000000", "label": "", "collection": "black" }
+        },
+        "color_deep_blue": {
+          "type": "color",
+          "settings": { "swatch_color": "#1B2A55", "label": "Deep Blue", "collection": "black-copy" }
+        },
+        "color_delicate_blue": {
+          "type": "color",
+          "settings": { "swatch_color": "#B8D3EC", "label": "", "collection": "deep-blue-copy" }
+        },
+        "color_electric_blue": {
+          "type": "color",
+          "settings": { "swatch_color": "#1450D8", "label": "", "collection": "delicate-blue-copy" }
+        },
+        "color_garnet": {
+          "type": "color",
+          "settings": { "swatch_color": "#5B0F1F", "label": "Garnet", "collection": "electric-blue-copy" }
+        },
+        "color_gray": {
+          "type": "color",
+          "settings": { "swatch_color": "#3F3F3F", "label": "Gray", "collection": "garnet-copy" }
+        },
+        "color_hot_pink": {
+          "type": "color",
+          "settings": { "swatch_color": "#D6127F", "label": "Hot Pink", "collection": "gray-copy" }
+        },
+        "color_light_gray": {
+          "type": "color",
+          "settings": { "swatch_color": "#CFCFD1", "label": "Light Gray", "collection": "hot-pink-copy" }
+        },
+        "color_olive": {
+          "type": "color",
+          "settings": { "swatch_color": "#6B7A3B", "label": "Olive", "collection": "light-gray-copy" }
+        },
+        "color_teal": {
+          "type": "color",
+          "settings": { "swatch_color": "#0E7C7B", "label": "Teal", "collection": "flex" }
+        }
+      },
+      "block_order": [
+        "color_black",
+        "color_deep_blue",
+        "color_delicate_blue",
+        "color_electric_blue",
+        "color_garnet",
+        "color_gray",
+        "color_hot_pink",
+        "color_light_gray",
+        "color_olive",
+        "color_teal"
+      ],
+      "name": "Shop by color",
+      "settings": {
+        "heading": "Shop by Color",
+        "heading_size": "h1",
+        "swatch_size": "medium",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 44
+      }
+    },
     "smi_divider_1_1_3qUq4K": {
       "type": "smi-divider-1-1",
       "name": "✧Divider 1-1",
@@ -474,6 +540,7 @@
   "order": [
     "slideshow_XrELEF",
     "smi_collection_list_1_7_8PAryE",
+    "shop_by_color_1",
     "smi_divider_1_1_3qUq4K",
     "featured_collection_yJTDCP",
     "featured_collection_iEjEnR",
