@@ -24,14 +24,14 @@
           "type": "link_list",
           "settings": {
             "heading": "Collections",
-            "menu": "footer"
+            "menu": "collections"
           }
         },
         "link_list_quick_links": {
           "type": "link_list",
           "settings": {
             "heading": "Quick Links",
-            "menu": "main-menu"
+            "menu": "footer"
           }
         }
       },
