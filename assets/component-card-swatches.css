@@ -1,21 +1,52 @@
 .card__color-swatches {
-  --swatch--size: 2rem;
+  position: relative;
+  z-index: 2;
   display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin: 0.6rem 0;
+  gap: 0.7rem;
+  margin: 1rem 0 0;
+  padding: 0 0.2rem;
 }
 
 .card__color-swatch {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
   padding: 0.2rem;
   border: 0.1rem solid transparent;
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
   line-height: 0;
+  transition: border-color 0.15s ease;
+}
+
+.card__color-swatch .swatch {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.card__color-swatch:hover {
+  border-color: rgba(var(--color-foreground), 0.25);
 }
 
 .card__color-swatch[aria-pressed='true'] {
   border-color: rgb(var(--color-foreground));
+}
+
+.card__color-swatch--more {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  border-radius: 50%;
+  background: rgba(var(--color-foreground), 0.04);
+  color: rgba(var(--color-foreground), 0.75);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: default;
 }

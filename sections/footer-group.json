@@ -19,10 +19,26 @@
           "settings": {
             "show_social": true
           }
+        },
+        "link_list_collections": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Collections",
+            "menu": "footer"
+          }
+        },
+        "link_list_quick_links": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick Links",
+            "menu": "main-menu"
+          }
         }
       },
       "block_order": [
-        "brand_information_UynQEw"
+        "brand_information_UynQEw",
+        "link_list_collections",
+        "link_list_quick_links"
       ],
       "settings": {
         "color_scheme": "scheme-2",

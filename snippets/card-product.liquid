@@ -30,6 +30,7 @@
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
   {{ 'component-card-swatches.css' | asset_url | stylesheet_tag }}
+  {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'card-swatches.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
@@ -169,6 +170,72 @@
           </div>
         </div>
         <div class="card__content">
+          {%- if card_color_option -%}
+            {%- liquid
+              assign selected_color_value = null
+              if card_color_option.position == 1
+                assign selected_color_value = card_product.selected_or_first_available_variant.option1
+              elsif card_color_option.position == 2
+                assign selected_color_value = card_product.selected_or_first_available_variant.option2
+              elsif card_color_option.position == 3
+                assign selected_color_value = card_product.selected_or_first_available_variant.option3
+              endif
+
+              assign swatch_visible_limit = 5
+              assign swatch_extra_count = card_color_option.values.size | minus: swatch_visible_limit
+            -%}
+            <product-card-swatches class="card__color-swatches" aria-label="{{ card_color_option.name | escape }}">
+              {%- for color_value in card_color_option.values limit: swatch_visible_limit -%}
+                {%- liquid
+                  assign color_value_string = color_value | append: ''
+
+                  assign swatch_variants = null
+                  if card_color_option.position == 1
+                    assign swatch_variants = card_product.variants | where: 'option1', color_value_string
+                  elsif card_color_option.position == 2
+                    assign swatch_variants = card_product.variants | where: 'option2', color_value_string
+                  elsif card_color_option.position == 3
+                    assign swatch_variants = card_product.variants | where: 'option3', color_value_string
+                  endif
+
+                  assign swatch_variant = null
+                  if swatch_variants
+                    assign imaged_swatch_variants = swatch_variants | where: 'featured_image'
+                    assign imaged_available_swatch_variants = imaged_swatch_variants | where: 'available', true
+                    assign available_swatch_variants = swatch_variants | where: 'available', true
+
+                    if imaged_available_swatch_variants.size > 0
+                      assign swatch_variant = imaged_available_swatch_variants.first
+                    elsif imaged_swatch_variants.size > 0
+                      assign swatch_variant = imaged_swatch_variants.first
+                    elsif available_swatch_variants.size > 0
+                      assign swatch_variant = available_swatch_variants.first
+                    else
+                      assign swatch_variant = swatch_variants.first
+                    endif
+                  endif
+                -%}
+                {%- if swatch_variant -%}
+                  <button
+                    type="button"
+                    class="card__color-swatch"
+                    data-card-swatch
+                    data-variant-url="{{ swatch_variant.url }}"
+                    {% if swatch_variant.featured_image %}
+                      data-variant-image="{{ swatch_variant.featured_image | image_url: width: 533 }}"
+                    {% endif %}
+                    aria-label="{{ color_value_string | escape }}"
+                    aria-pressed="{% if color_value_string == selected_color_value %}true{% else %}false{% endif %}"
+                  >
+                    {%- render 'swatch', swatch: color_value.swatch, shape: 'circle' -%}
+                  </button>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if swatch_extra_count > 0 -%}
+                <span class="card__color-swatch card__color-swatch--more" aria-hidden="true">+{{ swatch_extra_count }}</span>
+              {%- endif -%}
+            </product-card-swatches>
+          {%- endif -%}
           <div class="card__information">
             <h3
               class="card__heading{% if card_image or settings.card_style == 'standard' %} h5{% endif %}"
@@ -185,66 +252,6 @@
                 {{ card_product.title | escape }}{% if title_suffix %} — {{ title_suffix | escape }}{% endif %}
               </a>
             </h3>
-            {%- if card_color_option -%}
-              {%- liquid
-                assign selected_color_value = null
-                if card_color_option.position == 1
-                  assign selected_color_value = card_product.selected_or_first_available_variant.option1
-                elsif card_color_option.position == 2
-                  assign selected_color_value = card_product.selected_or_first_available_variant.option2
-                elsif card_color_option.position == 3
-                  assign selected_color_value = card_product.selected_or_first_available_variant.option3
-                endif
-              -%}
-              <product-card-swatches class="card__color-swatches" aria-label="{{ card_color_option.name | escape }}">
-                {%- for color_value in card_color_option.values -%}
-                  {%- liquid
-                    assign color_value_string = color_value | append: ''
-
-                    assign swatch_variants = null
-                    if card_color_option.position == 1
-                      assign swatch_variants = card_product.variants | where: 'option1', color_value_string
-                    elsif card_color_option.position == 2
-                      assign swatch_variants = card_product.variants | where: 'option2', color_value_string
-                    elsif card_color_option.position == 3
-                      assign swatch_variants = card_product.variants | where: 'option3', color_value_string
-                    endif
-
-                    assign swatch_variant = null
-                    if swatch_variants
-                      assign imaged_swatch_variants = swatch_variants | where: 'featured_image'
-                      assign imaged_available_swatch_variants = imaged_swatch_variants | where: 'available', true
-                      assign available_swatch_variants = swatch_variants | where: 'available', true
-
-                      if imaged_available_swatch_variants.size > 0
-                        assign swatch_variant = imaged_available_swatch_variants.first
-                      elsif imaged_swatch_variants.size > 0
-                        assign swatch_variant = imaged_swatch_variants.first
-                      elsif available_swatch_variants.size > 0
-                        assign swatch_variant = available_swatch_variants.first
-                      else
-                        assign swatch_variant = swatch_variants.first
-                      endif
-                    endif
-                  -%}
-                  {%- if swatch_variant -%}
-                    <button
-                      type="button"
-                      class="card__color-swatch"
-                      data-card-swatch
-                      data-variant-url="{{ swatch_variant.url }}"
-                      {% if swatch_variant.featured_image %}
-                        data-variant-image="{{ swatch_variant.featured_image | image_url: width: 533 }}"
-                      {% endif %}
-                      aria-label="{{ color_value_string | escape }}"
-                      aria-pressed="{% if color_value_string == selected_color_value %}true{% else %}false{% endif %}"
-                    >
-                      {%- render 'swatch', swatch: color_value.swatch, shape: 'circle' -%}
-                    </button>
-                  {%- endif -%}
-                {%- endfor -%}
-              </product-card-swatches>
-            {%- endif -%}
             <div class="card-information">
               {%- if show_vendor -%}
                 <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>

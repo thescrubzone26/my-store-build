@@ -161,7 +161,7 @@
         "container_full_width": false,
         "custom_width": true,
         "section_width": 880,
-        "sub_heading": "THE ESSENTIALS",
+        "sub_heading": "",
         "sub_heading_size": "smi-text-sub",
         "heading": "Shop by categories",
         "heading_tags": "h2",
@@ -181,8 +181,8 @@
         "number_of_columns_on_mobile": "2",
         "slider_overflow": false,
         "color_scheme": "scheme_1",
-        "padding_top": 34,
-        "padding_bottom": 50,
+        "padding_top": 20,
+        "padding_bottom": 20,
         "padding_top_mobile": 50,
         "padding_bottom_mobile": 50,
         "margin_sides": 0,
@@ -194,43 +194,83 @@
       "blocks": {
         "color_black": {
           "type": "color",
-          "settings": { "swatch_color": "#000000", "label": "", "collection": "black" }
+          "settings": {
+            "swatch_color": "#000000",
+            "label": "",
+            "collection": "black"
+          }
         },
         "color_deep_blue": {
           "type": "color",
-          "settings": { "swatch_color": "#1B2A55", "label": "Deep Blue", "collection": "black-copy" }
+          "settings": {
+            "swatch_color": "#1d2141",
+            "label": "Deep Blue",
+            "collection": "deep-blue"
+          }
         },
         "color_delicate_blue": {
           "type": "color",
-          "settings": { "swatch_color": "#B8D3EC", "label": "", "collection": "deep-blue-copy" }
+          "settings": {
+            "swatch_color": "#b8d3ec",
+            "label": "",
+            "collection": "delicate-blue"
+          }
         },
         "color_electric_blue": {
           "type": "color",
-          "settings": { "swatch_color": "#1450D8", "label": "", "collection": "delicate-blue-copy" }
+          "settings": {
+            "swatch_color": "#1450d8",
+            "label": "",
+            "collection": "electric-blue"
+          }
         },
         "color_garnet": {
           "type": "color",
-          "settings": { "swatch_color": "#5B0F1F", "label": "Garnet", "collection": "electric-blue-copy" }
+          "settings": {
+            "swatch_color": "#5b0f1f",
+            "label": "Garnet",
+            "collection": "garnet"
+          }
         },
         "color_gray": {
           "type": "color",
-          "settings": { "swatch_color": "#3F3F3F", "label": "Gray", "collection": "garnet-copy" }
+          "settings": {
+            "swatch_color": "#3f3f3f",
+            "label": "Gray",
+            "collection": "gray"
+          }
         },
         "color_hot_pink": {
           "type": "color",
-          "settings": { "swatch_color": "#D6127F", "label": "Hot Pink", "collection": "gray-copy" }
+          "settings": {
+            "swatch_color": "#d6127f",
+            "label": "Hot Pink",
+            "collection": "hot-pink"
+          }
         },
         "color_light_gray": {
           "type": "color",
-          "settings": { "swatch_color": "#CFCFD1", "label": "Light Gray", "collection": "hot-pink-copy" }
+          "settings": {
+            "swatch_color": "#cfcfd1",
+            "label": "Light Gray",
+            "collection": "light-gray"
+          }
         },
         "color_olive": {
           "type": "color",
-          "settings": { "swatch_color": "#6B7A3B", "label": "Olive", "collection": "light-gray-copy" }
+          "settings": {
+            "swatch_color": "#1f2d2c",
+            "label": "Olive",
+            "collection": "olive"
+          }
         },
         "color_teal": {
           "type": "color",
-          "settings": { "swatch_color": "#0E7C7B", "label": "Teal", "collection": "flex" }
+          "settings": {
+            "swatch_color": "#053e4e",
+            "label": "Teal",
+            "collection": "teal"
+          }
         }
       },
       "block_order": [
@@ -248,11 +288,11 @@
       "name": "Shop by color",
       "settings": {
         "heading": "Shop by Color",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "swatch_size": "medium",
         "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 44
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     },
     "smi_divider_1_1_3qUq4K": {
@@ -285,7 +325,7 @@
         "full_width": true,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": false,
@@ -314,7 +354,7 @@
         "full_width": true,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-c436a992-c52f-4dac-b84f-354d1cc3b6d9",
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": false,
@@ -330,7 +370,7 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "all",
+        "collection": "all-product",
         "products_to_show": 10,
         "title": "Featured products",
         "heading_size": "h2",
