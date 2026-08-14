@@ -27,6 +27,8 @@
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+  {{ 'component-card-swatches.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'card-swatches.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -39,6 +41,13 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+
+    assign card_color_option = null
+    for card_option in card_product.options_with_values
+      if card_option.name == 'Color' and card_option.values.size > 1
+        assign card_color_option = card_option
+      endif
+    endfor
   -%}
 
   <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
@@ -162,6 +171,48 @@
                 {{ card_product.title | escape }}
               </a>
             </h3>
+            {%- if card_color_option -%}
+              {%- liquid
+                assign color_option_key = 'option' | append: card_color_option.position
+                assign selected_color_value = card_product.selected_or_first_available_variant[color_option_key]
+              -%}
+              <product-card-swatches class="card__color-swatches" aria-label="{{ card_color_option.name | escape }}">
+                {%- for color_value in card_color_option.values -%}
+                  {%- liquid
+                    assign swatch_variant = null
+                    for variant in card_product.variants
+                      if variant[color_option_key] == color_value.value and variant.available
+                        assign swatch_variant = variant
+                        break
+                      endif
+                    endfor
+                    unless swatch_variant
+                      for variant in card_product.variants
+                        if variant[color_option_key] == color_value.value
+                          assign swatch_variant = variant
+                          break
+                        endif
+                      endfor
+                    endunless
+                  -%}
+                  {%- if swatch_variant -%}
+                    <button
+                      type="button"
+                      class="card__color-swatch"
+                      data-card-swatch
+                      data-variant-url="{{ swatch_variant.url }}"
+                      {% if swatch_variant.featured_image %}
+                        data-variant-image="{{ swatch_variant.featured_image | image_url: width: 533 }}"
+                      {% endif %}
+                      aria-label="{{ color_value.value | escape }}"
+                      aria-pressed="{% if color_value.value == selected_color_value %}true{% else %}false{% endif %}"
+                    >
+                      {%- render 'swatch', swatch: color_value.swatch, shape: 'circle' -%}
+                    </button>
+                  {%- endif -%}
+                {%- endfor -%}
+              </product-card-swatches>
+            {%- endif -%}
             <div class="card-information">
               {%- if show_vendor -%}
                 <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
