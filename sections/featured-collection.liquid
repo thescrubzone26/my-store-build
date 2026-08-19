@@ -48,13 +48,13 @@
   {%- if section.settings.tinted_background -%}
     .featured-collection-{{ section.id }} {
       background: color-mix(in srgb, var(--featured-collection-accent) 7%, rgb(var(--color-background)));
-      margin: 2.4rem 0;
+      margin: 1rem 0;
       border-radius: 2.4rem;
     }
 
     @media screen and (min-width: 750px) {
       .featured-collection-{{ section.id }} {
-        margin: 4rem 0;
+        margin: 1.5rem 0;
       }
     }
   {%- endif -%}

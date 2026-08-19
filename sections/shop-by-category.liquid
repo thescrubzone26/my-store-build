@@ -1,0 +1,203 @@
+{{ 'component-shop-by-category.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'shop-by-category.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #shop-by-category-{{ section.id }} {
+    --shop-by-category-accent: {{ section.settings.accent_color }};
+  }
+
+  #shop-by-category-{{ section.id }} .shop-by-category__item {
+    max-width: {% if section.settings.tile_size == 'small' %}10rem{% elsif section.settings.tile_size == 'large' %}16rem{% else %}13rem{% endif %};
+  }
+{%- endstyle -%}
+
+<div
+  id="shop-by-category-{{ section.id }}"
+  class="shop-by-category color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding"
+>
+  <div class="page-width">
+    <div class="shop-by-category__header">
+      {%- if section.settings.caption != blank -%}
+        <p class="shop-by-category__caption">{{ section.settings.caption | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="shop-by-category__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      <span class="shop-by-category__accent"></span>
+      {%- if section.settings.subheading != blank -%}
+        <p class="shop-by-category__subheading">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <shop-by-category-carousel class="shop-by-category__carousel">
+        <div class="shop-by-category__row">
+          <button type="button" class="shop-by-category__arrow shop-by-category__arrow--prev" data-shop-by-category-prev aria-label="{{ 'general.slider.previous_slide' | t }}">
+            <span class="shop-by-category__arrow-icon">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+          </button>
+
+          <ul class="shop-by-category__list" role="list" data-shop-by-category-list>
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign tile_label = block.settings.label
+                if tile_label == blank
+                  assign tile_label = block.settings.collection.title
+                endif
+                assign tile_url = block.settings.collection.url | default: '#'
+                assign tile_image = block.settings.image
+                if tile_image == blank and block.settings.collection != blank
+                  assign tile_image = block.settings.collection.image
+                endif
+              -%}
+              <li class="shop-by-category__item" {{ block.shopify_attributes }}>
+                <a href="{{ tile_url }}" class="shop-by-category__link">
+                  <span class="shop-by-category__media">
+                    {%- if tile_image != blank -%}
+                      {{
+                        tile_image
+                        | image_url: width: 400
+                        | image_tag: loading: 'lazy', sizes: '13rem', widths: '150, 200, 300, 400'
+                      }}
+                    {%- else -%}
+                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                  </span>
+                  <span class="shop-by-category__label">{{ tile_label | escape }}</span>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+
+          <button type="button" class="shop-by-category__arrow shop-by-category__arrow--next" data-shop-by-category-next aria-label="{{ 'general.slider.next_slide' | t }}">
+            <span class="shop-by-category__arrow-icon">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+          </button>
+        </div>
+
+        <div class="shop-by-category__dots" data-shop-by-category-dots role="tablist" aria-label="{{ 'general.slider.name' | t }}"></div>
+      </shop-by-category-carousel>
+    {%- elsif request.design_mode -%}
+      <p class="shop-by-category__placeholder">Add a "Category" block to get started.</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shop by category",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "Shop By"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Categories"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#0f2a4a"
+    },
+    {
+      "type": "select",
+      "id": "tile_size",
+      "label": "Tile size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 44
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Leave blank to use the linked collection's image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "info": "Leave blank to use the linked collection's title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Linked collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by category",
+      "blocks": [
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" }
+      ]
+    }
+  ]
+}
+{% endschema %}

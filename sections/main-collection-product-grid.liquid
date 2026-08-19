@@ -162,21 +162,107 @@
                   if color_explode_collection_handles contains collection.handle
                     assign explode_by_color = true
                   endif
+
+                  assign single_color_target = ''
+                  case collection.handle
+                    when 'black'
+                      assign single_color_target = 'Black'
+                    when 'deep-blue'
+                      assign single_color_target = 'Deep Blue'
+                    when 'delicate-blue'
+                      assign single_color_target = 'Delicate Blue'
+                    when 'electric-blue'
+                      assign single_color_target = 'Electric Blue'
+                    when 'garnet'
+                      assign single_color_target = 'Garnet'
+                    when 'gray'
+                      assign single_color_target = 'Gray'
+                    when 'hot-pink'
+                      assign single_color_target = 'Hot Pink'
+                    when 'light-gray'
+                      assign single_color_target = 'Light Gray'
+                    when 'olive'
+                      assign single_color_target = 'Olive'
+                    when 'teal'
+                      assign single_color_target = 'Teal'
+                  endcase
+                  assign single_color_mode = false
+                  if single_color_target != blank
+                    assign single_color_mode = true
+                  endif
                 -%}
                 {% assign skip_card_product_styles = false %}
                 {% assign rendered_card_count = 0 %}
                 {%- for product in collection.products -%}
                   {%- liquid
                     assign product_color_option = null
-                    if explode_by_color
-                      for grid_option in product.options_with_values
-                        if grid_option.name == 'Color' and grid_option.values.size > 1
-                          assign product_color_option = grid_option
-                        endif
-                      endfor
-                    endif
+                    for grid_option in product.options_with_values
+                      if grid_option.name == 'Color'
+                        assign product_color_option = grid_option
+                      endif
+                    endfor
                   -%}
-                  {%- if product_color_option -%}
+                  {%- if single_color_mode -%}
+                    {%- liquid
+                      assign color_variant = null
+                      if product_color_option
+                        assign color_variants = null
+                        if product_color_option.position == 1
+                          assign color_variants = product.variants | where: 'option1', single_color_target
+                        elsif product_color_option.position == 2
+                          assign color_variants = product.variants | where: 'option2', single_color_target
+                        elsif product_color_option.position == 3
+                          assign color_variants = product.variants | where: 'option3', single_color_target
+                        endif
+
+                        if color_variants
+                          assign imaged_color_variants = color_variants | where: 'featured_image'
+                          assign imaged_available_color_variants = imaged_color_variants | where: 'available', true
+                          assign available_color_variants = color_variants | where: 'available', true
+
+                          if imaged_available_color_variants.size > 0
+                            assign color_variant = imaged_available_color_variants.first
+                          elsif imaged_color_variants.size > 0
+                            assign color_variant = imaged_color_variants.first
+                          elsif available_color_variants.size > 0
+                            assign color_variant = available_color_variants.first
+                          elsif color_variants.size > 0
+                            assign color_variant = color_variants.first
+                          endif
+                        endif
+                      endif
+                    -%}
+                    {%- if color_variant -%}
+                      {% assign lazy_load = false %}
+                      {%- if rendered_card_count > 1 -%}
+                        {%- assign lazy_load = true -%}
+                      {%- endif -%}
+                      <li
+                        class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                        {% if settings.animations_reveal_on_scroll %}
+                          data-cascade
+                          style="--animation-order: {{ rendered_card_count | plus: 1 }};"
+                        {% endif %}
+                      >
+                        {% render 'card-product',
+                          card_product: product,
+                          forced_variant: color_variant,
+                          media_aspect_ratio: section.settings.image_ratio,
+                          image_shape: section.settings.image_shape,
+                          show_secondary_image: section.settings.show_secondary_image,
+                          show_vendor: section.settings.show_vendor,
+                          show_rating: section.settings.show_rating,
+                          lazy_load: lazy_load,
+                          skip_styles: skip_card_product_styles,
+                          quick_add: section.settings.quick_add,
+                          section_id: section.id,
+                          product_view_context: 'collection'
+                        %}
+                      </li>
+                      {%- assign skip_card_product_styles = true -%}
+                      {%- assign rendered_card_count = rendered_card_count | plus: 1 -%}
+                    {%- endif -%}
+                  {%- elsif product_color_option and product_color_option.values.size > 1 and explode_by_color -%}
                     {%- for color_value in product_color_option.values -%}
                       {%- liquid
                         assign color_value_string = color_value | append: ''

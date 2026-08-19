@@ -15,13 +15,13 @@
         "slide_p4RArT": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/The_Scrub_Zone_home_banner_1_3.jpg",
+            "image": "shopify://shop_images/The_Scrub_Zone_Banner_1.jpg",
             "image_overlay_opacity": 0,
             "heading": "Premium Scrubs",
             "heading_size": "h1",
             "subheading": "Designed for healthcare professionals who demand exceptional comfort",
             "button_label": "Shop Premium Scrubs",
-            "link": "",
+            "link": "shopify://collections/all-product",
             "button_style_secondary": false,
             "show_text_box": false,
             "box_align": "middle-left",
@@ -33,37 +33,37 @@
         "slide_K8C9Ua": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/The_Scrub_Zone_home_banner_2.jpg",
+            "image": "shopify://shop_images/Women_Collection_The_Scrub_zone_Website_Banner.jpg",
             "image_overlay_opacity": 0,
             "heading": "Women's Collection",
             "heading_size": "h1",
             "subheading": "Comfort, flexibility, and a flattering fit—perfect for every shift.",
             "button_label": "Shop Women",
-            "link": "",
+            "link": "shopify://collections/women",
             "button_style_secondary": false,
             "show_text_box": false,
             "box_align": "middle-left",
             "text_alignment": "left",
             "text_alignment_mobile": "center",
-            "color_scheme": "scheme-286cc9dc-d6cc-402a-bc9f-5fba0790ed98"
+            "color_scheme": "scheme-1"
           }
         },
         "slide_CPaiqk": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/The_Scrub_Zone_home_banner_3.jpg",
+            "image": "shopify://shop_images/Men_Collection_banner-_the_scrub_zone.jpg",
             "image_overlay_opacity": 0,
             "heading": "Men's Collection",
             "heading_size": "h1",
             "subheading": "Modern, durable, and comfortable scrubs",
             "button_label": "Shop Men",
-            "link": "",
+            "link": "shopify://collections/men",
             "button_style_secondary": false,
             "show_text_box": false,
             "box_align": "middle-left",
             "text_alignment": "left",
             "text_alignment_mobile": "center",
-            "color_scheme": "scheme-286cc9dc-d6cc-402a-bc9f-5fba0790ed98"
+            "color_scheme": "scheme-1"
           }
         }
       },
@@ -85,108 +85,51 @@
       }
     },
     "smi_collection_list_1_7_8PAryE": {
-      "type": "smi-collection-list-1-7",
+      "type": "shop-by-category",
       "blocks": {
-        "collection_G9wcQX": {
-          "type": "collection",
-          "settings": {
-            "collection": "men",
-            "subheading": "",
-            "heading": "",
-            "description": "",
-            "link": "",
-            "button_label": "",
-            "button_style": "text"
-          }
+        "category_men": {
+          "type": "category",
+          "settings": { "collection": "men", "label": "Men" }
         },
-        "collection_6Yj7BF": {
-          "type": "collection",
-          "settings": {
-            "collection": "women",
-            "subheading": "",
-            "heading": "Women",
-            "description": "",
-            "link": "",
-            "button_label": "",
-            "button_style": "text"
-          }
+        "category_women": {
+          "type": "category",
+          "settings": { "collection": "women", "label": "Women" }
         },
-        "collection_zYgmb9": {
-          "type": "collection",
-          "settings": {
-            "collection": "atheleisure",
-            "subheading": "",
-            "heading": "",
-            "description": "",
-            "link": "",
-            "button_label": "",
-            "button_style": "solid"
-          }
+        "category_flex": {
+          "type": "category",
+          "settings": { "collection": "flex", "label": "Flex" }
         },
-        "collection_nMrtxJ": {
-          "type": "collection",
-          "settings": {
-            "collection": "essential",
-            "subheading": "",
-            "heading": "Essential",
-            "description": "",
-            "link": "",
-            "button_label": "",
-            "button_style": "text"
-          }
+        "category_terra": {
+          "type": "category",
+          "settings": { "collection": "terra", "label": "Terra" }
         },
-        "collection_8GRQ8G": {
-          "type": "collection",
-          "settings": {
-            "collection": "flex",
-            "subheading": "",
-            "heading": "Flex",
-            "description": "",
-            "link": "",
-            "button_label": "",
-            "button_style": "text"
-          }
+        "category_atheleisure": {
+          "type": "category",
+          "settings": { "collection": "atheleisure", "label": "Athleisure" }
+        },
+        "category_essential": {
+          "type": "category",
+          "settings": { "collection": "essential", "label": "Essential" }
         }
       },
       "block_order": [
-        "collection_G9wcQX",
-        "collection_6Yj7BF",
-        "collection_zYgmb9",
-        "collection_nMrtxJ",
-        "collection_8GRQ8G"
+        "category_men",
+        "category_women",
+        "category_flex",
+        "category_terra",
+        "category_atheleisure",
+        "category_essential"
       ],
-      "name": "✧Collection list 1-7",
+      "name": "Shop by category",
       "settings": {
-        "display_on": "all",
-        "container_full_width": false,
-        "custom_width": true,
-        "section_width": 800,
-        "sub_heading": "",
-        "sub_heading_size": "smi-text-sub",
+        "caption": "Shop By",
         "heading": "Shop by Categories",
-        "heading_tags": "h2",
-        "heading_size": "smi-h3",
-        "description": "",
-        "description_size": "smi-text-sm",
-        "heading_alignment": "center",
-        "content_alignment": "center",
-        "content_heading_size": "smi-h5",
-        "media_ratio": "auto",
-        "media_shape": "round",
-        "arrow_style": "arr-square-style-4",
-        "sticky_page_dot_style": "line-dot",
-        "auto_rotate_slides": true,
-        "change_slides_every": 6,
-        "number_of_columns_on_desktop": "5",
-        "number_of_columns_on_mobile": "2",
-        "slider_overflow": false,
-        "color_scheme": "scheme_1",
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "padding_top_mobile": 50,
-        "padding_bottom_mobile": 50,
-        "margin_sides": 0,
-        "margin_sides_mobile": 0
+        "subheading": "",
+        "accent_color": "#0f2a4a",
+        "tile_size": "medium",
+        "color_scheme": "scheme-1",
+        "padding_top": 44,
+        "padding_bottom": 44
       }
     },
     "shop_by_color_1": {
@@ -316,10 +259,10 @@
         "collection": "men",
         "products_to_show": 25,
         "use_enhanced_header": true,
-        "tinted_background": true,
         "caption": "MEN'S EDIT",
         "subheading": "Modern designs, durable fabrics & unrestricted movement for every shift.",
         "accent_color": "#1f6b52",
+        "tinted_background": true,
         "title": "Men's Collection",
         "heading_size": "h1",
         "description": "",
@@ -339,8 +282,8 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "featured_collection_iEjEnR": {
@@ -350,10 +293,10 @@
         "collection": "women",
         "products_to_show": 25,
         "use_enhanced_header": true,
-        "tinted_background": true,
         "caption": "WOMEN'S EDIT",
         "subheading": "Flattering fits, functional details & all-day comfort made for women who care.",
         "accent_color": "#d6127f",
+        "tinted_background": true,
         "title": "Women's Collection",
         "heading_size": "h1",
         "description": "",
@@ -373,8 +316,8 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "1785932032d04d1c5c": {
@@ -383,7 +326,7 @@
         "tile_lifestyle": {
           "type": "tile",
           "settings": {
-            "image": "shopify://shop_images/Collage_11.jpg",
+            "image": "shopify://shop_images/The_Scrub_Zone_Image_1.png",
             "content_type": "none",
             "heading": "",
             "subtext": "",
@@ -405,19 +348,19 @@
         "tile_women": {
           "type": "tile",
           "settings": {
-            "image": "shopify://shop_images/Collage_2.jpg",
+            "image": "shopify://shop_images/women_collection-_The_Scrub_zone.png",
             "content_type": "heading_button",
             "heading": "Women's Collection",
             "subtext": "Flattering fits, functional details & all-day comfort made for women who care.",
             "button_label": "Shop Women",
-            "button_link": "/collections/women",
+            "button_link": "shopify://collections/women",
             "icon_1": "leaf",
             "icon_label_1": "",
             "icon_2": "recycle",
             "icon_label_2": "",
             "icon_3": "washing",
             "icon_label_3": "",
-            "panel_color": "#dbe9f5",
+            "panel_color": "#FCEEF6",
             "text_color": "#13253f",
             "accent_color": "#d6127f",
             "button_color": "#d6127f",
@@ -427,19 +370,19 @@
         "tile_men": {
           "type": "tile",
           "settings": {
-            "image": "shopify://shop_images/Collage_3_600_x_600_px.jpg",
+            "image": "shopify://shop_images/Men_Collection-_The_Scrub_Zone.png",
             "content_type": "heading_button",
             "heading": "Men's Collection",
             "subtext": "Modern designs, durable fabrics & unrestricted movement for every shift.",
             "button_label": "Shop Men",
-            "button_link": "/collections/men",
+            "button_link": "shopify://collections/men",
             "icon_1": "leaf",
             "icon_label_1": "",
             "icon_2": "recycle",
             "icon_label_2": "",
             "icon_3": "washing",
             "icon_label_3": "",
-            "panel_color": "#ede4d3",
+            "panel_color": "#EDF5F7",
             "text_color": "#13253f",
             "accent_color": "#1f6b52",
             "button_color": "#1f6b52",
@@ -449,7 +392,7 @@
         "tile_benefits": {
           "type": "tile",
           "settings": {
-            "image": "shopify://shop_images/Collage_3_600_x_600_px_1.jpg",
+            "image": "shopify://shop_images/The_Scrub_zone_Fabric.png",
             "content_type": "icon_list",
             "heading": "",
             "subtext": "",
@@ -490,6 +433,11 @@
       "settings": {
         "collection": "all-product",
         "products_to_show": 10,
+        "use_enhanced_header": false,
+        "caption": "",
+        "subheading": "",
+        "accent_color": "#0f2a4a",
+        "tinted_background": false,
         "title": "Top Selling Products",
         "heading_size": "h2",
         "description": "",
@@ -594,6 +542,8 @@
         "follow_label": "@the.sccrubbzone Follow",
         "follow_link": "https://www.instagram.com/the.sccrubbzone/",
         "color_scheme": "scheme-2",
+        "crop_top": 64,
+        "window_height": 280,
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -661,6 +611,22 @@
         "padding_bottom": 60
       }
     },
+    "latest_blogs_1": {
+      "type": "latest-blogs",
+      "name": "Latest blogs",
+      "settings": {
+        "blog": "news",
+        "caption": "From The Blog",
+        "heading": "Latest Stories",
+        "subheading": "Tips, guides and updates from The Scrub Zone",
+        "show_date": true,
+        "show_excerpt": true,
+        "view_all_label": "View All Posts",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
     "otsb_trust_badges_1_pYDEQh": {
       "type": "trust-badges",
       "blocks": {
@@ -709,22 +675,6 @@
         "accent_color": "#0f2a4a",
         "padding_top": 48,
         "padding_bottom": 48
-      }
-    },
-    "latest_blogs_1": {
-      "type": "latest-blogs",
-      "name": "Latest blogs",
-      "settings": {
-        "blog": "news",
-        "caption": "From The Blog",
-        "heading": "Latest Stories",
-        "subheading": "Tips, guides and updates from The Scrub Zone",
-        "show_date": true,
-        "show_excerpt": true,
-        "view_all_label": "View All Posts",
-        "color_scheme": "scheme-1",
-        "padding_top": 56,
-        "padding_bottom": 56
       }
     }
   },

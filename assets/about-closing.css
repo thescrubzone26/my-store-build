@@ -1,0 +1,42 @@
+.about-closing__body {
+  max-width: 70rem;
+  margin: 0 auto 2.4rem;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.about-closing__body p {
+  margin: 0 0 1.2rem;
+}
+
+.about-closing__body p:last-child {
+  margin-bottom: 0;
+}
+
+.about-closing__tagline {
+  margin: 0 auto 2rem;
+  max-width: 60rem;
+  text-align: center;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.3;
+  font-size: 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .about-closing__tagline {
+    font-size: 3.2rem;
+  }
+}
+
+.about-closing__signoff {
+  margin: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}

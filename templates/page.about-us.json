@@ -1,0 +1,115 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "about_hero_1": {
+      "type": "about-hero",
+      "settings": {
+        "caption": "About Us",
+        "heading": "The Scrub Zone",
+        "intro_text": "The Scrub Zone (TSZ) was born from a simple yet powerful belief: the people who spend their lives caring for others deserve workwear that cares for them too.",
+        "color_scheme": "scheme-2",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    },
+    "about_story_1": {
+      "type": "about-story",
+      "settings": {
+        "image_position": "left",
+        "caption": "Our Story",
+        "heading": "Two Doctors. One Mission.",
+        "body": "<p>As medical professionals ourselves, we experienced firsthand the challenges of spending long hours in operating rooms wearing scrubs that were either comfortable or stylish—but rarely both. We knew there had to be a better way.</p><p>That is how two doctors embarked on a journey to create scrubs that are thoughtfully designed in India, for India.</p>",
+        "accent_color": "#16261d",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "about_story_2": {
+      "type": "about-story",
+      "settings": {
+        "image_position": "right",
+        "caption": "Made For India",
+        "heading": "Designed for Every Region",
+        "body": "<p>India is a land of incredible diversity. From humid coastal cities to dry plains, from bustling metros to serene hill stations, every region brings unique climatic conditions and comfort requirements. We believed one fabric could never fit every need. So, we reimagined medical workwear with a range of carefully selected fabrics that cater to different geographies, work environments, and personal preferences.</p>",
+        "accent_color": "#0f2a4a",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "about_quote_1": {
+      "type": "about-quote",
+      "settings": {
+        "quote": "But comfort was only the beginning.",
+        "color_scheme": "scheme-footer-premium",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "about_story_3": {
+      "type": "about-story",
+      "settings": {
+        "image_position": "left",
+        "caption": "Beyond Comfort",
+        "heading": "Express Your Individuality",
+        "body": "<p>The new-age Indian healthcare professional expects more from every moment of life. You heal with compassion, lead with confidence, learn relentlessly, and express your individuality. Why should your workwear be any different?</p><p>At TSZ, we celebrate the fact that no two professionals are alike. That's why we offer an extensive palette of colours, multiple fabric options, contemporary cuts, and thoughtfully crafted designs—so you can choose scrubs that reflect not just where you work, but who you are.</p>",
+        "accent_color": "#d6127f",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "about_quote_2": {
+      "type": "about-quote",
+      "settings": {
+        "quote": "Because your identity isn't defined by a single colour or a single style.",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "about_story_4": {
+      "type": "about-story",
+      "settings": {
+        "image_position": "right",
+        "caption": "Every Mood, Every Role",
+        "heading": "Workwear That Moves With You",
+        "body": "<p>Some days call for confidence. Others for calm. Some for boldness, and some for understated elegance. Whatever your mood, your personality, or your role for the day, TSZ has workwear that moves with you.</p><p>Whether you're stepping into an operating theatre, a clinic, a ward, a classroom, or a conference, our scrubs are designed to help you look professional, feel comfortable, and perform at your best.</p>",
+        "accent_color": "#1f6b52",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "about_closing_1": {
+      "type": "about-closing",
+      "settings": {
+        "body": "<p>The Scrub Zone is more than a scrub brand. It's a celebration of every healthcare hero, every specialty, every journey, and every version of you.</p>",
+        "tagline": "For every mood. Every shift. Every challenge. Every superhero you choose to be.",
+        "signoff": "Welcome to The Scrub Zone. Made in India. Made for India. Made for You.",
+        "color_scheme": "scheme-footer-premium",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "about_hero_1",
+    "about_story_1",
+    "about_story_2",
+    "about_quote_1",
+    "about_story_3",
+    "about_quote_2",
+    "about_story_4",
+    "about_closing_1"
+  ]
+}
