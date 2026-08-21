@@ -31,6 +31,7 @@
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
   {{ 'component-card-swatches.css' | asset_url | stylesheet_tag }}
   {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+  {{ 'component-fulfillment-badge.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'card-swatches.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
@@ -165,6 +166,14 @@
                 >
                   {{- 'products.product.on_sale' | t -}}
                 </span>
+              {%- endif -%}
+              {%- liquid
+                assign fulfillment_tags = card_product.tags | join: '|' | downcase
+              -%}
+              {%- if fulfillment_tags contains 'ready to ship' or fulfillment_tags contains 'ready-to-ship' -%}
+                <span class="badge badge--bottom-left badge--ready-to-ship">Ready to Ship</span>
+              {%- elsif fulfillment_tags contains 'custom made' or fulfillment_tags contains 'custom-made' -%}
+                <span class="badge badge--bottom-left badge--custom-made">Custom Made</span>
               {%- endif -%}
             </div>
           </div>
@@ -655,6 +664,14 @@
               >
                 {{- 'products.product.on_sale' | t -}}
               </span>
+            {%- endif -%}
+            {%- liquid
+              assign fulfillment_tags = card_product.tags | join: '|' | downcase
+            -%}
+            {%- if fulfillment_tags contains 'ready to ship' or fulfillment_tags contains 'ready-to-ship' -%}
+              <span class="badge badge--bottom-left badge--ready-to-ship">Ready to Ship</span>
+            {%- elsif fulfillment_tags contains 'custom made' or fulfillment_tags contains 'custom-made' -%}
+              <span class="badge badge--bottom-left badge--custom-made">Custom Made</span>
             {%- endif -%}
           </div>
         </div>

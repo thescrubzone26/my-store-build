@@ -1,0 +1,16 @@
+.badge--ready-to-ship {
+  background-color: #1f6b52;
+  border-color: #1f6b52;
+  color: #ffffff;
+}
+
+.badge--custom-made {
+  background-color: #0f2a4a;
+  border-color: #0f2a4a;
+  color: #ffffff;
+}
+
+.product-fulfillment-badge {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
