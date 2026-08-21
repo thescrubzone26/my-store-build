@@ -9,9 +9,9 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/The_Scrub_Zone_logo.png",
-    "logo_width": 100,
-    "favicon": "shopify://shop_images/The_Scrub_Zone_logo.jpg",
+    "logo": "shopify://shop_images/The_Scrub_Zone_logo_c91772a0-3986-4fe5-885b-f5de7dd9cc3a.png",
+    "logo_width": 120,
+    "favicon": "shopify://shop_images/The_Scrub_Zone_logo_2174df4a-26ee-4362-9054-06deb6cbae68.jpg",
     "type_header_font": "abril_fatface_n4",
     "heading_scale": 100,
     "type_body_font": "anybody_n4",
@@ -141,6 +141,17 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "whatsapp-button": {
+        "type": "whatsapp-button",
+        "settings": {
+          "enable": true,
+          "phone_number": "",
+          "message": "Hi! I have a question about your scrubs.",
+          "label": "Chat with us on WhatsApp",
+          "show_label": false,
+          "position": "right"
+        }
       }
     },
     "content_for_index": [],
@@ -230,13 +241,13 @@
       },
       "scheme-286cc9dc-d6cc-402a-bc9f-5fba0790ed98": {
         "settings": {
-          "background": "#FFFFFF",
+          "background": "#ffffff",
           "background_gradient": "",
-          "text": "#FFFFFF",
+          "text": "#ffffff",
           "button": "#aecc30",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#FFFFFF",
-          "shadow": "#FFFFFF"
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#ffffff"
         }
       },
       "scheme-b46be919-d4cd-4c4c-a954-65376ea03e37": {

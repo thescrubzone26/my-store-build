@@ -73,6 +73,12 @@
             "show_gift_card_recipient": true
           }
         },
+        "custom_liquid_p7pQRb": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<a href=\"https://api.whatsapp.com/send?phone=+918800184739&text=Hi,%0AI%20want%20to%20order%20this%20product:%20{{ product.title }}%0A{{ shop.url }}/products/{{ product.handle }}%0APrice:%20{{ product.price | money_without_trailing_zeros }}\"\n   class=\"btn--whatsapp-order\"\n   target=\"_blank\"\n   rel=\"noopener noreferrer\"\n   aria-label=\"Order {{ product.title }} on WhatsApp\">\n\n  <img src=\"https://cdn.shopify.com/s/files/1/0073/2522/0979/files/whatsapp-icon.png?v=1615793565\"\n       width=\"24\"\n       height=\"24\"\n       alt=\"WhatsApp Icon\"\n       class=\"whatsapp-icon\" />\n  Order on WhatsApp\n\n</a>\n\n<style>\n.btn--whatsapp-order {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  margin-top: 20px;\n  padding: 12px 24px;\n  font-size: 16px;\n  font-weight: 600;\n  color: #fff;\n  background-color: #25d366;\n  border: none;\n  border-radius: 6px;\n  text-align: center;\n  text-decoration: none;\n  text-transform: uppercase;\n  transition: all 0.3s ease;\n  width: 100%;\n  max-width: 480px;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.btn--whatsapp-order:hover {\n  background-color: #128c7e;\n  color: #ffffff;\n  transform: translateY(-2px);\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);\n}\n\n.whatsapp-icon {\n  vertical-align: middle;\n  display: inline-block;\n}\n</style>"
+          }
+        },
         "description": {
           "type": "description",
           "settings": {}
@@ -119,6 +125,7 @@
         "custom_liquid_embroidery",
         "quantity_selector",
         "buy_buttons",
+        "custom_liquid_p7pQRb",
         "description",
         "collapsible_tab_VTUwW9",
         "collapsible_tab_nQrBwN",
