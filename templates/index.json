@@ -89,27 +89,45 @@
       "blocks": {
         "category_men": {
           "type": "category",
-          "settings": { "collection": "men", "label": "Men" }
+          "settings": {
+            "label": "Men",
+            "collection": "men"
+          }
         },
         "category_women": {
           "type": "category",
-          "settings": { "collection": "women", "label": "Women" }
+          "settings": {
+            "label": "Women",
+            "collection": "women"
+          }
         },
         "category_flex": {
           "type": "category",
-          "settings": { "collection": "flex", "label": "Flex" }
+          "settings": {
+            "label": "Flex",
+            "collection": "flex"
+          }
         },
         "category_terra": {
           "type": "category",
-          "settings": { "collection": "terra", "label": "Terra" }
+          "settings": {
+            "label": "Terra",
+            "collection": "terra"
+          }
         },
         "category_atheleisure": {
           "type": "category",
-          "settings": { "collection": "atheleisure", "label": "Athleisure" }
+          "settings": {
+            "label": "Athleisure",
+            "collection": "atheleisure"
+          }
         },
         "category_essential": {
           "type": "category",
-          "settings": { "collection": "essential", "label": "Essential" }
+          "settings": {
+            "label": "Essential",
+            "collection": "essential"
+          }
         }
       },
       "block_order": [
@@ -360,7 +378,7 @@
             "icon_label_2": "",
             "icon_3": "washing",
             "icon_label_3": "",
-            "panel_color": "#FCEEF6",
+            "panel_color": "#fceef6",
             "text_color": "#13253f",
             "accent_color": "#d6127f",
             "button_color": "#d6127f",
@@ -382,7 +400,7 @@
             "icon_label_2": "",
             "icon_3": "washing",
             "icon_label_3": "",
-            "panel_color": "#EDF5F7",
+            "panel_color": "#edf5f7",
             "text_color": "#13253f",
             "accent_color": "#1f6b52",
             "button_color": "#1f6b52",
@@ -431,8 +449,8 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "all-product",
-        "products_to_show": 10,
+        "collection": "top-products",
+        "products_to_show": 25,
         "use_enhanced_header": false,
         "caption": "",
         "subheading": "",

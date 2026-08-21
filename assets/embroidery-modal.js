@@ -14,6 +14,7 @@ if (!customElements.get('embroidery-personalizer')) {
         this.imageVariantId = this.dataset.imageVariantId || null;
         this.imagePriceFormatted = this.dataset.imagePriceFormatted || '';
         this.imagePlacement = this.dataset.imagePlacement || '';
+        this.bothVariantId = this.dataset.bothVariantId || null;
         this.bothPriceFormatted = this.dataset.bothPriceFormatted || '';
         this.typeLabels = {
           name: this.dataset.typeNameLabel || 'Name',
@@ -413,6 +414,19 @@ if (!customElements.get('embroidery-personalizer')) {
 
       buildPersonalizationItems(staged, quantity) {
         const items = [];
+
+        if (staged.tab === 'both' && staged.customIconFile && this.bothVariantId) {
+          items.push({
+            id: this.bothVariantId,
+            quantity,
+            properties: {
+              'Personalization For': this.productTitle,
+              Type: 'Name + Image Embroidery',
+              Image: staged.customIconFile.name,
+            },
+          });
+          return items;
+        }
 
         if ((staged.tab === 'name' || staged.tab === 'both') && this.nameVariantId) {
           items.push({

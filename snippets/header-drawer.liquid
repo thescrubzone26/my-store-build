@@ -5,6 +5,8 @@
   {% render 'header-drawer' %}
 {% endcomment %}
 
+{{ 'component-header-menu-swatch.css' | asset_url | stylesheet_tag }}
+
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <summary
@@ -53,6 +55,33 @@
                             {%- for childlink in link.links -%}
                               <li>
                                 {%- if childlink.links == blank -%}
+                                  {%- liquid
+                                    assign menu_swatch_hex = ''
+                                    case childlink.title
+                                      when 'Baby Pink'
+                                        assign menu_swatch_hex = '#f4c2c2'
+                                      when 'Black'
+                                        assign menu_swatch_hex = '#000000'
+                                      when 'Deep Blue'
+                                        assign menu_swatch_hex = '#1d2141'
+                                      when 'Delicate Blue'
+                                        assign menu_swatch_hex = '#b8d3ec'
+                                      when 'Electric Blue'
+                                        assign menu_swatch_hex = '#1450d8'
+                                      when 'Garnet'
+                                        assign menu_swatch_hex = '#5b0f1f'
+                                      when 'Gray'
+                                        assign menu_swatch_hex = '#3f3f3f'
+                                      when 'Hot Pink'
+                                        assign menu_swatch_hex = '#d6127f'
+                                      when 'Light Gray'
+                                        assign menu_swatch_hex = '#cfcfd1'
+                                      when 'Olive'
+                                        assign menu_swatch_hex = '#1f2d2c'
+                                      when 'Teal'
+                                        assign menu_swatch_hex = '#053e4e'
+                                    endcase
+                                  -%}
                                   <a
                                     id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
                                     href="{{ childlink.url }}"
@@ -61,6 +90,9 @@
                                       aria-current="page"
                                     {% endif %}
                                   >
+                                    {%- if menu_swatch_hex != blank -%}
+                                      <span class="header-menu-swatch" style="background-color: {{ menu_swatch_hex }};" aria-hidden="true"></span>
+                                    {%- endif -%}
                                     {{ childlink.title | escape }}
                                   </a>
                                 {%- else -%}

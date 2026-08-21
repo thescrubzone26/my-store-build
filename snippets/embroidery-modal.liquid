@@ -18,6 +18,8 @@
   - image_product: {Object} product charged for custom-image embroidery (or blank)
   - image_available: {Boolean} whether image_product has a purchasable variant
   - image_variant: {Object} image_product's selected_or_first_available_variant
+  - both_available: {Boolean} whether a dedicated bundle-priced product is configured
+  - both_variant: {Object} the bundle product's variant, charged instead of name+image combined
 
   Usage:
   {% render 'embroidery-modal', block: block, product: product, section: section, product_form_id: product_form_id, ... %}
@@ -109,7 +111,12 @@
         data-image-price-formatted="{{ image_variant.price | money }}"
         data-image-placement="{{ block.settings.image_placement_label | escape }}"
         {% if name_available %}
-          data-both-price-formatted="{{ image_variant.price | plus: name_variant.price | money }}"
+          {% if both_available %}
+            data-both-variant-id="{{ both_variant.id }}"
+            data-both-price-formatted="{{ both_variant.price | money }}"
+          {% else %}
+            data-both-price-formatted="{{ image_variant.price | plus: name_variant.price | money }}"
+          {% endif %}
         {% endif %}
       {% endif %}
     >

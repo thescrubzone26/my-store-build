@@ -501,8 +501,10 @@
                   {%- liquid
                     assign embroidery_name_product = block.settings.name_product
                     assign embroidery_image_product = block.settings.image_product
+                    assign embroidery_both_product = block.settings.both_product
                     assign embroidery_name_available = false
                     assign embroidery_image_available = false
+                    assign embroidery_both_available = false
 
                     if embroidery_name_product != blank and embroidery_name_product.selected_or_first_available_variant != null
                       assign embroidery_name_available = true
@@ -512,6 +514,11 @@
                     if embroidery_image_product != blank and embroidery_image_product.selected_or_first_available_variant != null
                       assign embroidery_image_available = true
                       assign embroidery_image_variant = embroidery_image_product.selected_or_first_available_variant
+                    endif
+
+                    if embroidery_both_product != blank and embroidery_both_product.selected_or_first_available_variant != null
+                      assign embroidery_both_available = true
+                      assign embroidery_both_variant = embroidery_both_product.selected_or_first_available_variant
                     endif
                   -%}
                   {%- if embroidery_name_available or embroidery_image_available -%}
@@ -525,7 +532,9 @@
                       name_variant: embroidery_name_variant,
                       image_product: embroidery_image_product,
                       image_variant: embroidery_image_variant,
-                      image_available: embroidery_image_available
+                      image_available: embroidery_image_available,
+                      both_variant: embroidery_both_variant,
+                      both_available: embroidery_both_available
                     -%}
                   {%- endif -%}
                 {%- when 'buy_buttons' -%}
@@ -1045,6 +1054,19 @@
           "id": "upload_max_size_text",
           "label": "Upload helper text",
           "default": "Only Accepting files lesser than 10MB"
+        },
+        {
+          "type": "header",
+          "content": "Both (name + image) personalization"
+        },
+        {
+          "type": "paragraph",
+          "content": "Optional. Pick a dedicated product to charge a bundle price when a customer adds both name and image (e.g. ₹700 instead of the two individual prices added together). Leave blank to just charge the name and image products' prices combined."
+        },
+        {
+          "type": "product",
+          "id": "both_product",
+          "label": "Both personalization product"
         },
         {
           "type": "header",
