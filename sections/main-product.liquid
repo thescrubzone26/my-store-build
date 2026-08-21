@@ -109,9 +109,9 @@
                     assign fulfillment_tags = product.tags | join: '|' | downcase
                   -%}
                   {%- if fulfillment_tags contains 'ready to ship' or fulfillment_tags contains 'ready-to-ship' -%}
-                    <span class="badge badge--ready-to-ship product-fulfillment-badge">Ready to Ship</span>
+                    <span class="badge badge--ready-to-ship product-fulfillment-badge">Ready</span>
                   {%- elsif fulfillment_tags contains 'custom made' or fulfillment_tags contains 'custom-made' -%}
-                    <span class="badge badge--custom-made product-fulfillment-badge">Custom Made</span>
+                    <span class="badge badge--custom-made product-fulfillment-badge">Custom</span>
                   {%- endif -%}
                   <div class="product__title" {{ block.shopify_attributes }}>
                     <h1>{{ product.title | escape }}</h1>

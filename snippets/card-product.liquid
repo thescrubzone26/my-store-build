@@ -171,9 +171,9 @@
                 assign fulfillment_tags = card_product.tags | join: '|' | downcase
               -%}
               {%- if fulfillment_tags contains 'ready to ship' or fulfillment_tags contains 'ready-to-ship' -%}
-                <span class="badge badge--bottom-left badge--ready-to-ship">Ready to Ship</span>
+                <span class="badge badge--bottom-left badge--ready-to-ship">Ready</span>
               {%- elsif fulfillment_tags contains 'custom made' or fulfillment_tags contains 'custom-made' -%}
-                <span class="badge badge--bottom-left badge--custom-made">Custom Made</span>
+                <span class="badge badge--bottom-left badge--custom-made">Custom</span>
               {%- endif -%}
             </div>
           </div>
@@ -669,9 +669,9 @@
               assign fulfillment_tags = card_product.tags | join: '|' | downcase
             -%}
             {%- if fulfillment_tags contains 'ready to ship' or fulfillment_tags contains 'ready-to-ship' -%}
-              <span class="badge badge--bottom-left badge--ready-to-ship">Ready to Ship</span>
+              <span class="badge badge--bottom-left badge--ready-to-ship">Ready</span>
             {%- elsif fulfillment_tags contains 'custom made' or fulfillment_tags contains 'custom-made' -%}
-              <span class="badge badge--bottom-left badge--custom-made">Custom Made</span>
+              <span class="badge badge--bottom-left badge--custom-made">Custom</span>
             {%- endif -%}
           </div>
         </div>
